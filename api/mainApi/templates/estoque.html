@@ -1,77 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
-<head>
-  {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard TCC</title>
-    <!-- CSS -->
-    <link rel='stylesheet' href='{% static "css/form.css" %}' />
-    <!-- Icones CSS -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- JS -->
-    <script src="{% static 'JS/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-</head>
-
-<body>
-    {% extends "base.html" %}
+{% block content %}
     <!-- Relatorio -->
-    section class="dashboard">
+  <section class="dashboard">
     <div class="dash-content">
       <div class="overview">
         <div class="title">
           <span class="text">Relatório de Estoque</span>
         </div>
       </div>
-    </div>
-        <!-- Estoque -->
-        <section class="main">
-            <div class="main-skills">
-                <div class="card">
-                    <i class="uil uil-users-alt"></i>
-                    <h2>Clientes</h2>
-                    <h3>200</h3>
-                </div>
-                <div class="card">
-                    <i class="uil uil-bill"></i>
-                    <h2>Vendas</h2>
-                    <h3>225</h3>
-                </div>
-                <div class="card">
-                    <i class="uil uil-chart-line"></i>
-                    <h2>Lucro</h2>
-                    <h3>R$3470,00</h3>
-                </div>
-                <div class="card">
-                    <i class="uil uil-coins"></i>
-                    <h2>Despesas</h2>
-                    <h3>R$1695,00</h3>
-                </div>
-            </section>
-            <main>
-                <div class="data">
-                    <div class="content-data">
-                        <div class="head">
-                            <h3>Produtos</h3>
-                        </div>
-                        <div class="chart">
-                            <div id="pizza"></div>
-                        </div>
-                    </div>
-                    <div class="content-data">
-                        <div class="head">
-                            <h3></h3>
-                        </div>
-                        <div class="chart">
-                            <div id="barras"></div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-    </section>
-    <!-- Estoque -->
+      </div>
+          <!-- Estoque -->
+          <section class="main">
+              <div class="main-skills">
+                  <div class="card">
+                      <i class="uil uil-users-alt"></i>
+                      <h2>Clientes</h2>
+                      <h3>200</h3>
+                  </div>
+                  <div class="card">
+                      <i class="uil uil-bill"></i>
+                      <h2>Vendas</h2>
+                      <h3>225</h3>
+                  </div>
+                  <div class="card">
+                      <i class="uil uil-chart-line"></i>
+                      <h2>Lucro</h2>
+                      <h3>R$3470,00</h3>
+                  </div>
+                  <div class="card">
+                      <i class="uil uil-coins"></i>
+                      <h2>Despesas</h2>
+                      <h3>R$1695,00</h3>
+                  </div>
+              </section>
+              <main>
+                  <div class="data">
+                      <div class="content-data">
+                          <div class="head">
+                              <h3>Produtos</h3>
+                          </div>
+                          <div class="chart">
+                              <div id="pizza"></div>
+                          </div>
+                      </div>
+                      <div class="content-data">
+                          <div class="head">
+                              <h3></h3>
+                          </div>
+                          <div class="chart">
+                              <div id="barras"></div>
+                          </div>
+                      </div>
+                  </div>
+              </main>
+      </section>
+  
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- Estoque -->
     <div class="activity">
       <div class="activity-data">
         <div class="data names">
@@ -121,8 +107,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-</body>
-
-</html>
+    <script src="{% static 'JS/scripts.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
+{% endblock %}

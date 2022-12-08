@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 {% load static %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard TCC</title>
-    <!-- CSS -->
-    <link rel='stylesheet' href='{% static "css/form.css" %}' />
-    <!-- Icones CSS -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- JS -->
-    <script src="{% static 'JS/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-</head>
-
-<body>
-{% extends "base.html" %}
+{% block content %}
   <section class="dashboard">
     <div class="dash-content">
       <div class="overview">
@@ -29,7 +13,7 @@
     <div class="geral">
       <div class="imagem">
         <a target="_blank" href="">
-          <img src=img/status1.png width="100" height="100">
+        <img src="{% static 'img/status1.png' %}"width="100" height="100">
         </a>
         <div class="txtimagem">
           <div class="activity">
@@ -59,7 +43,7 @@
     <div class="geral">
       <div class="imagem">
         <a target="_blank" href="">
-          <img src=img/status2.png width="100" height="100">
+          <img src="{% static 'img/status2.png' %}"width="100" height="100">
         </a>
         <div class="txtimagem">
           <div class="activity">
@@ -82,7 +66,7 @@
     <div class="geral">
       <div class="imagem">
         <a target="_blank" href="">
-          <img src=img/status3.png width="100" height="100">
+          <img src="{% static 'img/status3.png' %}"width="100" height="100">
         </a>
         <div class="txtimagem">
           <div class="activity">
@@ -105,7 +89,7 @@
     <div class="geral">
       <div class="imagem">
         <a target="_blank" href="">
-          <img src=img/status4.png width="100" height="100">
+          <img src="{% static 'img/status4.png' %}"width="100" height="100">
         </a>
         <div class="txtimagem">
           <div class="activity">
@@ -126,6 +110,4 @@
       </div>
     </div>
   </section>
-</body>
-
-</html>
+{% endblock %}

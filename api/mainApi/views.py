@@ -9,6 +9,12 @@ from rest_framework import status
 
 def home(request):
     return render(request, "index.html")
+def comanda(request):
+    return render(request, "comanda.html")
+def estoque(request):
+    return render(request, "estoque.html")
+def finaceiro(request):
+    return render(request, "relFinaceiro.html")
 
 # It takes a request, and an id, and returns the Veiculo object with that id.
 # class VeiculoDetailView(APIView):
