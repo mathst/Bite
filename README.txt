@@ -63,5 +63,3 @@ um teste de logica e um de contrução de api, eu tentei fazer uma implementaç�
   }
   as datas não são alteraveis se não da erro pela formatação
 ` DELETE - ../veiculos/<int:id> - deleta o veiculo pelo id dele
-
-
