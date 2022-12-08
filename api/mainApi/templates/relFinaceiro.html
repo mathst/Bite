@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard TCC</title>
+    <!-- CSS -->
+    <link rel='stylesheet' href='{% static "css/form.css" %}' />
+    <!-- Icones CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- JS -->
+    <script src="{% static 'JS/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="img/logo.jpg" alt="">
+            </div>
+            <span class="logo_name">LOGO</span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="#">
+                    <i class="uil uil-utensils"></i>
+                    <span class="link-name">Pedidos</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-receipt"></i>
+                    <span class="link-name">Comanda</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-box"></i>
+                    <span class="link-name">Estoque</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-dollar-alt"></i>
+                    <span class="link-name">Financeiro</span>
+                </a></li>
+            </ul>
+            <ul class="logout-mode">
+                <li><a href="#">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Sair</span>
+                    </a></li>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard">
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <span class="text">Relatório Financeiro</span>
+                </div>
+            </div>
+        </div>
+        <!-- Estoque -->
+        <section class="main">
+            <div class="main-skills">
+                <div class="card">
+                    <i class="uil uil-users-alt"></i>
+                    <h2>Clientes</h2>
+                    <h3>200</h3>
+                </div>
+                <div class="card">
+                    <i class="uil uil-bill"></i>
+                    <h2>Vendas</h2>
+                    <h3>225</h3>
+                </div>
+                <div class="card">
+                    <i class="uil uil-chart-line"></i>
+                    <h2>Lucro</h2>
+                    <h3>R$3470,00</h3>
+                </div>
+                <div class="card">
+                    <i class="uil uil-coins"></i>
+                    <h2>Despesas</h2>
+                    <h3>R$1695,00</h3>
+                </div>
+            </section>
+            <main>
+                <div class="data">
+                    <div class="content-data">
+                        <div class="head">
+                            <h3>Fluxo de Caixa</h3>
+                        </div>
+                        <div class="chart">
+                            <div id="chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </section>
+</body>
+</html>
