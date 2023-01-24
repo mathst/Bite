@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from django.shortcuts import render
-# from rest_framework.decorators import api_view
+from django.views.decorators.csrf import requires_csrf_token
 from rest_framework.response import Response
 from rest_framework import status
-# from .models import Veiculo
-# from .serializers import VeiculoSerializer
+# from .models import Pedido
+# from .serializers import PedidoSerializer
 
+
+@requires_csrf_token
 def home(request):
     return render(request, "index.html")
 def comanda(request):
@@ -15,9 +17,13 @@ def estoque(request):
     return render(request, "estoque.html")
 def finaceiro(request):
     return render(request, "relFinaceiro.html")
+def pedidos(request):
+    return render(request, "pedidos.html")
 
-# It takes a request, and an id, and returns the Veiculo object with that id.
-# class VeiculoDetailView(APIView):
+# @api_view(["GET", "POST"])
+
+# It takes a request, and an id, and returns the Pedido object with that id.
+# class PedidoDetailView(APIView):
 #     def post(self, request):
 #         """
 #         HttpResponsees the request data, validates it, saves it, and returns a success response
@@ -26,7 +32,7 @@ def finaceiro(request):
 #         including the request body, query parameters, and headers
 #         :return: The serializer.data is being returned.
 #         """
-#         serializer = VeiculoSerializer(
+#         serializer = PedidoSerializer(
 #             data=request.data,
 #         )
 #         if serializer.is_valid():
@@ -50,8 +56,8 @@ def finaceiro(request):
 #         :param id: The id of the object you want to update
 #         :return: The serializer.data is being returned.
 #         """
-#         veiculo = Veiculo.objects.get(id=id)
-#         serializer = VeiculoSerializer(veiculo, data=request.data)
+#         Pedido = Pedido.objects.get(id=id)
+#         serializer = PedidoSerializer(Pedido, data=request.data)
 #         if serializer.is_valid():
 #             serializer.save()
 #             return Response({"status": "success", "data": serializer.data})
@@ -66,8 +72,8 @@ def finaceiro(request):
 #     :return: The serializer.data is being returned.
 #     """
 #     def patch(self, request, id=None):
-#         veiculo = Veiculo.objects.get(id=id)
-#         serializer = VeiculoSerializer(veiculo, data=request.data, partial=True)
+#         Pedido = Pedido.objects.get(id=id)
+#         serializer = PedidoSerializer(Pedido, data=request.data, partial=True)
 #         if serializer.is_valid():
 #             serializer.save()
 #             return Response({"status": "success", "data": serializer.data})
@@ -82,37 +88,37 @@ def finaceiro(request):
 #         :param id: The id of the object to be deleted
 #         :return: The response is being returned in JSON format.
 #         """
-#         item = get_object_or_404(Veiculo, id=id)
+#         item = get_object_or_404(Pedido, id=id)
 #         item.delete()
-#         return Response({"status": "success", "data": "Veiculo Deleted"})
+#         return Response({"status": "success", "data": "Pedido Deleted"})
 
 #     def get(self, request, id=None):
 #         """
-#         If the id is not None, then get the Veiculo object with the id and return it. 
-#         If the id is None, then get all the Veiculo objects and return them. 
-#         If the request has query parameters, then filter the Veiculo objects and return them.
+#         If the id is not None, then get the Pedido object with the id and return it. 
+#         If the id is None, then get all the Pedido objects and return them. 
+#         If the request has query parameters, then filter the Pedido objects and return them.
         
 #         :param request: The request object
 #         :param id: The id of the object you want to retrieve
 #         :return: The get method is returning a response with the status and data.
 #         """
 #         if id:
-#             veiculo = Veiculo.objects.get(id=id)
-#             serializer = VeiculoSerializer(veiculo)
+#             Pedido = Pedido.objects.get(id=id)
+#             serializer = PedidoSerializer(Pedido)
 #             return Response(
 #                 {"status": "success", "data": serializer.data},
 #                 status=status.HTTP_200_OK,
 #             )
 #         elif id == None:
-#             veiculo = Veiculo.objects.all()
-#             serializer = VeiculoSerializer(veiculo, many=True)
+#             Pedido = Pedido.objects.all()
+#             serializer = PedidoSerializer(Pedido, many=True)
 #             return Response(
 #                 {"status": "success", "data": serializer.data},
 #                 status=status.HTTP_200_OK,
 #             )
 #         elif request.query_params:
-#             veiculo = Veiculo.objects.filter(**request.query_params.dict())
-#             serializer = VeiculoSerializer(veiculo, many=True)
+#             Pedido = Pedido.objects.filter(**request.query_params.dict())
+#             serializer = PedidoSerializer(Pedido, many=True)
 #             return Response(
 #                 {"status": "success", "data": serializer.data},
 #                 status=status.HTTP_200_OK,

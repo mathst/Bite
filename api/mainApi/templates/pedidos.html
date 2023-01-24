@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="dashboard">
+  <div class="dash-content">
+    <div class="overview">
+      <div class="title">
+        <span class="text">Pedido feitos</span>
+        <h1>Alterar Item de Pedido</h1>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar alterações</button>
+        </form>
+        {% endblock %}
+      </div>
+    </div>
+</div>
+</section>
+     
+{% endblock %}
