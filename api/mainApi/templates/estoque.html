@@ -55,55 +55,45 @@
                   </div>
               </main>
       </section>
-  
-      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<!-- Estoque -->
+<section class="dashboard">
+  <div class="dash-content">
+    <div class="overview">
+      <div class="title">
+        <span class="text">Relatório de Estoque</span>
+      </div>
+    </div>
+    </div>
     <div class="activity">
       <div class="activity-data">
         <div class="data names">
           <span class="data-title">Código</span>
-          <span class="data-list">#1550</span>
-          <span class="data-list">#3792</span>
-          <span class="data-list">#6560</span>
-          <span class="data-list">#4592</span>
-          <span class="data-list">#9653</span>
-          <span class="data-list">#2520</span>
+          {% for i in id %}
+            <span class="data-list">#{{ i }}<</span>
+          {% endfor %}
         </div>
         <div class="data names">
           <span class="data-title">Produto</span>
-          <span class="data-list">Pão de Hamburguer</span>
-          <span class="data-list">Coca-cola</span>
-          <span class="data-list">Alface</span>
-          <span class="data-list">Bacon</span>
-          <span class="data-list">Batata</span>
-          <span class="data-list">Queijo</span>
+          {% for p in produtos %}
+            <span class="data-list">{{ p }}<</span>
+          {% endfor %}
         </div>
         <div class="data names">
           <span class="data-title">Disponibilidade</span>
-          <span class="data-list">Disponível</span>
-          <span class="data-list">Disponível</span>
-          <span class="data-list">Indisponível</span>
-          <span class="data-list">Disponível</span>
-          <span class="data-list">Indisponível</span>
-          <span class="data-list">Disponível</span>
+          {% for d in status %}
+            <span class="data-list">{% if d == 1 %}disponivel{% endif %}</span>
+          {% endfor %}
         </div>
         <div class="data names">
           <span class="data-title">Quantidade</span>
-          <span class="data-list">50</span>
-          <span class="data-list">50</span>
-          <span class="data-list">0</span>
-          <span class="data-list">50</span>
-          <span class="data-list">0</span>
-          <span class="data-list">15</span>
+          {% for q in quant %}
+            <span class="data-list">{{ q }}<</span>
+          {% endfor %}
         </div>
         <div class="data names">
           <span class="data-title">Fornecedor</span>
-          <span class="data-list">Fulano</span>
-          <span class="data-list">Fulano</span>
-          <span class="data-list">Fulano</span>
-          <span class="data-list">Fulano</span>
-          <span class="data-list">Fulano</span>
-          <span class="data-list">Fulano</span>
+          {% for f in fornecedor %}
+            <span class="data-list">{{ f }}<</span>
+          {% endfor %}
         </div>
       </div>
     </div>
