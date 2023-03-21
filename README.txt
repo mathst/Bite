@@ -16,8 +16,11 @@ um teste de logica e um de contrução de api, eu tentei fazer uma implementaç�
 
 :heavy_check_mark: `instalar os requirements:` Para instalar basta dar um `pip install -r requirements.txt` para instalar as dependencias na env
 
+<<<<<<< Updated upstream
 :heavy_check_mark: `migrate e makemigrations:`python3 manage.py migrate` e depois `python3 manage.py makemigrations`para poder criar e atualizar o DB
 
+=======
+>>>>>>> Stashed changes
 :heavy_check_mark: `api:` para rodar a api, basta entrar na pasta api e rodar `python3 manage.py runserver`
 
 ##Tecnologias utilizadas
