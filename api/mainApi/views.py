@@ -1,24 +1,86 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.views import APIView
-from django.shortcuts import render
+# from rest_framework.views import APIView
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import requires_csrf_token
-from rest_framework.response import Response
-from rest_framework import status
-# from .models import Pedido
-# from .serializers import PedidoSerializer
+# from rest_framework.response import Response
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.dispatch import receiver
+from django.shortcuts import render
+import pyrebase
+from firebase_admin import credentials
+from pathlib import Path
+import json
 
 
-@requires_csrf_token
+#Initialize the Admin SDK
+#colocando a credencial gerada
+fileCred = "bite-a-pp-firebase-adminsdk-zhzha-63c005a8e7.json"
+cred = Path(Path.home(),"Documents","Bite",fileCred)
+cred = json.load(str(cred))
+
+firebase=pyrebase.initialize_app(json.load(cred))
+authe = firebase.auth()
+database=firebase.database()
+ 
+def signIn(request):
+    return render(request,"Login.html")
 def home(request):
-    return render(request, "index.html")
-def comanda(request):
-    return render(request, "comanda.html")
-def estoque(request):
-    return render(request, "estoque.html")
-def finaceiro(request):
-    return render(request, "relFinaceiro.html")
-def pedidos(request):
-    return render(request, "pedidos.html")
+    return render(request,"Home.html")
+ 
+def postsignIn(request):
+    email=request.POST.get('email')
+    pasw=request.POST.get('pass')
+    try:
+        # if there is no error then signin the user with given email and password
+        user=authe.sign_in_with_email_and_password(email,pasw)
+    except:
+        message="Invalid Credentials!!Please ChecK your Data"
+        return render(request,"Login.html",{"message":message})
+    session_id=user['idToken']
+    request.session['uid']=str(session_id)
+    return render(request,"Home.html",{"email":email})
+ 
+def logout(request):
+    try:
+        del request.session['uid']
+    except:
+        pass
+    return render(request,"Login.html")
+ 
+def signUp(request):
+    return render(request,"Registration.html")
+ 
+def postsignUp(request):
+     email = request.POST.get('email')
+     passs = request.POST.get('pass')
+     name = request.POST.get('name')
+     try:
+        # creating a user with the given email and password
+        user=authe.create_user_with_email_and_password(email,passs)
+        uid = user['localId']
+        idtoken = request.session['uid']
+        print(uid)
+     except:
+        return render(request, "Registration.html")
+     return render(request,"Login.html")
+
+# def home(request):
+#     return render(request, "index.html")
+# def comanda(request):
+#     return render(request, "comanda.html") 
+# def pedidos(request):
+#     return render(request, "pedidos.html")
+# def estoque(request):
+#     return render(request, "estoque.html")
+# def finaceiro(request):
+#     return render(request, "relFinaceiro.html")
+
+
+
+
+
 
 # @api_view(["GET", "POST"])
 

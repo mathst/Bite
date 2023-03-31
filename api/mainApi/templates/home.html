@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 50%;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        p {
+            font-size: 32px;
+        }
+        button {
+            background-color: rgba(7, 179, 185, 0.753);
+            color: white;
+            width: 70px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button type="button" onclick="location.href='{% url 'log' %}' ">Logout</button>
+</div>
+</body>
+</html>

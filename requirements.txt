@@ -1,17 +1,2 @@
-<<<<<<< Updated upstream
-asgiref==3.5.2
 Django==4.1.4
 djangorestframework==3.14.0
-pytz==2022.6
-sqlparse==0.4.3
-=======
-Django==4.1
-django-rest-framework==0.1.0
-djangorestframework==3.13.1
-mypy-extensions==0.4.3
-pathspec==0.9.0
-platformdirs==2.5.2
-pytz==2022.1
-sqlparse==0.4.2
-
->>>>>>> Stashed changes
