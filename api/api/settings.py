@@ -102,13 +102,34 @@ DATABASES = {
     }
 }
 
-SOCIAL_AUTH_GOOGLE_CLIENT_ID= '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_CLIENT_SECRET = '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'
-# AUTHENTICATION_BACKENDS = [
-#     'social_core.backends.google.GoogleOAuth2',
-#     'django.contrib.auth.backends.ModelBackend',
-# ]
-# SITE_ID = 1
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+"google": {
+    # For each OAuth based provider, either add a ``SocialApp``
+    # (``socialaccount`` app) containing the required client
+    # credentials, or list them here:
+    "APP": {
+        "client_id": os.environ.get(SOCIAL_AUTH_GOOGLE_CLIENT_ID),
+        "secret": os.environ.get(SOCIAL_AUTH_GOOGLE_CLIENT_SECRET),
+        "key": ""
+    },
+    # These are provider-specific settings that can only be
+    # listed here:
+    "SCOPE": [
+        "profile",
+        "email",
+    ],
+    "AUTH_PARAMS": {
+        "access_type": "online",
+    }
+}}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

@@ -5,26 +5,30 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 import pyrebase
 import allauth.exceptions
+import firebase_admin
+from firebase_admin import credentials
+
 
 
 # Configure Firebase
 config={
-    apiKey: "AIzaSyA4CnkanVSlOq9YOdTkPUZV4NEQkVYh87g",
-    authDomain: "bite-a-pp.firebaseapp.com",
-    databaseURL: "https://bite-a-pp-default-rtdb.firebaseio.com",
-    projectId: "bite-a-pp",
-    storageBucket: "bite-a-pp.appspot.com",
-    messagingSenderId: "480172695212",
-    appId: "1:480172695212:web:efde2d926d5135ab540909",
-    # measurementId: "G-HJ361CB6B1",
+    "apiKey": "AIzaSyA4CnkanVSlOq9YOdTkPUZV4NEQkVYh87g",
+    "authDomain": "bite-a-pp.firebaseapp.com",
+    "databaseURL": "https://bite-a-pp-default-rtdb.firebaseio.com",
+    'projectId': "bite-a-pp",
+    'storageBucket': "bite-a-pp.appspot.com",
+    'messagingSenderId': "480172695212",
+    'appId': "1:480172695212:web:efde2d926d5135ab540909",
+    # "measurementId": "G-HJ361CB6B1",
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
 
 # Set up Google OAuth2 adapter
-google_adapter = GoogleOAuth2Adapter(client_id=settings.SOCIAL_AUTH_GOOGLE_CLIENT_ID,client_secret=settings.SOCIAL_AUTH_GOOGLE_CLIENT_SECRET)
-google_oauth2_login = google_adapter.login
-google_oauth2_callback = google_adapter.callback
+class GoogleAdapter(GoogleOAuth2Adapter):
+    adapter_class = GoogleOAuth2Adapter
+    callback_url = 'http://localhost:8000/accounts/google/login/callback/'
+    client_class = OAuth2Client
 
 
 @login_required
@@ -73,6 +77,68 @@ def postReset(request):
     except:
         message = "Something went wrong. Please check if the email you provided is registered or not."
         return render(request, "Reset.html", {"msg": message})
+
+# def home(request):
+#     return render(request, "index.html")
+def comanda(request):
+    return render(request, "comanda.html") 
+def pedidos(request):
+    return render(request, "pedidos.html")
+def estoque(request):
+    return render(request, "estoque.html")
+def finaceiro(request):
+    return render(request, "relFinaceiro.html")
+
+# cred
+# cred = credentials.Certificate({
+#  "type": "service_account",
+#  "project_id": os.getenv('FIREBASE_PROJECT_ID'),
+#  "private_key_id": os.environ.get('FIREBASE_PRIVATE_KEY_ID'),
+#  "private_key": os.environ.get('FIREBASE_PRIVATE_KEY'),
+#  "client_email": os.environ.get('FIREBASE_CLIENT_EMAIL'),
+#  "client_id": os.environ.get('FIREBASE_CLIENT_ID'),
+#  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+#  "token_uri": "https://accounts.google.com/o/oauth2/token",
+#  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+#  "client_x509_cert_url": os.environ.get('FIREBASE_CLIENT_CERT_URL')
+# })
+default_app = firebase_admin.initialize_app(config)
+
+def Firebase_validation(id_token):
+   """
+   This function receives id token sent by Firebase and
+   validate the id token then check if the user exist on
+   Firebase or not if exist it returns True else False
+   """
+   try:
+       decoded_token = auth.verify_id_token(id_token)
+       uid = decoded_token['uid']
+       provider = decoded_token['firebase']['sign_in_provider']
+       image = None
+       name = None
+       if "name" in decoded_token:
+           name = decoded_token['name']
+       if "picture" in decoded_token:
+           image = decoded_token['picture']
+       try:
+           user = auth.get_user(uid)
+           email = user.email
+           if user:
+               return {
+                   "status": True,
+                   "uid": uid,
+                   "email": email,
+                   "name": name,
+                   "provider": provider,
+                   "image": image
+               }
+           else:
+               return False
+       except UserNotFoundError:
+           print("user not exist")
+   except ExpiredIdTokenError:
+       print("invalid token")
+
 
 
 # @api_view(["GET", "POST"])
