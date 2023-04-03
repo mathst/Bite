@@ -28,4 +28,7 @@ um teste de logica e um de contrução de api, eu tentei fazer uma implementaç�
 :heavy_check_mark: sqlite
 
 
+link do documento
+
+https://docs.google.com/document/d/1J_xT1SbOn_KEgv-gohLVFeE_MmTe_7Yt/edit?usp=sharing&ouid=115428873382726324587&rtpof=true&sd=true
 
