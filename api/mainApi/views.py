@@ -4,7 +4,7 @@ from allauth.socialaccount.providers.oauth2.client import OAuth2Client
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 import pyrebase
-from allauth.exceptions import AuthenticationError # type: ignore
+import allauth.exceptions
 
 
 # Configure Firebase
@@ -58,7 +58,7 @@ def google_callback(request):
             uid = auth_data['users'][0]['localId']
             request.session['uid'] = uid
             return render(request, "Home.html")
-    except AuthenticationError:
+    except allauth.exceptions.AuthenticationError:
         return render(request, "auth_error.html")
 
 def reset(request):
