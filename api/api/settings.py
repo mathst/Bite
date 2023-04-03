@@ -41,8 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'rest_framework',
     'firebase_auth',
     'mainApi',
     
@@ -56,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
@@ -95,13 +102,13 @@ DATABASES = {
     }
 }
 
-GOOGLE_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = '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'
-AUTHENTICATION_BACKENDS = [
-    'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-]
-SITE_ID = 1
+SOCIAL_AUTH_GOOGLE_CLIENT_ID= '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_CLIENT_SECRET = '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'
+# AUTHENTICATION_BACKENDS = [
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+# ]
+# SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

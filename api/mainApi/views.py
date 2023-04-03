@@ -1,85 +1,78 @@
-from django.shortcuts import get_object_or_404
-# from rest_framework.views import APIView
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import requires_csrf_token
-# from rest_framework.response import Response
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.dispatch import receiver
 from django.shortcuts import render
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 import pyrebase
-from firebase_admin import credentials
-from pathlib import Path
-import json
+from allauth.exceptions import AuthenticationError # type: ignore
 
 
-#Initialize the Admin SDK
-#colocando a credencial gerada
-fileCred = "bite-a-pp-firebase-adminsdk-zhzha-63c005a8e7.json"
-cred = Path(Path.home(),"Documents","Bite",fileCred)
-cred = json.load(str(cred))
+# Configure Firebase
+config={
+    apiKey: "AIzaSyA4CnkanVSlOq9YOdTkPUZV4NEQkVYh87g",
+    authDomain: "bite-a-pp.firebaseapp.com",
+    databaseURL: "https://bite-a-pp-default-rtdb.firebaseio.com",
+    projectId: "bite-a-pp",
+    storageBucket: "bite-a-pp.appspot.com",
+    messagingSenderId: "480172695212",
+    appId: "1:480172695212:web:efde2d926d5135ab540909",
+    # measurementId: "G-HJ361CB6B1",
+}
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
 
-firebase=pyrebase.initialize_app(json.load(cred))
-authe = firebase.auth()
-database=firebase.database()
- 
-def signIn(request):
-    return render(request,"Login.html")
+# Set up Google OAuth2 adapter
+google_adapter = GoogleOAuth2Adapter(client_id=settings.SOCIAL_AUTH_GOOGLE_CLIENT_ID,client_secret=settings.SOCIAL_AUTH_GOOGLE_CLIENT_SECRET)
+google_oauth2_login = google_adapter.login
+google_oauth2_callback = google_adapter.callback
+
+
+@login_required
 def home(request):
     return render(request,"Home.html")
- 
-def postsignIn(request):
-    email=request.POST.get('email')
-    pasw=request.POST.get('pass')
-    try:
-        # if there is no error then signin the user with given email and password
-        user=authe.sign_in_with_email_and_password(email,pasw)
-    except:
-        message="Invalid Credentials!!Please ChecK your Data"
-        return render(request,"Login.html",{"message":message})
-    session_id=user['idToken']
-    request.session['uid']=str(session_id)
-    return render(request,"Home.html",{"email":email})
- 
+
+def login(request):
+    return render(request, "Login.html")
+
+def signup(request):
+    return render(request, "Registration.html")
+
 def logout(request):
+    auth.logout(request)
+    return render(request, "Login.html")
+
+def auth_error(request):
+    return render(request, "auth_error.html")
+
+def google_login(request):
+    return google_oauth2_login(request)
+
+def google_callback(request):
     try:
-        del request.session['uid']
+        # Authenticate with Firebase using the Google access token
+        access_token = request.GET.get('access_token')
+        user = auth.sign_in_with_oauth(access_token)
+        # If the user is authenticated, log them in
+        if user:
+            auth_data = auth.get_account_info(user['idToken'])
+            uid = auth_data['users'][0]['localId']
+            request.session['uid'] = uid
+            return render(request, "Home.html")
+    except AuthenticationError:
+        return render(request, "auth_error.html")
+
+def reset(request):
+    return render(request, "Reset.html")
+ 
+def postReset(request):
+    email = request.POST.get('email')
+    try:
+        auth.send_password_reset_email(email)
+        message = "An email to reset password is successfully sent"
+        return render(request, "Reset.html", {"msg": message})
     except:
-        pass
-    return render(request,"Login.html")
- 
-def signUp(request):
-    return render(request,"Registration.html")
- 
-def postsignUp(request):
-     email = request.POST.get('email')
-     passs = request.POST.get('pass')
-     name = request.POST.get('name')
-     try:
-        # creating a user with the given email and password
-        user=authe.create_user_with_email_and_password(email,passs)
-        uid = user['localId']
-        idtoken = request.session['uid']
-        print(uid)
-     except:
-        return render(request, "Registration.html")
-     return render(request,"Login.html")
-
-# def home(request):
-#     return render(request, "index.html")
-# def comanda(request):
-#     return render(request, "comanda.html") 
-# def pedidos(request):
-#     return render(request, "pedidos.html")
-# def estoque(request):
-#     return render(request, "estoque.html")
-# def finaceiro(request):
-#     return render(request, "relFinaceiro.html")
-
-
-
-
+        message = "Something went wrong. Please check if the email you provided is registered or not."
+        return render(request, "Reset.html", {"msg": message})
 
 
 # @api_view(["GET", "POST"])

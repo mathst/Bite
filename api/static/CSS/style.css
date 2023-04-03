@@ -133,128 +133,86 @@ nav .menu-items {
 
 .dashboard .content .cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;  
     flex-wrap: wrap;
 }
 
-.dashboard .content .card-single {
-    width: calc(25% - 20px);
-    min-width: 200px;
-    background-color: #FFF;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.dashboard .content .cards .card {
+width: calc(33.33% - 10px);
+background-color: var(--card-color);
+padding: 20px;
+margin-bottom: 20px;
 }
 
-.dashboard .content .card-single:last-child {
-    margin-bottom: 0;
+.dashboard .content .cards .card h2 {
+margin-top: 0;
 }
 
-.dashboard .content .card-single .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+.dashboard .content .cards .card p {
+margin-bottom: 0;
 }
 
-.dashboard .content .card-single .card-body h5 {
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--text-color);
-    margin-bottom: 10px;
+/* Segunda Melhoria: Adição de um botão para adicionar um novo item */
+.dashboard .content .add-item-button {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 60px;
+background-color: var(--button-color);
+border-radius: 5px;
+color: var(--text-color);
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 20px;
+cursor: pointer;
+transition: background-color 0.3s ease;
 }
 
-.dashboard .content .card-single .card-body p {
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--black-light-color);
+.dashboard .content .add-item-button:hover {
+background-color: var(--button-color-hover);
 }
 
-.dashboard .content .card-single .card-body .btn {
-    font-size: 14px;
-    font-weight: 600;
-    color: #FFF;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: var(--tran-02);
+/* Terceira Melhoria: Estilo do formulário de adicionar um novo item */
+.dashboard .content .add-item-form {
+display: none;
+background-color: var(--card-color);
+padding: 20px;
+border-radius: 5px;
 }
 
-.dashboard .content .card-single .card-body .btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+.dashboard .content .add-item-form.show {
+display: block;
 }
 
-@media (max-width: 1000px) {
-    nav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    nav .logo-name {
-        margin-bottom: 20px;
-    }
-
-    .dashboard {
-        width: 100%;
-        left: 0;
-    }
-
-    .dashboard .content .cards {
-        justify-content: center;
-    }
-
-    .dashboard .content .card-single {
-        width: calc(33% - 20px);
-        margin-right: 20px;
-        margin-left: 20px;
-    }
-
-    .dashboard .content .card-single:last-child {
-        margin-right: 0;
-    }
+.dashboard .content .add-item-form label {
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
 }
 
-    /* Para telas menores que 768px de largura */
-    @media (max-width: 768px) {
-        nav {
-            width: 100%;
-            position: static;
-            border-right: none;
-        }
+.dashboard .content .add-item-form input[type="text"] {
+width: 100%;
+height: 40px;
+padding: 10px;
+border-radius: 5px;
+border: none;
+margin-bottom: 20px;
+}
 
-        .dashboard {
-            width: 100%;
-            left: 0;
-        }
+.dashboard .content .add-item-form input[type="submit"] {
+width: 100%;
+height: 60px;
+background-color: var(--button-color);
+border-radius: 5px;
+color: var(--text-color);
+font-size: 18px;
+font-weight: bold;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
 
-        .menu-items {
-            margin-top: 20px;
-            height: auto;
-        }
-
-        .menu-items li a {
-            height: 40px;
-        }
-
-        .menu-items li a i {
-            font-size: 20px;
-            min-width: 40px;
-        }
-
-        .menu-items li a .link-name {
-            font-size: 16px;
-        }
-
-        .nav-links li a:hover:before {
-            left: 0;
-        }
-    }
+.dashboard .content .add-item-form input[type="submit"]:hover {
+background-color: var(--button-color-hover);
+}
