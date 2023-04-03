@@ -22,3 +22,7 @@
 :heavy_check_mark: django Framework
 
 :heavy_check_mark: sqlite
+
+link da documentação:
+
+https://docs.google.com/document/d/1J_xT1SbOn_KEgv-gohLVFeE_MmTe_7Yt/edit?usp=sharing&ouid=115428873382726324587&rtpof=true&sd=true
