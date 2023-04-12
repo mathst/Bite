@@ -1,0 +1,146 @@
+/* Estilização geral das páginas login*/
+
+body {
+  background: linear-gradient(to bottom, #FFFFFF, #C4C4C4); /* Fundo com degradê */
+  font-family: Arial, sans-serif; /* Fonte */
+}
+
+.container {
+  max-width: 800px; /* Largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo na tela */
+  padding: 20px; /* Espaçamento interno */
+}
+
+h1 {
+  font-size: 36px; /* Tamanho da fonte */
+  text-align: center; /* Centraliza o texto */
+}
+
+h2 {
+  font-size: 24px; /* Tamanho da fonte */
+}
+
+p {
+  font-size: 18px; /* Tamanho da fonte */
+  line-height: 1.5; /* Espaçamento entre linhas */
+}
+
+/* Estilização específica para a página de Logout */
+
+.logout {
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.logout h1 {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilização específica para a página de Signup */
+
+.signup {
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.signup h1 {
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilização específica para as páginas de Signup para Cliente, Funcionário e Administrador */
+
+.signup-form {
+  max-width: 500px; /* Largura máxima do formulário */
+  margin: 0 auto; /* Centraliza o formulário */
+  background: #FFFFFF; /* Fundo branco */
+  border: 1px solid #CCCCCC; /* Borda cinza */
+  border-radius: 10px; /* Cantos arredondados */
+  padding: 20px; /* Espaçamento interno */
+}
+
+.signup-form h2 {
+  margin-bottom: 20px; /* Espaçamento inferior */
+  text-align: center; /* Centraliza o texto */
+}
+
+.signup-form label {
+  display: block; /* Transforma o elemento em bloco */
+  margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.signup-form input[type=text], 
+.signup-form input[type=password], 
+.signup-form select {
+  display: block; /* Transforma o elemento em bloco */
+  width: 100%; /* Largura total */
+  padding: 10px; /* Espaçamento interno */
+  margin-bottom: 20px; /* Espaçamento inferior */
+  border-radius: 5px; /* Cantos arredondados */
+  border: 1px solid #CCCCCC; /* Borda cinza */
+}
+
+.signup-form input[type=submit] {
+  background: #006699; /* Fundo azul */
+  color: #FFFFFF; /* Texto branco */
+  border: none; /* Sem borda */
+  padding: 10px 20px; /* Espaçamento interno */
+  border-radius: 5px; /* Cantos arredondados */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+  transition: background 0.3s ease-in-out; /* Transição suave */
+}
+
+.signup-form input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+.signup-form input[type=submit]:hover {
+  background-color: #3e8e41;
+}
+.signup-form {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  background: linear-gradient(90deg, #e0e0e0, #fff);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.signup-form input[type=submit] {
+  margin-top: 20px;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+button[type=submit] {
+  background: #007bff; /* cor do botão */
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button[type=submit]:hover {
+  background: #0069d9; /* cor de hover do botão */
+  cursor: pointer;
+}

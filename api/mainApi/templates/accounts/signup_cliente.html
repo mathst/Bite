@@ -1,0 +1,15 @@
+{% extends 'bases/base2.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Sign Up as a Client</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

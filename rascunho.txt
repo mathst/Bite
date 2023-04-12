@@ -1,92 +1,273 @@
-from django.shortcuts import get_object_or_404
-# from rest_framework.views import APIView
+import firebase_admin
+from firebase_admin import auth, credentials
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import requires_csrf_token
-# from rest_framework.response import Response
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages
-from django.dispatch import receiver
-from django.shortcuts import render
-import pyrebase
-from firebase_admin import credentials
-from pathlib import Path
-import json
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 
-
-#Initialize the Admin SDK
-#colocando a credencial gerada
-# fileCred = "bite-a-pp-firebase-adminsdk-zhzha-63c005a8e7.json"
-# cred = Path(Path.home(),"Documents","Bite",fileCred)
-# cred = json.load(str(cred))
-
-# firebase=pyrebase.initialize_app(json.load(cred))
-cred = {
-  "type": "service_account",
-  "project_id": "bite-a-pp",
-  "private_key_id": "63c005a8e7034ec7b3a42f2f000d679b2b2e9413",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCl3BhnAKu7TbP5\nFMNkkqE8w2UnpDS3YsA/cBeRbRoHAew8fLGPheJsMBY5pOAqgsZAsMON59IL0+Wb\nbWNOUjmEmpHCnmzB60GqUvbOKxfKNPVBmiu32pUXtU+cFnaoYuzmuInWMDhCGqtx\ndmF3/JPHjh6tmjOJpQXDq3vdWRflP5PbDgzqsaNI4UcV5Bm7F2Tdc4FFwVw48q3n\nyCVPRtlW0u7k/Z7CN6+eCvYHPlWD5igNVuBRBYc0uCZam6f5THwkECoPbCYZVBWB\nXTunU0gQ8Tq4qmWUiMXU+OLSNilyUDTk0JYv5et/oiSOlRu3oUKxcHHUriMyUJW1\n0Ot9P+0JAgMBAAECggEAEFx2LEf+yNDlE2myziOgQ+sW+gp62EnFouRi8MmxRvZv\nuDZJOjoX8DnsoVZUNiFVHvnI6qFPATNvi43mfUoDakMopIkF+7miLkP1nHgYBk6D\n0Is9q4rkiPSN5Dz7isgKbEaRM0eprwysM5q8ye4ookdw24lx8s6sc0VB6F+C6c5b\nLNo3J5ddhqrSoR+wCGIv2IXAh6bXFinngpRi9FvOWYeQSZJUPK8f2JD96rIgjmfa\nhyqtid0nEwmpuwGXpgV5fNUhwd8zCd2AYp4PJovd+58M1HMi1E+X5i6pjc240MBa\nULMRyBAjHetDZU17ZQH8njeIaGFMZKf9AXC1rkPkkQKBgQDoN6xG2m12aNvny5GZ\nr3iivF/1+SdIoBMgDO3d93pKDSTTO+PDf6u5L70eRn936EvI5iCPb1iUrlpgYIT3\noi/kdJJPNWWf+/VOjkaOe1cLSajCKwEYO4G2wvgmfJOESEtQecz+czGP3dXbb6AG\nNxIYR+HOOIA9Spg2P5RUQQpNeQKBgQC22KQ0e2O+3m7hf2G5fsTlxQF3Hh5FoT0j\ndsf7l04NweUeJRv7iszDuOY/oeWCRHR7wKD4unw1eT6sQYB3JT9KWiWe5jQqMaSj\nksq8S1d8fPSIoWH+aj29vR2q/yLYi1xUChnc3HNy3oWxkIfuuwlF2yKFJHRkfmhQ\nHseTug0IEQKBgQCysFRy2RWuLhY5kZ3igvHzV70Hy8d8zSCqYwiO6yZA4Uha+xTS\nlOWRRLjkGR9xJ2FZoCuh8+5XyqpkyyDGZRkxVLpZFR+0Me+bmUOV1Dcwymd/shPP\nj8rK1dCZ3Paureq2bGNf0UhsCinMB2M+JRZZdMa/Jx8XCtWBuP7srne9EQKBgGwf\nW6p1NJyPp/3Md5tbLU+52Y34z2nZWO/5s3RBGrTj7XqP8yYiA8fRNMZ4E+GeXUs4\ns3ehvwVX9wmhijfqXKy49foqoro4tOTNTvldjBRfR7Lry6jIZk4m4L5XNOHcNvKz\nLmv+KH7Ku0Au+VLgYzFdzeHxlqo+XazTJq1inYYhAoGBAIUDkkdsmvp9jbFUByS4\nK6r6XrWY3hKMZNabCSkBd43up7UyOqPL4bObvRo3/ucEkG9qUbP8WTtXbCw+WOEI\nwUtvs8cYxISJ9qULkRiq5Kz5VkIn2FKtJTn6yGQi2+gjdBPmjjC9k6LRIWukexUz\n3KsiCgKbf4mSqBwzRNOh/j0U\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-zhzha@bite-a-pp.iam.gserviceaccount.com",
-  "client_id": "102618612532916274900",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zhzha%40bite-a-pp.iam.gserviceaccount.com"
-}
-
-firebase=pyrebase.initialize_app(cred)
-authe = firebase.auth()
-database=firebase.database()
- 
-def signIn(request):
-    return render(request,"Login.html")
-def home(request):
-    return render(request,"Home.html")
- 
-def postsignIn(request):
-    email=request.POST.get('email')
-    pasw=request.POST.get('pass')
-    try:
-        # if there is no error then signin the user with given email and password
-        user=authe.sign_in_with_email_and_password(email,pasw)
-    except:
-        message="Invalid Credentials!!Please ChecK your Data"
-        return render(request,"Login.html",{"message":message})
-    session_id=user['idToken']
-    request.session['uid']=str(session_id)
-    return render(request,"Home.html",{"email":email})
- 
-def logout(request):
-    try:
-        del request.session['uid']
-    except:
-        pass
-    return render(request,"Login.html")
- 
-def signUp(request):
-    return render(request,"Registration.html")
- 
-def postsignUp(request):
-     email = request.POST.get('email')
-     passs = request.POST.get('pass')
-     name = request.POST.get('name')
-     try:
-        # creating a user with the given email and password
-        user=authe.create_user_with_email_and_password(email,passs)
-        uid = user['localId']
-        idtoken = request.session['uid']
-        print(uid)
-     except:
-        return render(request, "Registration.html")
-     return render(request,"Login.html")
+cred = credentials.Certificate("credentials.json")
+firebase_admin.initialize_app(cred)
 
 # def home(request):
-#     return render(request, "index.html")
-# def comanda(request):
-#     return render(request, "comanda.html") 
-# def pedidos(request):
-#     return render(request, "pedidos.html")
-# def estoque(request):
-#     return render(request, "estoque.html")
-# def finaceiro(request):
-#     return render(request, "relFinaceiro.html")
+#     login_form = AuthenticationForm()
+#     return render(request, 'home.html', {'login_form': login_form})
+
+# class SignupView(CreateView):
+#     form_class = UserCreationForm
+#     success_url = reverse_lazy('login')
+#     template_name = 'signup.html'
+
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(data=request.POST)
+#         if form.is_valid():
+#             user = form.get_user()
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = AuthenticationForm()
+#     return render(request, 'login.html', {'form': form})
+
+# def signup_view(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'signup.html', {'form': form})
+
+# def logout_view(request):
+#     logout(request)
+#     return redirect('login')
+
+# def reset_password(request):
+#     if request.method == 'POST':
+#         email = request.POST['email']
+#         try:
+#             auth.generate_password_reset_link(email)
+#             message = 'Um link de redefinição de senha foi enviado para o seu email.'
+#             return render(request, 'reset_password.html', {'message': message})
+#         except:
+#             error_message = 'Não foi possível enviar o link de redefinição de senha. Por favor, verifique seu email e tente novamente.'
+#             return render(request, 'reset_password.html', {'error_message': error_message})
+#     else:
+#         return render(request, 'reset_password.html')
+
+
+-----models-----
+
+# from django.db import models
+# from django.utils import timezone
+# from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, AbstractUser
+# from django.contrib.auth.models import BaseUserManager
+
+# from firebase_admin import auth
+# from firebase_admin import exceptions as firebase_exceptions
+
+# class CustomUserManager(BaseUserManager):
+#     def create_user(self, email, password=None, **extra_fields):
+#         """
+#         Cria e salva um usuário com o email e a senha fornecidos.
+#         """
+#         if not email:
+#             raise ValueError('O email deve ser definido')
+#         email = self.normalize_email(email)
+#         user = self.model(email=email, **extra_fields)
+#         user.set_password(password)
+#         user.save()
+#         return user
+
+#     def create_superuser(self, email, password=None, **extra_fields):
+#         """
+#         Cria e salva um superusuário com o email e a senha fornecidos.
+#         """
+#         extra_fields.setdefault('is_staff', True)
+#         extra_fields.setdefault('is_superuser', True)
+
+#         if extra_fields.get('is_staff') is not True:
+#             raise ValueError('Superuser deve ter is_staff=True.')
+#         if extra_fields.get('is_superuser') is not True:
+#             raise ValueError('Superuser deve ter is_superuser=True.')
+
+#         return self.create_user(email, password, **extra_fields)
+
+# class CustomUser(AbstractBaseUser, PermissionsMixin):
+#     email = models.EmailField('e-mail', unique=True)
+#     name = models.CharField('nome', max_length=100, blank=True)
+#     age = models.IntegerField('idade', blank=True, null=True)
+#     is_active = models.BooleanField('ativo', default=True)
+#     is_staff = models.BooleanField('funcionário', default=False)
+#     date_joined = models.DateTimeField('data de cadastro', default=timezone.now)
+
+#     USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = []
+
+#     objects = CustomUserManager()
+
+#     def __str__(self):
+#         return self.email
+
+#     def get_full_name(self):
+#         return self.name
+
+#     def get_short_name(self):
+#         return self.name
+
+#     def generate_email_verification_link(self):
+#         try:
+#             link = auth.generate_email_verification_link(self.email)
+#         except firebase_exceptions.FirebaseError as e:
+#             raise ValueError(str(e))
+#         return link
+
+#     def generate_password_reset_link(self):
+#         try:
+#             link = auth.generate_password_reset_link(self.email)
+#         except firebase_exceptions.FirebaseError as e:
+#             raise ValueError(str(e))
+#         return link
+
+-------------------------view -------------------------
+# import firebase_admin
+# from firebase_admin import credentials, auth, initialize_app
+# from firebase_admin import auth
+# from google.oauth2 import id_token
+# from google.auth.transport import requests
+# from django.shortcuts import render, redirect
+# from django.contrib.auth import authenticate, login, logout
+# from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+# from django.views.generic import View, FormView, TemplateView
+# from django.views.generic.edit import FormView
+# from django.urls import reverse_lazy
+# from .forms import CustomUserCreationForm
+# from django.contrib import messages
+# from firebase_admin import auth, exceptions as firebase_exceptions
+# import json
+# import os
+
+# # Inicializando o SDK do Firebase usando credenciais do arquivo JSON
+# with open('../credentials/credentials.json', 'r') as f:
+#     credentials = json.load(f)
+# cred = credentials.Certificate(credentials)
+# firebase_admin.initialize_app(cred)
+
+# class IndexView(View):
+#     def get(self, request):
+#         return render(request, 'index.html')
+
+# class LoginView(View):
+#     def get(self, request):
+#         return render(request, 'login.html')
+
+#     def post(self, request):
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+#         try:
+#             user = auth.get_user_by_email(email)
+#             if user is not None:
+#                 # Verifica se a senha fornecida pelo usuário é válida
+#                 user_token = auth.create_custom_token(user.uid)
+#                 user_info = auth.verify_id_token(id_token, check_revoked=True)
+#                 # Se a senha for válida, realiza o login
+#                 user = authenticate(request, email=email, password=password)
+#                 if user is not None:
+#                     login(request, user)
+#                     messages.success(request, 'You are now logged in.')
+#                     return redirect('dashboard')
+#             messages.error(request, 'Invalid email/password.')
+#             return redirect('login')
+#         except (auth.InvalidIdTokenError, auth.UserNotFoundError, auth.EmailNotFoundError) as e:
+#             messages.error(request, 'Invalid email/password.')
+#             return redirect('login')
+#         except firebase_exceptions.FirebaseError as e:
+#             messages.error(request, 'Something went wrong. Please try again later.')
+#         return redirect('login')
+
+
+# class GoogleLoginView(View):
+#     def get(self, request):
+#         return redirect(auth.generate_sign_in_with_email_link(request.build_absolute_uri(), auth.SignInWithEmailLinkRequest(email=request.user.email)))
+
+
+# class RegisterView(View):
+#     def get(self, request):
+#         form = CustomUserCreationForm()
+#         return render(request, 'register.html', {'form': form})
+
+#     def post(self, request):
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             email = form.cleaned_data.get('email')
+#             raw_password = form.cleaned_data.get('password1')
+#             try:
+#                 # Cria um novo usuário no Firebase
+#                 user = auth.create_user(email=email, password=raw_password)
+#                 login(request, user)
+#                 messages.success(request, 'Account created successfully.')
+#                 return redirect('dashboard')
+#             except firebase_exceptions.FirebaseError as e:
+#                 messages.error(request, 'Something went wrong. Please try again later.')
+#                 return redirect('register')
+#         else:
+#             for field in form:
+#                 for error in field.errors:
+#                     messages.error(request, f"{field.label}: {error}")
+#         return render(request, 'register.html', {'form': form})
+
+
+# class DashboardView(View):
+#     def get(self, request):
+#         return render(request, 'dashboard.html')
+
+
+# class PasswordResetView(FormView):
+#     form_class = PasswordResetForm
+#     template_name = 'password_reset.html'
+#     success_url = reverse_lazy('password_reset_done')
+
+#     def get(self, request, *args, **kwargs):
+#         if request.user.is_authenticated:
+#             return redirect('home')
+#         return super().get(request, *args, **kwargs)
+
+#     def form_valid(self, form):
+#         email = form.cleaned_data.get('email')
+#         try:
+#             # Send password reset email using Firebase Authentication API
+#             auth.generate_password_reset_link(email)
+#         except firebase_exceptions.FirebaseError as e:
+#             messages.error(self.request, str(e))
+#             return redirect('password_reset')
+#         messages.success(self.request, 'Password reset email sent! Please check your inbox to reset your password.')
+#         return super().form_valid(form)
+
+# class PasswordResetDoneView(TemplateView):
+#     template_name = 'password_reset_done.html'
+
+# class PasswordResetConfirmView(FormView):
+#     form_class = SetPasswordForm
+#     template_name = 'password_reset_confirm.html'
+#     success_url = reverse_lazy('password_reset_complete')
+
+#     def get(self, request, *args, **kwargs):
+#         if request.user.is_authenticated:
+#             return redirect('home')
+#         return super().get(request, *args, **kwargs)
+
+#     def form_valid(self, form):
+#         uidb64 = self.kwargs['uidb64']
+#         token = self.kwargs['token']
+#         try:
+#             # Verify the password reset token using Firebase Authentication API
+#             auth.verify_password_reset_link(token)
+#         except firebase_exceptions.FirebaseError as e:
+#             messages.error(self.request, str(e))
+#             return redirect('password_reset_confirm', uidb64=uidb64, token=token)
+#         return super().form_valid(form)
+
+# class PasswordResetCompleteView(TemplateView):
+#     template_name = 'password_reset_complete.html'

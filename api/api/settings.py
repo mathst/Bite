@@ -42,17 +42,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    # 'django-allauth',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'rest_framework',
     'firebase_auth',
     'mainApi',
     
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,10 +59,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'allauth.account.middleware.AuthenticationMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',    
+    # 'allauth.account.middleware.AuthenticationMiddleware',
+
 ]
+
 
 ROOT_URLCONF = 'api.urls'
 
@@ -102,8 +102,8 @@ DATABASES = {
     }
 }
 
-SOCIAL_AUTH_GOOGLE_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_OAUTH2_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = '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'
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -116,8 +116,8 @@ SOCIALACCOUNT_PROVIDERS = {
     # (``socialaccount`` app) containing the required client
     # credentials, or list them here:
     "APP": {
-        "client_id": os.environ.get(SOCIAL_AUTH_GOOGLE_CLIENT_ID),
-        "secret": os.environ.get(SOCIAL_AUTH_GOOGLE_CLIENT_SECRET),
+        "client_id": os.environ.get(GOOGLE_OAUTH2_CLIENT_ID),
+        "secret": os.environ.get(GOOGLE_OAUTH2_CLIENT_SECRET),
         "key": ""
     },
     # These are provider-specific settings that can only be
@@ -131,17 +131,17 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }}
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
-        'APP': {
-            'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
-            'secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
-            'key': ''
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': ['profile', 'email'],
+#         'AUTH_PARAMS': {'access_type': 'online'},
+#         'APP': {
+#             'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
+#             'secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
+#             'key': ''
+#         }
+#     }
+# }
 # MEDIA_ROOT = BASE_DIR/'media'
 
 # MEDIA_URL = '/media/'

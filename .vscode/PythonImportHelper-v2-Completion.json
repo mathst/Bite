@@ -1,0 +1,991 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urls",
+        "importPath": "mainApi",
+        "description": "mainApi",
+        "isExtraImport": true,
+        "detail": "mainApi",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "Permission",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "Group",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "LoginView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "LogoutView",
+        "importPath": "django.contrib.auth.views",
+        "description": "django.contrib.auth.views",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.views",
+        "documentation": {}
+    },
+    {
+        "label": "views",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "firebase_admin",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "credentials",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Certificate",
+        "importPath": "firebase_admin.credentials",
+        "description": "firebase_admin.credentials",
+        "isExtraImport": true,
+        "detail": "firebase_admin.credentials",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Callable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "api.api.asgi",
+        "description": "api.api.asgi",
+        "peekOfCode": "application = get_asgi_application()",
+        "detail": "api.api.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.sites',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.sites',\n    # 'django-allauth',\n    'allauth',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "MIDDLEWARE = [    \n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',    \n    # 'allauth.account.middleware.AuthenticationMiddleware',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "ROOT_URLCONF = 'api.urls'\n# TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')\n# TEMPLATE_DIRS = (\n#       TEMPLATE_PATH,\n#  )\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR/\"templates\"],\n        'APP_DIRS': True,",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR/\"templates\"],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "WSGI_APPLICATION",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "WSGI_APPLICATION = 'api.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nGOOGLE_OAUTH2_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nGOOGLE_OAUTH2_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'\nGOOGLE_OAUTH2_CLIENT_SECRET = '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'\nAUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_OAUTH2_CLIENT_ID",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_ID = '871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com'\nGOOGLE_OAUTH2_CLIENT_SECRET = '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'\nAUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',\n    'django.contrib.auth.backends.ModelBackend',\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_OAUTH2_CLIENT_SECRET",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_SECRET = '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'\nAUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',\n    'django.contrib.auth.backends.ModelBackend',\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTHENTICATION_BACKENDS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',\n    'django.contrib.auth.backends.ModelBackend',\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SITE_ID",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "SITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:\n    \"APP\": {\n        \"client_id\": os.environ.get(GOOGLE_OAUTH2_CLIENT_ID),\n        \"secret\": os.environ.get(GOOGLE_OAUTH2_CLIENT_SECRET),\n        \"key\": \"\"",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SOCIALACCOUNT_PROVIDERS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "SOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:\n    \"APP\": {\n        \"client_id\": os.environ.get(GOOGLE_OAUTH2_CLIENT_ID),\n        \"secret\": os.environ.get(GOOGLE_OAUTH2_CLIENT_SECRET),\n        \"key\": \"\"\n    },",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nAPPEND_SLASH = False\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "APPEND_SLASH",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "APPEND_SLASH = False\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "STATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_ROOT",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "api.api.urls",
+        "description": "api.api.urls",
+        "peekOfCode": "urlpatterns = [\n    path('', include(main_urls)),\n]",
+        "detail": "api.api.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "api.api.wsgi",
+        "description": "api.api.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "api.api.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "api.mainApi.migrations.0001_initial",
+        "description": "api.mainApi.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        (\"auth\", \"0012_alter_user_first_name_max_length\"),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name=\"Funcionario\",\n            fields=[\n                (",
+        "detail": "api.mainApi.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "MainapiConfig",
+        "kind": 6,
+        "importPath": "api.mainApi.apps",
+        "description": "api.mainApi.apps",
+        "peekOfCode": "class MainapiConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'mainApi'",
+        "detail": "api.mainApi.apps",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUserCreationForm",
+        "kind": 6,
+        "importPath": "api.mainApi.forms",
+        "description": "api.mainApi.forms",
+        "peekOfCode": "class CustomUserCreationForm(UserCreationForm):\n    class Meta:\n        model = CustomUser\n        fields = ('username', 'email', 'password1', 'password2', 'name', 'age')\nclass CustomUserChangeForm(forms.ModelForm):\n    class Meta:\n        model = CustomUser\n        fields = ('email', 'name', 'age')\nclass ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')",
+        "detail": "api.mainApi.forms",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUserChangeForm",
+        "kind": 6,
+        "importPath": "api.mainApi.forms",
+        "description": "api.mainApi.forms",
+        "peekOfCode": "class CustomUserChangeForm(forms.ModelForm):\n    class Meta:\n        model = CustomUser\n        fields = ('email', 'name', 'age')\nclass ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    age = forms.IntegerField(required=False, help_text='Optional.')\n    historico_pedidos = forms.CharField(widget=forms.Textarea)\n    class Meta:",
+        "detail": "api.mainApi.forms",
+        "documentation": {}
+    },
+    {
+        "label": "ClienteCreationForm",
+        "kind": 6,
+        "importPath": "api.mainApi.forms",
+        "description": "api.mainApi.forms",
+        "peekOfCode": "class ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    age = forms.IntegerField(required=False, help_text='Optional.')\n    historico_pedidos = forms.CharField(widget=forms.Textarea)\n    class Meta:\n        model = Cliente\n        fields = ('email', 'password1', 'password2', 'name', 'age', 'historico_pedidos',)\nclass FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')",
+        "detail": "api.mainApi.forms",
+        "documentation": {}
+    },
+    {
+        "label": "FuncionarioCreationForm",
+        "kind": 6,
+        "importPath": "api.mainApi.forms",
+        "description": "api.mainApi.forms",
+        "peekOfCode": "class FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    age = forms.IntegerField(required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    salario = forms.DecimalField(max_digits=10, decimal_places=2)\n    cargo = forms.CharField(max_length=50)\n    class Meta:\n        model = Funcionario\n        fields = ('email', 'password1', 'password2', 'name', 'age', 'nivel_acesso', 'salario', 'cargo')",
+        "detail": "api.mainApi.forms",
+        "documentation": {}
+    },
+    {
+        "label": "AdministradorCreationForm",
+        "kind": 6,
+        "importPath": "api.mainApi.forms",
+        "description": "api.mainApi.forms",
+        "peekOfCode": "class AdministradorCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    age = forms.IntegerField(required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    historico_login = forms.CharField(widget=forms.Textarea)\n    class Meta:\n        model = Administrador\n        fields = ('email', 'password1', 'password2', 'name', 'age', 'nivel_acesso', 'historico_login')",
+        "detail": "api.mainApi.forms",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUser",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class CustomUser(AbstractUser):\n    name = models.CharField(max_length=30, blank=True)\n    age = models.IntegerField(blank=True, null=True)\n    USERNAME_FIELD = 'email'\n    class Meta:\n        abstract = True\nclass Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Cliente",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='clientes'\n    )\n    user_permissions = models.ManyToManyField(\n        Permission, blank=True, related_name='clientes_permissions'\n    )\nclass Administrador(CustomUser):",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Administrador",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Administrador(CustomUser):\n    # campos específicos para administradores\n    nivel_acesso = models.CharField(max_length=10)\n    historico_login = models.TextField()\n    user_permissions = models.ManyToManyField(\n    Permission, blank=True, related_name='administradores_permissions'\n)\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='administradores'\n    )",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Funcionario",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Funcionario(CustomUser):\n    # campos específicos para funcionários\n    nivel_acesso = models.CharField(max_length=10)\n    salario = models.DecimalField(max_digits=10, decimal_places=2)\n    cargo = models.CharField(max_length=50)\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='funcionarios_relacionados'\n    )\n    user_permissions = models.ManyToManyField(\n        Permission, blank=True, related_name='funcionarios_relacionados'",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "VeiculoSerializer",
+        "kind": 6,
+        "importPath": "api.mainApi.serializers",
+        "description": "api.mainApi.serializers",
+        "peekOfCode": "class VeiculoSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Veiculo\n        fields = \"__all__\"",
+        "detail": "api.mainApi.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "api.mainApi.urls",
+        "description": "api.mainApi.urls",
+        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),\n    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),\n    path('signup/', views.signup, name='signup'),\n    path('signup/cliente/', views.signup_cliente, name='cliente_signup'),\n    path('signup/funcionario/', views.funcionario_signup, name='funcionario_signup'),\n    path('signup/administrador/', views.administrador_signup, name='administrador_signup'),",
+        "detail": "api.mainApi.urls",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_with_google",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def authenticate_with_google(request):\n    id_token = request.POST.get('id_token')\n    # Verify the ID token using the Firebase Admin SDK\n    try:\n        decoded_token = auth.verify_id_token(id_token)\n    except auth.InvalidIdTokenError:\n        return JsonResponse({'error': 'Invalid ID token'}, status=400)\n    # Check if the user already exists in the database\n    try:\n        user = CustomUser.objects.get(email=decoded_token['email'])",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def signup(request):\n    if request.method == 'POST':\n        form = CustomUserCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            login(request, user)\n            return redirect('home')\n    else:\n        form = CustomUserCreationForm()\n    return render(request, 'signup.html', {'form': form})",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "signup_cliente",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        form = ClienteCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save(commit=False)\n            user.is_cliente = True\n            user.save()\n            login(request, user)\n            return redirect('home')\n    else:",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "funcionario_signup",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def funcionario_signup(request):\n    if request.method == 'POST':\n        form = FuncionarioCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            # autentica o usuário e faz o login\n            email = form.cleaned_data.get('email')\n            password = form.cleaned_data.get('password1')\n            user = authenticate(email=email, password=password)\n            login(request, user)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "administrador_signup",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def administrador_signup(request):\n    if request.method == 'POST':\n        form = AdministradorCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            # autentica o usuário e faz o login\n            email = form.cleaned_data.get('email')\n            password = form.cleaned_data.get('password1')\n            user = authenticate(email=email, password=password)\n            login(request, user)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "estoque",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n@login_required\ndef compras(request):\n    return render(request, \"compras.html\")\n@login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n@login_required",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "compras",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def compras(request):\n    return render(request, \"compras.html\")\n@login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n@login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") ",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n@login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "finaceiro",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "comanda",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"\n#    try:\n#        decoded_token = auth.verify_id_token(id_token)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "cred",
+        "kind": 5,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "cred = Certificate(credentials)\nfirebase_admin.initialize_app(cred)\n# Autentica o usuário usando o Google\ndef authenticate_with_google(request):\n    id_token = request.POST.get('id_token')\n    # Verify the ID token using the Firebase Admin SDK\n    try:\n        decoded_token = auth.verify_id_token(id_token)\n    except auth.InvalidIdTokenError:\n        return JsonResponse({'error': 'Invalid ID token'}, status=400)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "api.manage",
+        "description": "api.manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'api.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "api.manage",
+        "documentation": {}
+    },
+    {
+        "label": "firestore_adminCallTransformer",
+        "kind": 6,
+        "importPath": "env.bin.fixup_firestore_admin_v1_keywords",
+        "description": "env.bin.fixup_firestore_admin_v1_keywords",
+        "peekOfCode": "class firestore_adminCallTransformer(cst.CSTTransformer):\n    CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')\n    METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {\n        'create_index': ('parent', 'index', ),\n        'delete_index': ('name', ),\n        'export_documents': ('name', 'collection_ids', 'output_uri_prefix', ),\n        'get_database': ('name', ),\n        'get_field': ('name', ),\n        'get_index': ('name', ),\n        'import_documents': ('name', 'collection_ids', 'input_uri_prefix', ),",
+        "detail": "env.bin.fixup_firestore_admin_v1_keywords",
+        "documentation": {}
+    },
+    {
+        "label": "partition",
+        "kind": 2,
+        "importPath": "env.bin.fixup_firestore_admin_v1_keywords",
+        "description": "env.bin.fixup_firestore_admin_v1_keywords",
+        "peekOfCode": "def partition(\n    predicate: Callable[[Any], bool],\n    iterator: Sequence[Any]\n) -> Tuple[List[Any], List[Any]]:\n    \"\"\"A stable, out-of-place partition.\"\"\"\n    results = ([], [])\n    for i in iterator:\n        results[int(predicate(i))].append(i)\n    # Returns trueList, falseList\n    return results[1], results[0]",
+        "detail": "env.bin.fixup_firestore_admin_v1_keywords",
+        "documentation": {}
+    },
+    {
+        "label": "fix_files",
+        "kind": 2,
+        "importPath": "env.bin.fixup_firestore_admin_v1_keywords",
+        "description": "env.bin.fixup_firestore_admin_v1_keywords",
+        "peekOfCode": "def fix_files(\n    in_dir: pathlib.Path,\n    out_dir: pathlib.Path,\n    *,\n    transformer=firestore_adminCallTransformer(),\n):\n    \"\"\"Duplicate the input dir to the output dir, fixing file method calls.\n    Preconditions:\n    * in_dir is a real directory\n    * out_dir is a real, empty directory",
+        "detail": "env.bin.fixup_firestore_admin_v1_keywords",
+        "documentation": {}
+    },
+    {
+        "label": "firestoreCallTransformer",
+        "kind": 6,
+        "importPath": "env.bin.fixup_firestore_v1_keywords",
+        "description": "env.bin.fixup_firestore_v1_keywords",
+        "peekOfCode": "class firestoreCallTransformer(cst.CSTTransformer):\n    CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')\n    METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {\n        'batch_get_documents': ('database', 'documents', 'mask', 'transaction', 'new_transaction', 'read_time', ),\n        'batch_write': ('database', 'writes', 'labels', ),\n        'begin_transaction': ('database', 'options', ),\n        'commit': ('database', 'writes', 'transaction', ),\n        'create_document': ('parent', 'collection_id', 'document', 'document_id', 'mask', ),\n        'delete_document': ('name', 'current_document', ),\n        'get_document': ('name', 'mask', 'transaction', 'read_time', ),",
+        "detail": "env.bin.fixup_firestore_v1_keywords",
+        "documentation": {}
+    },
+    {
+        "label": "partition",
+        "kind": 2,
+        "importPath": "env.bin.fixup_firestore_v1_keywords",
+        "description": "env.bin.fixup_firestore_v1_keywords",
+        "peekOfCode": "def partition(\n    predicate: Callable[[Any], bool],\n    iterator: Sequence[Any]\n) -> Tuple[List[Any], List[Any]]:\n    \"\"\"A stable, out-of-place partition.\"\"\"\n    results = ([], [])\n    for i in iterator:\n        results[int(predicate(i))].append(i)\n    # Returns trueList, falseList\n    return results[1], results[0]",
+        "detail": "env.bin.fixup_firestore_v1_keywords",
+        "documentation": {}
+    },
+    {
+        "label": "fix_files",
+        "kind": 2,
+        "importPath": "env.bin.fixup_firestore_v1_keywords",
+        "description": "env.bin.fixup_firestore_v1_keywords",
+        "peekOfCode": "def fix_files(\n    in_dir: pathlib.Path,\n    out_dir: pathlib.Path,\n    *,\n    transformer=firestoreCallTransformer(),\n):\n    \"\"\"Duplicate the input dir to the output dir, fixing file method calls.\n    Preconditions:\n    * in_dir is a real directory\n    * out_dir is a real, empty directory",
+        "detail": "env.bin.fixup_firestore_v1_keywords",
+        "documentation": {}
+    }
+]
