@@ -123,6 +123,8 @@ def finaceiro(request):
 def comanda(request):
     return render(request, "comanda.html") 
 
+def index(request):
+    return render(request, "index.html") 
 
 # def Firebase_validation(id_token):
 #    """

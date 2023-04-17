@@ -894,7 +894,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n@login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and",
+        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n@login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# def Firebase_validation(id_token):",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -903,7 +903,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"",
+        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -912,7 +912,16 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"\n#    try:\n#        decoded_token = auth.verify_id_token(id_token)",
+        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \n# def Firebase_validation(id_token):\n#    \"\"\"\n#    This function receives id token sent by Firebase and\n#    validate the id token then check if the user exist on\n#    Firebase or not if exist it returns True else False\n#    \"\"\"\n#    try:\n#        decoded_token = auth.verify_id_token(id_token)",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

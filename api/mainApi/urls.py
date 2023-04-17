@@ -16,6 +16,7 @@ urlpatterns = [
     path('signup/administrador/', views.administrador_signup, name='administrador_signup'),
     path('google-authenticate/', views.authenticate_with_google, name='google_authenticate'),
     path('auth/', include('social_django.urls', namespace='social')),
+    path('index/', views.index, name='index')
     # path('reset/', views.reset),
 
 ]

@@ -1,34 +1,32 @@
-{% extends 'base2.html' %}
-
+{% comment %} {% extends 'bases/base2.html' %} {% endcomment %}
 {% load static %}
-
-{% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="card card-body">
-        <h3 class="text-center mb-4">Login</h3>
-        <form>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required autofocus>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" required>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
+{% comment %} {% static 'css/login/style.css' %}" {% endcomment %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login e Signup</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <div class="center">
+      <h1>Bem-vindo ao nosso site</h1>
+      <div class="divider"></div>
+      <div class="login-form">
+        <h2>Login</h2>
+        <form method="post">
+          {% csrf_token %}
+          {{ login_form.as_p }}
+          <button type="submit">Entrar</button>
         </form>
-        <hr>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <p class="mt-3">Don't have an account? <a href="#">Register</a></p>
+      </div>
+      <div class="signup-form">
+        <h2>Signup</h2>
+        <form method="post">
+          {% csrf_token %}
+          {{ signup_form.as_p }}
+          <button type="submit">Cadastrar</button>
+        </form>
       </div>
     </div>
-  </div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="{% static 'JS/scripts.js' %}"></script>
-{% endblock %}
+  </body>
+</html>

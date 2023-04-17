@@ -1,4 +1,4 @@
-/* Estilização geral das páginas login*/
+Estilização geral das páginas login
 
 body {
   background: linear-gradient(to bottom, #FFFFFF, #C4C4C4); /* Fundo com degradê */
@@ -143,4 +143,52 @@ button[type=submit] {
 button[type=submit]:hover {
   background: #0069d9; /* cor de hover do botão */
   cursor: pointer;
+}
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form,
+.signup-form {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.login-form h2,
+.signup-form h2 {
+  margin-top: 0;
+}
+
+.divider {
+  margin: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label,
+form input,
+form button {
+  margin: 10px 0;
+}
+
+form button {
+  padding: 10px;
+  background-color: #ccc;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #333;
 }
