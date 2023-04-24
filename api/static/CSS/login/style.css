@@ -1,194 +1,124 @@
-Estilização geral das páginas login
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-body {
-  background: linear-gradient(to bottom, #FFFFFF, #C4C4C4); /* Fundo com degradê */
-  font-family: Arial, sans-serif; /* Fonte */
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
 }
 
-.container {
-  max-width: 800px; /* Largura máxima do conteúdo */
-  margin: 0 auto; /* Centraliza o conteúdo na tela */
-  padding: 20px; /* Espaçamento interno */
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
 }
-
-h1 {
-  font-size: 36px; /* Tamanho da fonte */
-  text-align: center; /* Centraliza o texto */
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
 }
-
-h2 {
-  font-size: 24px; /* Tamanho da fonte */
+::placeholder{
+    color: #e5e5e5;
 }
-
-p {
-  font-size: 18px; /* Tamanho da fonte */
-  line-height: 1.5; /* Espaçamento entre linhas */
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
-/* Estilização específica para a página de Logout */
-
-.logout {
-  text-align: center; /* Centraliza o conteúdo */
-}
-
-.logout h1 {
-  margin-bottom: 20px; /* Espaçamento inferior */
-}
-
-/* Estilização específica para a página de Signup */
-
-.signup {
-  text-align: center; /* Centraliza o conteúdo */
-}
-
-.signup h1 {
-  margin-bottom: 20px; /* Espaçamento inferior */
-}
-
-/* Estilização específica para as páginas de Signup para Cliente, Funcionário e Administrador */
-
-.signup-form {
-  max-width: 500px; /* Largura máxima do formulário */
-  margin: 0 auto; /* Centraliza o formulário */
-  background: #FFFFFF; /* Fundo branco */
-  border: 1px solid #CCCCCC; /* Borda cinza */
-  border-radius: 10px; /* Cantos arredondados */
-  padding: 20px; /* Espaçamento interno */
-}
-
-.signup-form h2 {
-  margin-bottom: 20px; /* Espaçamento inferior */
-  text-align: center; /* Centraliza o texto */
-}
-
-.signup-form label {
-  display: block; /* Transforma o elemento em bloco */
-  margin-bottom: 10px; /* Espaçamento inferior */
-}
-
-.signup-form input[type=text], 
-.signup-form input[type=password], 
-.signup-form select {
-  display: block; /* Transforma o elemento em bloco */
-  width: 100%; /* Largura total */
-  padding: 10px; /* Espaçamento interno */
-  margin-bottom: 20px; /* Espaçamento inferior */
-  border-radius: 5px; /* Cantos arredondados */
-  border: 1px solid #CCCCCC; /* Borda cinza */
-}
-
-.signup-form input[type=submit] {
-  background: #006699; /* Fundo azul */
-  color: #FFFFFF; /* Texto branco */
-  border: none; /* Sem borda */
-  padding: 10px 20px; /* Espaçamento interno */
-  border-radius: 5px; /* Cantos arredondados */
-  cursor: pointer; /* Cursor de mão ao passar o mouse */
-  transition: background 0.3s ease-in-out; /* Transição suave */
-}
-
-.signup-form input[type=submit] {
-  background-color: #4CAF50;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 20px;
-  transition: background-color 0.3s;
-}
-
-.signup-form input[type=submit]:hover {
-  background-color: #3e8e41;
-}
-.signup-form {
-  width: 90%;
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-  background: linear-gradient(90deg, #e0e0e0, #fff);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
-}
-
-.signup-form input[type=submit] {
-  margin-top: 20px;
-}
-
-input[type=text],
-input[type=email],
-input[type=password] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-button[type=submit] {
-  background: #007bff; /* cor do botão */
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-button[type=submit]:hover {
-  background: #0069d9; /* cor de hover do botão */
-  cursor: pointer;
-}
-
-
-.center {
+.social{
+  margin-top: 30px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
-
-.login-form,
-.signup-form {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
 }
-
-.login-form h2,
-.signup-form h2 {
-  margin-top: 0;
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
 }
-
-.divider {
-  margin: 20px;
-  border-bottom: 1px solid #ccc;
+.social .fb{
+  margin-left: 25px;
 }
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form label,
-form input,
-form button {
-  margin: 10px 0;
-}
-
-form button {
-  padding: 10px;
-  background-color: #ccc;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #333;
+.social i{
+  margin-right: 4px;
 }

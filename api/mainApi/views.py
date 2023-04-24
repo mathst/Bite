@@ -1,5 +1,5 @@
-import firebase_admin
-from firebase_admin import credentials, auth
+# import firebase_admin
+from firebase_admin import credentials, auth, firestore
 from firebase_admin.credentials import Certificate
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -7,19 +7,13 @@ from django.contrib.auth import login, authenticate
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-# from api.mainApi.models import CustomUser
-from .models import CustomUser
+from .models import CustomUser, user as User
 from .forms import CustomUserCreationForm, ClienteCreationForm, FuncionarioCreationForm , AdministradorCreationForm
+from django.contrib import messages
 
-import json
-import os
-import requests
 
-# Inicializando o SDK do Firebase usando credenciais do arquivo JSON
-with open('../credentials/credentials.json', 'r') as f:
-    credentials = json.load(f)
-cred = Certificate(credentials)
-firebase_admin.initialize_app(cred)
+# Initialize Firestore client
+# db = firestore.client()
 
 # Autentica o usuário usando o Google
 def authenticate_with_google(request):
@@ -49,16 +43,16 @@ def authenticate_with_google(request):
         return JsonResponse({'error': 'Failed to authenticate user'}, status=400)
 
 
-def signup(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+# def signup(request):
+#     if request.method == 'POST':
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = CustomUserCreationForm()
+#     return render(request, 'signup.html', {'form': form})
 
 def signup_cliente(request):
     if request.method == 'POST':
@@ -71,9 +65,9 @@ def signup_cliente(request):
             return redirect('home')
     else:
         form = ClienteCreationForm()
-    return render(request, 'signup_cliente.html', {'form': form})
+    return render(request, 'accounts/signup_cliente.html', {'form': form})
 
-def funcionario_signup(request):
+def signup_funcionario(request):
     if request.method == 'POST':
         form = FuncionarioCreationForm(request.POST)
         if form.is_valid():
@@ -86,9 +80,9 @@ def funcionario_signup(request):
             return redirect('home')
     else:
         form = FuncionarioCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'accounts/signup_funcionario.html', {'form': form})
 
-def administrador_signup(request):
+def signup_administrador(request):
     if request.method == 'POST':
         form = AdministradorCreationForm(request.POST)
         if form.is_valid():
@@ -101,22 +95,22 @@ def administrador_signup(request):
             return redirect('home')
     else:
         form = AdministradorCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'accounts/signup_administrador.html', {'form': form})
 
-@login_required
+# @login_required
 def estoque(request):
     # Lógica para listar produtos em estoque
     return render(request, 'estoque.html')
 
-@login_required
+# @login_required
 def compras(request):
     return render(request, "compras.html")
 
-@login_required
+# @login_required
 def pedidos(request):
     return render(request, "pedidos.html")
 
-@login_required
+# @login_required
 def finaceiro(request):
     return render(request, "relFinaceiro.html")
 
@@ -126,143 +120,86 @@ def comanda(request):
 def index(request):
     return render(request, "index.html") 
 
-# def Firebase_validation(id_token):
-#    """
-#    This function receives id token sent by Firebase and
-#    validate the id token then check if the user exist on
-#    Firebase or not if exist it returns True else False
-#    """
-#    try:
-#        decoded_token = auth.verify_id_token(id_token)
-#        uid = decoded_token['uid']
-#        provider = decoded_token['firebase']['sign_in_provider']
-#        image = None
-#        name = None
-#        if "name" in decoded_token:
-#            name = decoded_token['name']
-#        if "picture" in decoded_token:
-#            image = decoded_token['picture']
-#        try:
-#            user = auth.get_user(uid)
-#            email = user.email
-#            if user:
-#                return {
-#                    "status": True,
-#                    "uid": uid,
-#                    "email": email,
-#                    "name": name,
-#                    "provider": provider,
-#                    "image": image
-#                }
-#            else:
-#                return False
-#        except UserNotFoundError:
-#            print("user not exist")
-#    except ExpiredIdTokenError:
-#        print("invalid token")
-
-
-
-# @api_view(["GET", "POST"])
-
-# It takes a request, and an id, and returns the Pedido object with that id.
-# class PedidoDetailView(APIView):
-#     def post(self, request):
-#         """
-#         HttpResponsees the request data, validates it, saves it, and returns a success response
-        
-#         :param request: The request object is the first parameter to the view. It contains the request data,
-#         including the request body, query parameters, and headers
-#         :return: The serializer.data is being returned.
-#         """
-#         serializer = PedidoSerializer(
-#             data=request.data,
-#         )
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(
-#                 {"status": "success", "data": serializer.data},
-#                 status=status.HTTP_200_OK,
-#             )
-#         else:
-#             return Response(
-#                 {"status": "error", "data": serializer.errors},
-#                 status=status.HTTP_400_BAD_REQUEST,
-#             )
-
-#     def put(self, request, id=None):
-#         """
-#         It gets the object with the id passed in the URL, then it updates the object with the data passed in
-#         the request body, and finally it returns the updated object
-        
-#         :param request: The request object
-#         :param id: The id of the object you want to update
-#         :return: The serializer.data is being returned.
-#         """
-#         Pedido = Pedido.objects.get(id=id)
-#         serializer = PedidoSerializer(Pedido, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response({"status": "success", "data": serializer.data})
-#         else:
-#             return Response({"status": "error", "data": serializer.errors})
-
-#     """
-#     The above function is a patch function that updates the data of a specific object.
+def criar_conta(nome, email, senha, tipo_conta, **kwargs):
+    assert tipo_conta in ['cliente', 'funcionario', 'admin'], "Tipo de conta inválido"
     
-#     :param request: The request object
-#     :param id: The id of the object you want to update
-#     :return: The serializer.data is being returned.
-#     """
-#     def patch(self, request, id=None):
-#         Pedido = Pedido.objects.get(id=id)
-#         serializer = PedidoSerializer(Pedido, data=request.data, partial=True)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response({"status": "success", "data": serializer.data})
-#         else:
-#             return Response({"status": "error", "data": serializer.errors})
+    # Cria o usuário no Firebase Authentication
+    user = auth.create_user(
+        email=email,
+        password=senha,
+        display_name=nome,
+        email_verified=True  # Apenas usuários verificados podem fazer login
+    )
+    
+    # Cria o usuário no Django User Model
+    django_user = User.objects.create_user(
+        username=email,
+        email=email,
+        password=senha,
+    )
+    
+    # Adiciona informações adicionais ao usuário dependendo do tipo de conta
+    if tipo_conta == 'cliente':
+        # Exemplo de informações adicionais para conta de cliente
+        endereco = kwargs.get('endereco')
+        telefone = kwargs.get('telefone')
+        # Adiciona informações ao Django User Model
+        django_user.cliente.endereco = endereco
+        django_user.cliente.telefone = telefone
+        django_user.cliente.save()
+    elif tipo_conta == 'funcionario':
+        # Exemplo de informações adicionais para conta de funcionário
+        cargo = kwargs.get('cargo')
+        salario = kwargs.get('salario')
+        # Adiciona informações ao Django User Model
+        django_user.funcionario.cargo = cargo
+        django_user.funcionario.salario = salario
+        django_user.funcionario.save()
+    elif tipo_conta == 'admin':
+        # Não há informações adicionais para conta de admin
+        pass
+    
+    # Retorna o ID do usuário criado no Firebase
+    return user.uid
 
-#     def delete(self, request, id=None):
-#         """
-#         It takes a request, and an id, and deletes the item with that id
+def sign_cliente(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
         
-#         :param request: The request object
-#         :param id: The id of the object to be deleted
-#         :return: The response is being returned in JSON format.
-#         """
-#         item = get_object_or_404(Pedido, id=id)
-#         item.delete()
-#         return Response({"status": "success", "data": "Pedido Deleted"})
+        # Verifica se o usuário existe no Firebase Authentication
+        try:
+            user = auth.get_user_by_email(email)
+        except auth.UserNotFoundError:
+            messages.error(request, 'Email ou senha inválidos')
+            return redirect('login')
+        
+        # Verifica se o usuário está ativo
+        if user.disabled:
+            messages.error(request, 'Usuário bloqueado')
+            return redirect('login')
+        
+        # Autentica o usuário no Django User Model
+        django_user = authenticate(request, username=email, password=senha)
+        if django_user is None:
+            messages.error(request, 'Email ou senha inválidos')
+            return redirect('login')
+        
+        # Redireciona o usuário para a página de sucesso
+        messages.success(request, 'Login efetuado com sucesso')
+        return redirect('home')
+    
+    return render(request, 'login.html')
 
-#     def get(self, request, id=None):
-#         """
-#         If the id is not None, then get the Pedido object with the id and return it. 
-#         If the id is None, then get all the Pedido objects and return them. 
-#         If the request has query parameters, then filter the Pedido objects and return them.
-        
-#         :param request: The request object
-#         :param id: The id of the object you want to retrieve
-#         :return: The get method is returning a response with the status and data.
-#         """
-#         if id:
-#             Pedido = Pedido.objects.get(id=id)
-#             serializer = PedidoSerializer(Pedido)
-#             return Response(
-#                 {"status": "success", "data": serializer.data},
-#                 status=status.HTTP_200_OK,
-#             )
-#         elif id == None:
-#             Pedido = Pedido.objects.all()
-#             serializer = PedidoSerializer(Pedido, many=True)
-#             return Response(
-#                 {"status": "success", "data": serializer.data},
-#                 status=status.HTTP_200_OK,
-#             )
-#         elif request.query_params:
-#             Pedido = Pedido.objects.filter(**request.query_params.dict())
-#             serializer = PedidoSerializer(Pedido, many=True)
-#             return Response(
-#                 {"status": "success", "data": serializer.data},
-#                 status=status.HTTP_200_OK,
-#             )
+'''exemplo de aplicação'''
+# def minha_view(request):
+#     # Get all documents from a collection
+#     docs = db.collection('minha_colecao').get()
+    
+#     # Process the documents
+#     for doc in docs:
+#         # Do something with the document
+#         pass
+    
+#     # Return a response
+#     return HttpResponse('Success')
