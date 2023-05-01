@@ -11,3 +11,4 @@ cred = Certificate(credentials)
 default_app = firebase_admin.initialize_app(cred, {
 	'databaseURL':credentials['databaseURL']
 	})
+	

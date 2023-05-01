@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Veiculo
+from . import models
 
 class VeiculoSerializer(serializers.ModelSerializer):
     class Meta:

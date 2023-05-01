@@ -1,18 +1,19 @@
 {% extends 'bases/base2.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container">
   <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
-</div>
-  <h3>Cadastro</h3>
-  <form method="post" action="{% url 'signup_cliente' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Cadastrar</button>
-  <div class="social">
-    <div class="go"><i class="fab fa-google"></i>  Google</div>
+  </div class="container-cen">
+    <h3 class="title">>Cadastro</h3>
+    <form method="post" action="{% url 'signup_cliente' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <div class="social">
+      <div class="go"><i class="fab fa-google"></i>  Google</div>
+    </div>
   </div>
 </div>
 {% endblock %}

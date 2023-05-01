@@ -4,8 +4,6 @@ from django.contrib.auth.models import AbstractUser, Permission, Group
 
 class CustomUser(AbstractUser):
     name = models.CharField(max_length=30, blank=True)
-    age = models.IntegerField(blank=True, null=True)
-    
     USERNAME_FIELD = 'email'
 
     class Meta:

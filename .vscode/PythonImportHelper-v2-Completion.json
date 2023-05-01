@@ -368,6 +368,22 @@
         "documentation": {}
     },
     {
+        "label": "cache_page",
+        "importPath": "django.views.decorators.cache",
+        "description": "django.views.decorators.cache",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.cache",
+        "documentation": {}
+    },
+    {
+        "label": "csrf_protect",
+        "importPath": "django.views.decorators.csrf",
+        "description": "django.views.decorators.csrf",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -833,24 +849,6 @@
         "documentation": {}
     },
     {
-        "label": "CustomUserCreationForm",
-        "kind": 6,
-        "importPath": "api.mainApi.forms",
-        "description": "api.mainApi.forms",
-        "peekOfCode": "class CustomUserCreationForm(UserCreationForm):\n    class Meta:\n        model = CustomUser\n        fields = ('username', 'email', 'password1', 'password2', 'name')\nclass CustomUserChangeForm(forms.ModelForm):\n    class Meta:\n        model = CustomUser\n        fields = ('email', 'name')\nclass ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='*.')",
-        "detail": "api.mainApi.forms",
-        "documentation": {}
-    },
-    {
-        "label": "CustomUserChangeForm",
-        "kind": 6,
-        "importPath": "api.mainApi.forms",
-        "description": "api.mainApi.forms",
-        "peekOfCode": "class CustomUserChangeForm(forms.ModelForm):\n    class Meta:\n        model = CustomUser\n        fields = ('email', 'name')\nclass ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='*.')\n    name = forms.CharField(max_length=30, required=True, help_text='*')\n    class Meta:\n        model = Cliente\n        fields = ('email', 'password1', 'password2', 'name')",
-        "detail": "api.mainApi.forms",
-        "documentation": {}
-    },
-    {
         "label": "ClienteCreationForm",
         "kind": 6,
         "importPath": "api.mainApi.forms",
@@ -882,7 +880,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class CustomUser(AbstractUser):\n    name = models.CharField(max_length=30, blank=True)\n    age = models.IntegerField(blank=True, null=True)\n    USERNAME_FIELD = 'email'\n    class Meta:\n        abstract = True\nclass Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(",
+        "peekOfCode": "class CustomUser(AbstractUser):\n    name = models.CharField(max_length=30, blank=True)\n    USERNAME_FIELD = 'email'\n    class Meta:\n        abstract = True\nclass Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='clientes'",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -972,7 +970,7 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),\n    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),\n    path('signup/', views.signup_cliente, name='signup_cliente'),\n    path('signup/funcionario/', views.signup_funcionario, name='signup_funcionario'),\n    path('signup/administrador/', views.signup_administrador, name='signup_administrador'),\n    path('google-authenticate/', views.authenticate_with_google, name='google_authenticate'),",
+        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),\n    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),\n    path('signup/', views.signup_cliente, name='signup_cliente'),\n    path('signup/funcionario/', views.signup_funcionario, name='signup_funcionario'),\n    path('signup/administrador/', views.signup_administrador, name='signup_administrador'),",
         "detail": "api.mainApi.urls",
         "documentation": {}
     },
@@ -981,7 +979,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def authenticate_with_google(request):\n    id_token = request.POST.get('id_token')\n    # Verify the ID token using the Firebase Admin SDK\n    try:\n        decoded_token = auth.verify_id_token(id_token)\n    except auth.InvalidIdTokenError:\n        return JsonResponse({'error': 'Invalid ID token'}, status=400)\n    # Check if the user already exists in the database\n    try:\n        user = CustomUser.objects.get(email=decoded_token['email'])",
+        "peekOfCode": "def authenticate_with_google(request):\n    id_token = request.POST.get('id_token')\n    # Verify the ID token using the Firebase Admin SDK\n    try:\n        decoded_token = firebase_auth.verify_id_token(id_token)\n    except firebase_auth.InvalidIdTokenError:\n        return JsonResponse({'error': 'Invalid ID token'}, status=400)\n    # Check if the user already exists in the database\n    try:\n        user = CustomUser.objects.get(email=decoded_token['email'])",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -990,7 +988,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        form = ClienteCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save(commit=False)\n            user.is_cliente = True\n            user.save()\n            login(request, user)\n            return redirect('home')\n    else:",
+        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        form = ClienteCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save(commit=False)\n            user.is_cliente = True\n            user.save()\n            login(request, user)\n            return redirect('cardapio')\n    else:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1013,20 +1011,20 @@
         "documentation": {}
     },
     {
-        "label": "estoque",
+        "label": "cardapio",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n# @login_required\ndef compras(request):\n    return render(request, \"compras.html\")\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required",
+        "peekOfCode": "def cardapio(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'cardapio.html')\n# @login_required\ndef estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "compras",
+        "label": "estoque",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def compras(request):\n    return render(request, \"compras.html\")\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") ",
+        "peekOfCode": "def estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1035,7 +1033,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):",
+        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") ",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1044,7 +1042,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = auth.create_user(",
+        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1053,7 +1051,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = auth.create_user(\n        email=email,\n        password=senha,",
+        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1062,7 +1060,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login",
+        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1071,7 +1069,16 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login\n    )\n    # Cria o usuário no Django User Model",
+        "peekOfCode": "def criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login\n    )\n    # Cria o usuário no Django User Model",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "signup_cliente",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        nome = request.POST.get('nome')\n        email = request.POST.get('email')\n        senha = request.POST.get('senha')\n        telefone = request.POST.get('telefone')\n        try:\n            # Cria o usuário no Firebase Authentication\n            user = firebase_auth.create_user(\n                email=email,",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1080,7 +1087,16 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def sign_cliente(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        senha = request.POST.get('senha')\n        # Verifica se o usuário existe no Firebase Authentication\n        try:\n            user = auth.get_user_by_email(email)\n        except auth.UserNotFoundError:\n            messages.error(request, 'Email ou senha inválidos')\n            return redirect('login')",
+        "peekOfCode": "def sign_cliente(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        senha = request.POST.get('senha')\n        # Verifica se o usuário existe no Firebase Authentication\n        try:\n            user = firebase_auth.get_user_by_email(email)\n        except firebase_auth.UserNotFoundError:\n            messages.error(request, 'Email ou senha inválidos')\n            return redirect('login')",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "sign_in",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def sign_in(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        password = request.POST.get('password')\n        try:\n            user = firebase_auth.get_user_by_email(email)\n        except firebase_auth.UserNotFoundError:\n            messages.error(request, 'Email ou senha inválidos')\n            return redirect('login')\n        if user.disabled:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
