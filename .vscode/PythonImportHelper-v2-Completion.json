@@ -99,106 +99,6 @@
         "documentation": {}
     },
     {
-        "label": "django.contrib.auth.models",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractUser",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "Permission",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "Group",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "django.contrib.auth.validators",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib.auth.validators",
-        "description": "django.contrib.auth.validators",
-        "detail": "django.contrib.auth.validators",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "django.utils.timezone",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.utils.timezone",
-        "description": "django.utils.timezone",
-        "detail": "django.utils.timezone",
-        "documentation": {}
-    },
-    {
-        "label": "django.db.models.deletion",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
-        "documentation": {}
-    },
-    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -239,11 +139,102 @@
         "documentation": {}
     },
     {
-        "label": "UserCreationForm",
-        "importPath": "django.contrib.auth.forms",
-        "description": "django.contrib.auth.forms",
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
         "isExtraImport": true,
-        "detail": "django.contrib.auth.forms",
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "bcrypt",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "bcrypt",
+        "description": "bcrypt",
+        "detail": "bcrypt",
+        "documentation": {}
+    },
+    {
+        "label": "firebase_admin",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "firestore",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "credentials",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "auth",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "firestore",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "isExtraImport": true,
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Certificate",
+        "importPath": "firebase_admin.credentials",
+        "description": "firebase_admin.credentials",
+        "isExtraImport": true,
+        "detail": "firebase_admin.credentials",
+        "documentation": {}
+    },
+    {
+        "label": "Certificate",
+        "importPath": "firebase_admin.credentials",
+        "description": "firebase_admin.credentials",
+        "isExtraImport": true,
+        "detail": "firebase_admin.credentials",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
         "documentation": {}
     },
     {
@@ -279,63 +270,6 @@
         "documentation": {}
     },
     {
-        "label": "firebase_admin",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "credentials",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "auth",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "firestore",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "Certificate",
-        "importPath": "firebase_admin.credentials",
-        "description": "firebase_admin.credentials",
-        "isExtraImport": true,
-        "detail": "firebase_admin.credentials",
-        "documentation": {}
-    },
-    {
-        "label": "Certificate",
-        "importPath": "firebase_admin.credentials",
-        "description": "firebase_admin.credentials",
-        "isExtraImport": true,
-        "detail": "firebase_admin.credentials",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -349,14 +283,6 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -381,6 +307,23 @@
         "description": "django.views.decorators.csrf",
         "isExtraImport": true,
         "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "cache",
+        "importPath": "django.core.cache",
+        "description": "django.core.cache",
+        "isExtraImport": true,
+        "detail": "django.core.cache",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -489,15 +432,6 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
         "label": "application",
         "kind": 5,
         "importPath": "api.api.asgi",
@@ -511,7 +445,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, 'firebase'))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, \"firebase\"))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -520,7 +454,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "SECRET_KEY = \"django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -529,7 +463,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -538,7 +472,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.sites',",
+        "peekOfCode": "ALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django.contrib.sites\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -547,7 +481,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'django.contrib.sites',\n    # 'auth_firebase.apps.AuthFirebaseConfig',\n    'allauth',",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django.contrib.sites\",\n    # 'auth_firebase.apps.AuthFirebaseConfig',\n    \"allauth\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -556,7 +490,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "MIDDLEWARE = [    \n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',    \n    # 'allauth.account.middleware.AuthenticationMiddleware',",
+        "peekOfCode": "MIDDLEWARE = [\n    \"django.middleware.security.SecurityMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",\n    \"django.middleware.csrf.CsrfViewMiddleware\",\n    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\n    \"django.contrib.messages.middleware.MessageMiddleware\",\n    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    # 'allauth.account.middleware.AuthenticationMiddleware',",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -565,7 +499,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "ROOT_URLCONF = 'api.urls'\n# TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')\n# TEMPLATE_DIRS = (\n#       TEMPLATE_PATH,\n#  )\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR/\"templates\"],\n        'APP_DIRS': True,",
+        "peekOfCode": "ROOT_URLCONF = \"api.urls\"\n# TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')\n# TEMPLATE_DIRS = (\n#       TEMPLATE_PATH,\n#  )\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [BASE_DIR / \"templates\"],\n        \"APP_DIRS\": True,",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -574,7 +508,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [BASE_DIR/\"templates\"],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [BASE_DIR / \"templates\"],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.debug\",\n                \"django.template.context_processors.request\",\n                \"django.contrib.auth.context_processors.auth\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -583,7 +517,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'api.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nAUTHENTICATION_BACKENDS = [",
+        "peekOfCode": "WSGI_APPLICATION = \"api.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/4.1/ref/settings/#databases\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.sqlite3\",\n        \"NAME\": BASE_DIR / \"db.sqlite3\",\n    }\n}\nAUTHENTICATION_BACKENDS = [",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -592,7 +526,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nAUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',\n    'django.contrib.auth.backends.ModelBackend',\n]",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.sqlite3\",\n        \"NAME\": BASE_DIR / \"db.sqlite3\",\n    }\n}\nAUTHENTICATION_BACKENDS = [\n    \"social_core.backends.google.GoogleOAuth2\",\n    \"django.contrib.auth.backends.ModelBackend\",\n]",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -601,7 +535,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'social_core.backends.google.GoogleOAuth2',\n    'django.contrib.auth.backends.ModelBackend',\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    \"social_core.backends.google.GoogleOAuth2\",\n    \"django.contrib.auth.backends.ModelBackend\",\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -610,7 +544,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:\n    \"APP\": {\n        \"client_id\": os.environ.get('GOOGLE_OAUTH2_CLIENT_ID'),\n        \"secret\": os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET'),\n        \"key\": \"\"",
+        "peekOfCode": "SITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:\n        \"APP\": {\n            \"client_id\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\"),\n            \"secret\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\"),\n            \"key\": \"\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -619,7 +553,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SOCIALACCOUNT_PROVIDERS = {\n\"google\": {\n    # For each OAuth based provider, either add a ``SocialApp``\n    # (``socialaccount`` app) containing the required client\n    # credentials, or list them here:\n    \"APP\": {\n        \"client_id\": os.environ.get('GOOGLE_OAUTH2_CLIENT_ID'),\n        \"secret\": os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET'),\n        \"key\": \"\"\n    },",
+        "peekOfCode": "SOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:\n        \"APP\": {\n            \"client_id\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\"),\n            \"secret\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\"),\n            \"key\": \"\",\n        },",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -628,7 +562,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',\n    },",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.UserAttributeSimilarityValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.MinimumLengthValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.CommonPasswordValidator\",\n    },",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -637,7 +571,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'pt-br'\nAPPEND_SLASH = False\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),",
+        "peekOfCode": "LANGUAGE_CODE = \"pt-br\"\nAPPEND_SLASH = False\nTIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -646,7 +580,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "APPEND_SLASH = False\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)",
+        "peekOfCode": "APPEND_SLASH = False\nTIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -655,7 +589,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')",
+        "peekOfCode": "TIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -664,7 +598,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -673,7 +607,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n\"\"\"FIREBASE CREDENTIALS\"\"\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -682,7 +616,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')",
+        "peekOfCode": "STATIC_URL = \"/static/\"\nSTATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get(\"FIREBASE_ACCOUNT_TYPE\")\nFIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -691,7 +625,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "STATICFILES_DIRS = (\n    os.path.join(BASE_DIR, 'static'),\n)\nSTATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')\nFIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID')",
+        "peekOfCode": "STATICFILES_DIRS = (os.path.join(BASE_DIR, \"static\"),)\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get(\"FIREBASE_ACCOUNT_TYPE\")\nFIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -700,7 +634,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')\nFIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID')\nFIREBASE_PRIVATE_KEY_ID = os.environ.get('FIREBASE_PRIVATE_KEY_ID')\nFIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')",
+        "peekOfCode": "STATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get(\"FIREBASE_ACCOUNT_TYPE\")\nFIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -709,7 +643,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')\nFIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID')\nFIREBASE_PRIVATE_KEY_ID = os.environ.get('FIREBASE_PRIVATE_KEY_ID')\nFIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n\"\"\"FIREBASE CREDENTIALS\"\"\"\nFIREBASE_ACCOUNT_TYPE = os.environ.get(\"FIREBASE_ACCOUNT_TYPE\")\nFIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -718,7 +652,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_ACCOUNT_TYPE = os.environ.get('FIREBASE_ACCOUNT_TYPE')\nFIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID')\nFIREBASE_PRIVATE_KEY_ID = os.environ.get('FIREBASE_PRIVATE_KEY_ID')\nFIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_ACCOUNT_TYPE = os.environ.get(\"FIREBASE_ACCOUNT_TYPE\")\nFIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -727,7 +661,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_PROJECT_ID = os.environ.get('FIREBASE_PROJECT_ID')\nFIREBASE_PRIVATE_KEY_ID = os.environ.get('FIREBASE_PRIVATE_KEY_ID')\nFIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_PROJECT_ID = os.environ.get(\"FIREBASE_PROJECT_ID\")\nFIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -736,7 +670,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_PRIVATE_KEY_ID = os.environ.get('FIREBASE_PRIVATE_KEY_ID')\nFIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_PRIVATE_KEY_ID = os.environ.get(\"FIREBASE_PRIVATE_KEY_ID\")\nFIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -745,7 +679,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_PRIVATE_KEY = os.environ.get('FIREBASE_PRIVATE_KEY')\nFIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -754,7 +688,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get('FIREBASE_CLIENT_EMAIL')\nFIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -763,7 +697,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get('FIREBASE_CLIENT_ID')\nFIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -772,7 +706,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get('FIREBASE_AUTH_URI')\nFIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -781,7 +715,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get('FIREBASE_TOKEN_URI')\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -790,7 +724,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get('FIREBASE_AUTH_PROVIDER_X509_CERT_URL')\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -799,7 +733,16 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get('FIREBASE_CLIENT_X509_CERT_URL')",
+        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGING",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "LOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',\n            'maxBytes': 1024*1024*5, # 5MB\n            'backupCount': 5,",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -822,24 +765,6 @@
         "documentation": {}
     },
     {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "api.mainApi.migrations.0001_initial",
-        "description": "api.mainApi.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        (\"auth\", \"0012_alter_user_first_name_max_length\"),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name=\"Funcionario\",\n            fields=[\n                (",
-        "detail": "api.mainApi.migrations.0001_initial",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "api.mainApi.migrations.0002_account_employee_client_admin",
-        "description": "api.mainApi.migrations.0002_account_employee_client_admin",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        (\"mainApi\", \"0001_initial\"),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name=\"Account\",\n            fields=[\n                (\n                    \"id\",",
-        "detail": "api.mainApi.migrations.0002_account_employee_client_admin",
-        "documentation": {}
-    },
-    {
         "label": "MainapiConfig",
         "kind": 6,
         "importPath": "api.mainApi.apps",
@@ -853,7 +778,7 @@
         "kind": 6,
         "importPath": "api.mainApi.forms",
         "description": "api.mainApi.forms",
-        "peekOfCode": "class ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='*.')\n    name = forms.CharField(max_length=30, required=True, help_text='*')\n    class Meta:\n        model = Cliente\n        fields = ('email', 'password1', 'password2', 'name')\nclass FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)",
+        "peekOfCode": "class ClienteCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='*')\n    name = forms.CharField(max_length=30, required=True, help_text='*')\n    telefone = forms.CharField(max_length=10, required=True)\n    class Meta:\n        model = Usuario\n        fields = ('email', 'password1', 'password2', 'name', 'telefone')\nclass FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')",
         "detail": "api.mainApi.forms",
         "documentation": {}
     },
@@ -862,7 +787,7 @@
         "kind": 6,
         "importPath": "api.mainApi.forms",
         "description": "api.mainApi.forms",
-        "peekOfCode": "class FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    salario = forms.DecimalField(max_digits=10, decimal_places=2)\n    cargo = forms.CharField(max_length=50)\n    class Meta:\n        model = Funcionario\n        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'salario', 'cargo')\nclass AdministradorCreationForm(UserCreationForm):",
+        "peekOfCode": "class FuncionarioCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    cargo = forms.CharField(max_length=50)\n    class Meta:\n        model = Usuario\n        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'cargo')\nclass AdministradorCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')",
         "detail": "api.mainApi.forms",
         "documentation": {}
     },
@@ -871,88 +796,115 @@
         "kind": 6,
         "importPath": "api.mainApi.forms",
         "description": "api.mainApi.forms",
-        "peekOfCode": "class AdministradorCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    historico_login = forms.CharField(widget=forms.Textarea)\n    class Meta:\n        model = Administrador\n        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'historico_login')",
+        "peekOfCode": "class AdministradorCreationForm(UserCreationForm):\n    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')\n    name = forms.CharField(max_length=30, required=False, help_text='Optional.')\n    nivel_acesso = forms.CharField(max_length=10)\n    historico_login = forms.CharField(widget=forms.Textarea)\n    class Meta:\n        model = Usuario\n        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'historico_login')",
         "detail": "api.mainApi.forms",
         "documentation": {}
     },
     {
-        "label": "CustomUser",
+        "label": "TipoUsuario",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class CustomUser(AbstractUser):\n    name = models.CharField(max_length=30, blank=True)\n    USERNAME_FIELD = 'email'\n    class Meta:\n        abstract = True\nclass Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='clientes'",
+        "peekOfCode": "class TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'\nclass Usuario(models.Model):\n    nome = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)\n    telefone = models.CharField(max_length=20)\n    tipo = models.CharField(max_length=10, choices=[(tipo.name, tipo.value) for tipo in TipoUsuario])",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Cliente",
+        "label": "Usuario",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Cliente(CustomUser):\n    # campos específicos para clientes\n    historico_pedidos = models.TextField()\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='clientes'\n    )\n    user_permissions = models.ManyToManyField(\n        Permission, blank=True, related_name='clientes_permissions'\n    )\nclass Administrador(CustomUser):",
+        "peekOfCode": "class Usuario(models.Model):\n    nome = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)\n    telefone = models.CharField(max_length=20)\n    tipo = models.CharField(max_length=10, choices=[(tipo.name, tipo.value) for tipo in TipoUsuario])\n    uid = models.CharField(max_length=100, blank=True)\n    class Meta:\n        verbose_name = 'Usuário'\n        verbose_name_plural = 'Usuários'\n    def __str__(self):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Administrador",
+        "label": "EstadoPedido",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Administrador(CustomUser):\n    # campos específicos para administradores\n    nivel_acesso = models.CharField(max_length=10)\n    historico_login = models.TextField()\n    user_permissions = models.ManyToManyField(\n    Permission, blank=True, related_name='administradores_permissions'\n)\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='administradores'\n    )",
+        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\nclass ItemPedido:\n    def __init__(self, nome: str, quantidade: int, valor_unitario: float, especificacoes: str = None): # type: ignore\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.especificacoes = especificacoes",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Funcionario",
+        "label": "ItemPedido",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Funcionario(CustomUser):\n    # campos específicos para funcionários\n    nivel_acesso = models.CharField(max_length=10)\n    salario = models.DecimalField(max_digits=10, decimal_places=2)\n    cargo = models.CharField(max_length=50)\n    groups = models.ManyToManyField(\n        Group, blank=True, related_name='funcionarios_relacionados'\n    )\n    user_permissions = models.ManyToManyField(\n        Permission, blank=True, related_name='funcionarios_relacionados'",
+        "peekOfCode": "class ItemPedido:\n    def __init__(self, nome: str, quantidade: int, valor_unitario: float, especificacoes: str = None): # type: ignore\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.especificacoes = especificacoes\n    @classmethod\n    def from_dict(cls, data):\n        return cls(\n            nome=data['nome'],",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Account",
+        "label": "Pedido",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Account(models.Model):\n    name = models.CharField(max_length=50)\n    email = models.EmailField(unique=True)\n    password = models.CharField(max_length=50)\n    account_type_choices = (\n        ('client', 'Client'),\n        ('employee', 'Employee'),\n        ('admin', 'Admin')\n    )\n    account_type = models.CharField(choices=account_type_choices, max_length=20)",
+        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens, valor_total, observacao):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens = itens\n        self.valor_total = valor_total\n        self.observacao = observacao\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Client",
+        "label": "Carrinho",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Client(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    address = models.CharField(max_length=50)\nclass Employee(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    department = models.CharField(max_length=50)\nclass Admin(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    level = models.CharField(max_length=50)\n    def __str__(self):",
+        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens.all():\n            # Verificar se o item já está no carrinho\n            item_carrinho = next((item for item in self.itens if item['nome'] == item_pedido.nome), None)\n            if item_carrinho:",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Employee",
+        "label": "Item",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Employee(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    department = models.CharField(max_length=50)\nclass Admin(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    level = models.CharField(max_length=50)\n    def __str__(self):\n        return self.account.name\ndef user(email, password):\n    try:",
+        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.ingredientes = ingredientes\n    def to_dict(self):\n        item_dict = {\n            \"nome\": self.nome,",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Admin",
+        "label": "Estoque",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Admin(models.Model):\n    account = models.OneToOneField(Account, on_delete=models.CASCADE)\n    level = models.CharField(max_length=50)\n    def __str__(self):\n        return self.account.name\ndef user(email, password):\n    try:\n        account = Account.objects.get(email=email, password=password)\n        if account.account_type == 'client':\n            return Client.objects.get(account=account)",
+        "peekOfCode": "class Estoque:\n    def __init__(self, id: str, data_ultima_reposicao: str, quantidade_ultima_reposicao: int, valor_ultima_reposicao: float, quantidade_total: int, id_item: str):\n        self.id = id\n        self.data_ultima_reposicao = data_ultima_reposicao\n        self.quantidade_ultima_reposicao = quantidade_ultima_reposicao\n        self.valor_ultima_reposicao = valor_ultima_reposicao\n        self.quantidade_total = quantidade_total\n        self.id_item = id_item\nclass HistoricoPedido:\n    def __init__(self, id: str, data_registro: str, valor_dia: float, valor_semana: float, valor_mes: float):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "user",
-        "kind": 2,
+        "label": "HistoricoPedido",
+        "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "def user(email, password):\n    try:\n        account = Account.objects.get(email=email, password=password)\n        if account.account_type == 'client':\n            return Client.objects.get(account=account)\n        elif account.account_type == 'employee':\n            return Employee.objects.get(account=account)\n        elif account.account_type == 'admin':\n            return Admin.objects.get(account=account)\n    except:",
+        "peekOfCode": "class HistoricoPedido:\n    def __init__(self, id: str, data_registro: str, valor_dia: float, valor_semana: float, valor_mes: float):\n        self.id = id\n        self.data_registro = data_registro\n        self.valor_dia = valor_dia\n        self.valor_semana = valor_semana\n        self.valor_mes = valor_mes\nclass Despesa:\n    def __init__(self, id: str, data_despesa: str, valor: float, descricao: str):\n        self.id = id",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Despesa",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Despesa:\n    def __init__(self, id: str, data_despesa: str, valor: float, descricao: str):\n        self.id = id\n        self.data_despesa = data_despesa\n        self.valor = valor\n        self.descricao = descricao",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "cred",
+        "kind": 5,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "cred = Certificate(credentials)\nfirebase_admin.initialize_app(cred)\n# criação do objeto Firestore\ndb = firestore.client()\n# modelo de usuário\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "db = firestore.client()\n# modelo de usuário\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'\nclass Usuario(models.Model):\n    nome = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -970,44 +922,8 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),\n    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),\n    path('signup/', views.signup_cliente, name='signup_cliente'),\n    path('signup/funcionario/', views.signup_funcionario, name='signup_funcionario'),\n    path('signup/administrador/', views.signup_administrador, name='signup_administrador'),",
+        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', views.login, name='login'),\n    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),\n    # path('google-authenticate/', views.authenticate_with_google, name='google_authenticate'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    # path('reset/', views.reset),",
         "detail": "api.mainApi.urls",
-        "documentation": {}
-    },
-    {
-        "label": "authenticate_with_google",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def authenticate_with_google(request):\n    id_token = request.POST.get('id_token')\n    # Verify the ID token using the Firebase Admin SDK\n    try:\n        decoded_token = firebase_auth.verify_id_token(id_token)\n    except firebase_auth.InvalidIdTokenError:\n        return JsonResponse({'error': 'Invalid ID token'}, status=400)\n    # Check if the user already exists in the database\n    try:\n        user = CustomUser.objects.get(email=decoded_token['email'])",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "signup_cliente",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        form = ClienteCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save(commit=False)\n            user.is_cliente = True\n            user.save()\n            login(request, user)\n            return redirect('cardapio')\n    else:",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "signup_funcionario",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def signup_funcionario(request):\n    if request.method == 'POST':\n        form = FuncionarioCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            # autentica o usuário e faz o login\n            email = form.cleaned_data.get('email')\n            password = form.cleaned_data.get('password1')\n            user = authenticate(email=email, password=password)\n            login(request, user)",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "signup_administrador",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def signup_administrador(request):\n    if request.method == 'POST':\n        form = AdministradorCreationForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            # autentica o usuário e faz o login\n            email = form.cleaned_data.get('email')\n            password = form.cleaned_data.get('password1')\n            user = authenticate(email=email, password=password)\n            login(request, user)",
-        "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
@@ -1042,7 +958,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication",
+        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1051,7 +967,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,",
+        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')\n#     decoded_token = firebase_auth.verify_id_token(id_token)\n#     if decoded_token is None:\n#         return JsonResponse({'error': 'Invalid ID token'}, status=400)",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1060,43 +976,61 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \ndef criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login",
+        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')\n#     decoded_token = firebase_auth.verify_id_token(id_token)\n#     if decoded_token is None:\n#         return JsonResponse({'error': 'Invalid ID token'}, status=400)\n#     email = decoded_token['email']\n#     firebase_user = firebase_auth.get_user_by_email(email)",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "criar_conta",
+        "label": "dashboard_admin",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def criar_conta(nome, email, senha, tipo_conta, **kwargs):\n    assert tipo_conta in ['cliente', 'funcionario', 'admin'], \"Tipo de conta inválido\"\n    # Cria o usuário no Firebase Authentication\n    user = firebase_auth.create_user(\n        email=email,\n        password=senha,\n        display_name=nome,\n        email_verified=True  # Apenas usuários verificados podem fazer login\n    )\n    # Cria o usuário no Django User Model",
+        "peekOfCode": "def dashboard_admin(request):\n    return render(request, 'dashboard_admin.html')\n@login_required\ndef dashboard_funcionario(request):\n    return render(request, 'dashboard_funcionario.html')\n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "signup_cliente",
+        "label": "dashboard_funcionario",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def signup_cliente(request):\n    if request.method == 'POST':\n        nome = request.POST.get('nome')\n        email = request.POST.get('email')\n        senha = request.POST.get('senha')\n        telefone = request.POST.get('telefone')\n        try:\n            # Cria o usuário no Firebase Authentication\n            user = firebase_auth.create_user(\n                email=email,",
+        "peekOfCode": "def dashboard_funcionario(request):\n    return render(request, 'dashboard_funcionario.html')\n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI\n        password = request.POST['password']",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "sign_cliente",
+        "label": "cadastrar_usuario_cli",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def sign_cliente(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        senha = request.POST.get('senha')\n        # Verifica se o usuário existe no Firebase Authentication\n        try:\n            user = firebase_auth.get_user_by_email(email)\n        except firebase_auth.UserNotFoundError:\n            messages.error(request, 'Email ou senha inválidos')\n            return redirect('login')",
+        "peekOfCode": "def cadastrar_usuario_cli(request):\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI\n        password = request.POST['password']\n        confirm_password = request.POST['confirm_password']\n        # Verifica se as senhas são iguais\n        if password != confirm_password:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "sign_in",
+        "label": "cadastrar_usuario_func",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def sign_in(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        password = request.POST.get('password')\n        try:\n            user = firebase_auth.get_user_by_email(email)\n        except firebase_auth.UserNotFoundError:\n            messages.error(request, 'Email ou senha inválidos')\n            return redirect('login')\n        if user.disabled:",
+        "peekOfCode": "def cadastrar_usuario_func(request):\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.FUN\n        password = request.POST['password']\n        confirm_password = request.POST['confirm_password']\n        # Verifica se as senhas são iguais\n        if password != confirm_password:",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def login(request):\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        password = request.POST.get('password')\n        tipo = None\n        try:\n            uid = request.POST.get('uid')\n            decoded_token = firebase_auth.verify_id_token(uid)\n            tipo = decoded_token.get('tipo')\n        except:",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# logger.debug('Debug message')\n# logger.info('Info message')\n# logger.warning('Warning message')\n# logger.error('Error message')\n# logger.critical('Critical message')\n@cache_page(60 * 15) # cache for 15 minutes\ndef cardapio(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'cardapio.html')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

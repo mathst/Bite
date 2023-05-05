@@ -1,111 +1,25 @@
-# import firebase_admin
-from firebase_admin import credentials, auth as firebase_auth, firestore
-from firebase_admin.credentials import Certificate
-from django.conf import settings
+from firebase_admin import credentials, auth as firebase_auth, firestore as db
+
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from django.http import JsonResponse
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser, user as User
-from .forms import ClienteCreationForm, FuncionarioCreationForm , AdministradorCreationForm
-from django.contrib import messages
+from .models import Usuario, TipoUsuario
+# from .forms import ClienteCreationForm, FuncionarioCreationForm, AdministradorCreationForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
+from django.core.cache import cache
+import logging
 
-# Initialize Firestore client
-# db = firestore.client()
+logger = logging.getLogger(__name__)
 
-# Autentica o usuário usando o Google
-def authenticate_with_google(request):
-    id_token = request.POST.get('id_token')
+# logger.debug('Debug message')
+# logger.info('Info message')
+# logger.warning('Warning message')
+# logger.error('Error message')
+# logger.critical('Critical message')
 
-    # Verify the ID token using the Firebase Admin SDK
-    try:
-        decoded_token = firebase_auth.verify_id_token(id_token)
-    except firebase_auth.InvalidIdTokenError:
-        return JsonResponse({'error': 'Invalid ID token'}, status=400)
-
-    # Check if the user already exists in the database
-    try:
-        user = CustomUser.objects.get(email=decoded_token['email'])
-    except CustomUser.DoesNotExist:
-        # If the user doesn't exist, create a new one
-        user = CustomUser(email=decoded_token['email'], username=decoded_token['email'])
-        user.set_unusable_password()
-        user.save()
-
-    # authenticate the user
-    user = authenticate(request, email=decoded_token['email'])
-    if user is not None:
-        login(request, user)
-        return JsonResponse({'redirect_url': '/cardapio/'})
-    else:
-        return JsonResponse({'error': 'Failed to authenticate user'}, status=400)
-
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         form = CustomUserCreationForm()
-#     return render(request, 'signup.html', {'form': form})
-
-@cache_page(60 * 15)
-@csrf_protect
-def signup_cliente(request):
-    if request.method == 'POST':
-        form = ClienteCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_cliente = True
-            user.save()
-            login(request, user)
-            return redirect('cardapio')
-    else:
-        form = ClienteCreationForm()
-    return render(request, 'accounts/signup_cliente.html', {'form': form})
-
-@cache_page(60 * 15)
-@csrf_protect
-def signup_funcionario(request):
-    if request.method == 'POST':
-        form = FuncionarioCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # autentica o usuário e faz o login
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password=password)
-            login(request, user)
-            return redirect('cardapio')
-    else:
-        form = FuncionarioCreationForm()
-    return render(request, 'accounts/signup_funcionario.html', {'form': form})
-
-
-@cache_page(60 * 15)
-@csrf_protect
-def signup_administrador(request):
-    if request.method == 'POST':
-        form = AdministradorCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            # autentica o usuário e faz o login
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(email=email, password=password)
-            login(request, user)
-            return redirect('cardapio')
-    else:
-        form = AdministradorCreationForm()
-    return render(request, 'accounts/signup_administrador.html', {'form': form})
-
-
+@cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
     # Lógica para listar produtos em estoque
     return render(request, 'cardapio.html')
@@ -128,207 +42,154 @@ def comanda(request):
 def index(request):
     return render(request, "index.html") 
 
-def criar_conta(nome, email, senha, tipo_conta, **kwargs):
-    assert tipo_conta in ['cliente', 'funcionario', 'admin'], "Tipo de conta inválido"
-    
-    # Cria o usuário no Firebase Authentication
-    user = firebase_auth.create_user(
-        email=email,
-        password=senha,
-        display_name=nome,
-        email_verified=True  # Apenas usuários verificados podem fazer login
-    )
-    
-    # Cria o usuário no Django User Model
-    django_user = User.objects.create_user(
-        username=email,
-        email=email,
-        password=senha,
-    )
-    
-    # Adiciona informações adicionais ao usuário dependendo do tipo de conta
-    if tipo_conta == 'cliente':
-        # Exemplo de informações adicionais para conta de cliente
-        endereco = kwargs.get('endereco')
-        telefone = kwargs.get('telefone')
-        # Adiciona informações ao Django User Model
-        django_user.cliente.endereco = endereco
-        django_user.cliente.telefone = telefone
-        django_user.cliente.save()
-    elif tipo_conta == 'funcionario':
-        # Exemplo de informações adicionais para conta de funcionário
-        cargo = kwargs.get('cargo')
-        salario = kwargs.get('salario')
-        # Adiciona informações ao Django User Model
-        django_user.funcionario.cargo = cargo
-        django_user.funcionario.salario = salario
-        django_user.funcionario.save()
-    elif tipo_conta == 'admin':
-        # Não há informações adicionais para conta de admin
-        pass
-    
-    # Retorna o ID do usuário criado no Firebase
-    return user.uid
+# Autentica o usuário usando o Google
+# def authenticate_with_google(request):
+#     id_token = request.POST.get('id_token')
 
-def signup_cliente(request):
+#     decoded_token = firebase_auth.verify_id_token(id_token)
+
+#     if decoded_token is None:
+#         return JsonResponse({'error': 'Invalid ID token'}, status=400)
+
+#     email = decoded_token['email']
+#     firebase_user = firebase_auth.get_user_by_email(email)
+
+#     try:
+#         user = UsuarioCustomizado.objects.get(email=email)
+#     except UsuarioCustomizado.DoesNotExist:
+#         user = UsuarioCustomizado(email=email, username=email)
+#         user.set_unusable_password()
+#         user.save()
+
+#     if user is not None:
+#         login(request, user)
+#         return JsonResponse({'redirect_url': '/cardapio/'})
+#     else:
+#         return JsonResponse({'error': 'Failed to authenticate user'}, status=400)
+
+
+@login_required
+@cache_page(60 * 15) # cache for 15 minutes
+def dashboard_admin(request):
+    return render(request, 'dashboard_admin.html')
+
+@login_required
+def dashboard_funcionario(request):
+    return render(request, 'dashboard_funcionario.html')
+
+@csrf_protect
+def cadastrar_usuario_cli(request):
     if request.method == 'POST':
-        nome = request.POST.get('nome')
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
-        telefone = request.POST.get('telefone')
-        
+        nome = request.POST['nome']
+        email = request.POST['email']
+        telefone = request.POST['telefone']
+        tipo = TipoUsuario.CLI
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        # Verifica se as senhas são iguais
+        if password != confirm_password:
+            messages.error(request, 'As senhas não são iguais')
+            return redirect('cadastrar_usuario')
+
         try:
+            # Cria uma instância do usuário
+            usuario = Usuario(nome=nome, email=email, telefone=telefone, tipo=tipo)
+
             # Cria o usuário no Firebase Authentication
-            user = firebase_auth.create_user(
-                email=email,
-                password=senha,
-                display_name=nome,
-                email_verified=True
-            )
-            
-            # Cria o usuário no Django User Model
-            django_user = User.objects.create_user(
-                username=email,
-                email=email,
-                password=senha,
-            )
-            
-            # Adiciona informações adicionais ao usuário
-            django_user.cliente.endereco = endereco
-            django_user.cliente.telefone = telefone
-            django_user.cliente.save()
-            
-            # Autentica o usuário no Django User Model
-            user = authenticate(request, username=email, password=senha)
-            login(request, user)
-            
-            # Redireciona o usuário para a página de sucesso
-            messages.success(request, 'Conta criada com sucesso')
-            return redirect('cardapio')
-        
-        except firebase_auth.EmailAlreadyExistsError:
-            messages.error(request, 'Este email já está em uso')
-            return redirect('signup_cliente')
-        
-        except ValueError as e:
-            messages.error(request,e)
-            return redirect('signup_cliente')
-            
+            usuario_uid = usuario.criar_usuario(password)
+
+            # Define o UID do usuário na instância
+            usuario.uid = usuario_uid
+
+            # Salva o usuário no Firestore
+            usuario.salvar()
+
+            messages.success(request, 'Usuário cadastrado com sucesso')
+            return redirect('login')
+        except Exception as e:
+            messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
+            return redirect('cadastrar_usuario')
     else:
-        form = ClienteCreationForm()
-    return render(request, 'accounts/signup_cliente.html', {'form': form})
-
-def sign_cliente(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
-        
-        # Verifica se o usuário existe no Firebase Authentication
-        try:
-            user = firebase_auth.get_user_by_email(email)
-        except firebase_auth.UserNotFoundError:
-            messages.error(request, 'Email ou senha inválidos')
-            return redirect('login')
-        
-        # Verifica se o usuário está ativo
-        if user.disabled:
-            messages.error(request, 'Usuário bloqueado')
-            return redirect('login')
-        
-        # Autentica o usuário no Django User Model
-        django_user = authenticate(request, username=email, password=senha)
-        if django_user is None:
-            messages.error(request, 'Email ou senha inválidos')
-            return redirect('login')
-        
-        # Redireciona o usuário para a página de sucesso
-        messages.success(request, 'Login efetuado com sucesso')
-        return redirect('cardapio')
+        return render(request, 'cadastrar_usuario.html')
     
-    return render(request, 'login.html')
+@csrf_protect
+def cadastrar_usuario_func(request):
+    if request.method == 'POST':
+        nome = request.POST['nome']
+        email = request.POST['email']
+        telefone = request.POST['telefone']
+        tipo = TipoUsuario.FUN
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
 
-def sign_in(request):
+        # Verifica se as senhas são iguais
+        if password != confirm_password:
+            messages.error(request, 'As senhas não são iguais')
+            return redirect('login')
+
+        try:
+            # Cria uma instância do usuário
+            usuario = Usuario(nome=nome, email=email, telefone=telefone, tipo=tipo)
+
+            # Cria o usuário no Firebase Authentication
+            usuario_uid = usuario.criar_usuario(password)
+
+            # Define o UID do usuário na instância
+            usuario.uid = usuario_uid
+
+            # Salva o usuário no Firestore
+            usuario.salvar()
+
+            messages.success(request, 'Usuário cadastrado com sucesso')
+            return redirect('listar_usuarios')
+        except Exception as e:
+            messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
+            return redirect('login')
+    else:
+        return render(request, 'cadastrar_func.html')
+
+@csrf_protect
+def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        
+        tipo = None
 
         try:
-            user = firebase_auth.get_user_by_email(email)
-        except firebase_auth.UserNotFoundError:
-            messages.error(request, 'Email ou senha inválidos')
-            return redirect('login')
-
-        if user.disabled:
-            messages.error(request, 'Usuário bloqueado')
-            return redirect('login')
-
-        try:
-            user_token = request.POST.get('uid')
-            decoded_token = firebase_auth.verify_id_token(user_token)
-            
+            uid = request.POST.get('uid')
+            decoded_token = firebase_auth.verify_id_token(uid)
+            tipo = decoded_token.get('tipo')
         except:
-            messages.error(request, 'Erro ao verificar token de autenticação')
-            return redirect('login')
+            messages.error(request, 'Erro ao fazer login')
+            return render(request, 'login', {'error_message': 'Usuário ou senha inválidos.'})
+            # return redirect('login')
 
-        # user_type = decoded_token.get('user_type')
-        uid = request.POST.get('uid')
-        user_type = firebase_auth.verify_id_token(uid)
-
-        if user_type == 'cliente':
-            user = authenticate(request, username=email, password=password)
-            if user is None:
-                messages.error(request, 'Email ou senha inválidos')
+        if tipo == 'funcionario':
+            funcionario = Usuario.carregar(uid)
+            if funcionario is None:
+                messages.error(request, 'Funcionário não encontrado')
+                return render(request, 'login', {'error_message': 'Usuário ou senha inválidos.'})
+                # return redirect('login')
+            request.session['user'] = funcionario.to_dict()
+            return redirect('pagina-do-funcionario')
+        elif tipo == 'cliente':
+            cliente = Usuario.carregar(uid)
+            if cliente is None:
+                messages.error(request, 'Cliente não encontrado')
                 return redirect('login')
-
-            messages.success(request, 'Login efetuado com sucesso')
-            login(request, user)
-            return redirect('cardapio')
-
-        elif user_type == 'funcionario':
-            try:
-                funcionario = Funcionario.objects.get(email=email)
-            except Funcionario.DoesNotExist:
-                messages.error(request, 'Email ou senha inválidos')
+            request.session['user'] = cliente.to_dict()
+            return redirect('pagina-do-cliente')
+        elif tipo == 'admin':
+            admin = Usuario.carregar(uid)
+            if admin is None:
+                messages.error(request, 'Admin não encontrado')
                 return redirect('login')
-
-            if funcionario.senha != password:
-                messages.error(request, 'Email ou senha inválidos')
-                return redirect('login')
-
-            messages.success(request, 'Login efetuado com sucesso')
-            login(request, funcionario)
-            return redirect('dashboard_funcionario')
-
-        elif user_type == 'admin':
-            try:
-                admin = Administrador.objects.get(email=email)
-            except Administrador.DoesNotExist:
-                messages.error(request, 'Email ou senha inválidos')
-                return redirect('login')
-
-            if admin.senha != password:
-                messages.error(request, 'Email ou senha inválidos')
-                return redirect('login')
-
-            messages.success(request, 'Login efetuado com sucesso')
-            login(request, admin)
-            return redirect('dashboard_admin')
-
+            request.session['user'] = admin.to_dict()
+            request.session['user'] = {'email': email, 'tipo': '0'}
+            return redirect('pagina-do-admin')
         else:
             messages.error(request, 'Tipo de conta inválido')
             return redirect('login')
 
-    return render(request, 'login.html')
-'''exemplo de aplicação'''
-# def minha_view(request):
-#     # Get all documents from a collection
-#     docs = db.collection('minha_colecao').get()
-    
-#     # Process the documents
-#     for doc in docs:
-#         # Do something with the document
-#         pass
-    
-#     # Return a response
-#     return HttpResponse('Success')
+    return render(request, 'accounts/login.html')

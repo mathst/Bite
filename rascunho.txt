@@ -306,3 +306,72 @@ firebase_admin.initialize_app(cred)
                 </ul>
             </div>
         </nav>
+
+        passsword exemple
+
+        import bcrypt
+
+def save_password(email, password):
+    try:
+        # Generate a salt
+        salt = bcrypt.gensalt()
+
+        # Hash the password
+        hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
+
+        # Save the hashed password to Firestore
+        db.collection("users").document(email).set({
+            "hashed_password": hashed_password,
+            "salt": salt
+        })
+
+        print("Password saved successfully!")
+    except Exception as e:
+        print("An error occurred:", e)
+
+class Firebase:
+#     _instance = None
+
+#     def __new__(cls):
+#         if cls._instance is None:
+#             cls._instance = super().__new__(cls)
+#             # inicializar o Firebase aqui
+#         return cls._instance
+
+#     def verify_id_token(self, id_token):
+#         try:
+#             decoded_token = firebase_auth.verify_id_token(id_token)
+#         except firebase_auth.InvalidIdTokenError:
+#             logger.error({'error': 'Invalid ID token'})
+#             return None
+
+#         return decoded_token
+
+#     def user_exists(self, email):
+#         try:
+#             firebase_auth.get_user_by_email(email)
+#         except firebase_auth.UserNotFoundError:
+#             return False
+
+#         return True
+
+#     def create_user(self, email, password):
+#         try:
+#             user = firebase_auth.create_user(email=email, password=password)
+#         except:
+#             return None
+
+#         return user
+
+#     def authenticate_user(self, email, password):
+#         try:
+#             user = firebase_auth.get_user_by_email(email)
+#         except firebase_auth.UserNotFoundError:
+#             return None
+
+#         try:
+#             user = firebase_auth.get_user_by_email(email)
+#         except:
+#             return None
+
+#         return user
