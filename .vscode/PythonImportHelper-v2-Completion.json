@@ -413,7 +413,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, \"firebase\"))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, \"firebase\"))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ['DJANGO_SECRET_KEY']\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -422,7 +422,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SECRET_KEY = \"django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",",
+        "peekOfCode": "SECRET_KEY = os.environ['DJANGO_SECRET_KEY']\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -692,7 +692,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {",
+        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -701,7 +701,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {",
+        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -710,7 +710,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {",
+        "peekOfCode": "GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -719,7 +719,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -728,7 +728,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',\n#             'class': 'logging.handlers.RotatingFileHandler',",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -737,16 +737,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',",
-        "detail": "api.api.settings",
-        "documentation": {}
-    },
-    {
-        "label": "LOGGING",
-        "kind": 5,
-        "importPath": "api.api.settings",
-        "description": "api.api.settings",
-        "peekOfCode": "LOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',\n            'maxBytes': 1024*1024*5, # 5MB\n            'backupCount': 5,",
+        "peekOfCode": "GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',\n#             'class': 'logging.handlers.RotatingFileHandler',\n#             'filename': 'logs/debug.log',",
         "detail": "api.api.settings",
         "documentation": {}
     },

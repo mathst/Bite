@@ -1,0 +1,12 @@
+version: "3.11"
+
+services:
+  web:
+    build: .
+    command: ["./run_web.sh"]
+    volumes:
+      - .:/webapps
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
