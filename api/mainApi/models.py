@@ -1,6 +1,4 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser, Permission, Group
-import bcrypt
 import firebase_admin
 from firebase_admin import auth, firestore
 from enum import Enum
@@ -15,20 +13,25 @@ firebase_admin.initialize_app(cred)
 # criação do objeto Firestore
 db = firestore.client()
 
-# modelo de usuário
+# tipos de users
 class TipoUsuario(Enum):
     ADM = 'adm'
     GER = 'gerente'
     FUN = 'funcionario'
     CLI= 'cliente'
+    
+    def to_firestore_value(self):
+        return self.value
 
+# modelo de usuário
 class Usuario(models.Model):
     nome = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     telefone = models.CharField(max_length=20)
-    tipo = models.CharField(max_length=10, choices=[(tipo.name, tipo.value) for tipo in TipoUsuario])
+    tipo = models.CharField(max_length=15, choices=[(tipo.name, tipo.value) for tipo in TipoUsuario])
     uid = models.CharField(max_length=100, blank=True)
-
+    salt = models.CharField(max_length=100, blank=True)
+    hashed_password = models.CharField(max_length=100, blank=True)
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
@@ -37,20 +40,16 @@ class Usuario(models.Model):
         return self.nome
     
     # cria um usuário no Firebase Authentication
-    def criar_usuario(self, password: str):
-        # Generate a salt
-        salt = bcrypt.gensalt()
-        # Hash the password
-        hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
+    def criar_usuario(self, password: str):# type: ignore
+        # Create the user account in Firebase Authentication
         user = auth.create_user(
             email=self.email,
-            password=hashed_password,
-            salt=salt,
+            password=password,
             display_name=self.nome,
-            phone_number=self.telefone
+            phone_number = "+55" + self.telefone
         )
         self.uid = user.uid
-        self.save()
+        self.salvar()
         return user.uid
 
     # atualiza os dados do usuário no Firebase Authentication
@@ -59,12 +58,12 @@ class Usuario(models.Model):
             self.uid,
             email=self.email,
             display_name=self.nome,
-            phone_number=self.telefone
+            phone_number = "+55" + self.telefone
         )
         return user.uid
     
     # atualiza o cargo do funcionario no Firebase Authentication
-    def add_cargo(self):
+    def alt_cargo(self):
         user = auth.update_user(
             self.uid,
             email=self.email,
@@ -81,8 +80,16 @@ class Usuario(models.Model):
     def salvar(self):
         if self.uid is None:
             raise ValueError('Não é possível salvar um usuário sem um UID')
-        db.collection('usuarios').document(self.uid).set(self.to_dict())
-        
+        db.collection('usuarios').document(self.uid).set({**self.to_dict(), "foo": "bar"})
+
+    #buasca dados do Firestore
+    def buscar(uid):
+        doc = db.collection('usuarios').document(uid).get()
+        if not doc.exists:
+            return None
+        data = doc.to_dict()
+        assert 'tipo' in data, f"Chave 'tipo' não encontrada no dicionário: {data}"
+        return data
 
     # carrega um usuário do Firestore pelo UID
     @classmethod
@@ -104,7 +111,7 @@ class Usuario(models.Model):
             'nome': self.nome,
             'email': self.email,
             'telefone': self.telefone,
-            'tipo': self.tipo,
+            'tipo': self.tipo.value,  # Converte o Enum para string válida no Firestore # type: ignore
             'uid': self.uid
         }
         
@@ -281,69 +288,3 @@ class Despesa:
         self.data_despesa = data_despesa
         self.valor = valor
         self.descricao = descricao
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ------------------------------------------------------------------
-# class UsuarioCustomizado(AbstractUser):
-#     nome = models.CharField(max_length=30, blank=True)
-#     telefone = models.CharField(max_length=20, blank=True)
-#     USERNAME_FIELD = 'email'
-
-#     class Meta:
-#         abstract = True
-
-
-# class Conta(models.Model):
-#     nome = models.CharField(max_length=50)
-#     email = models.EmailField(unique=True)
-#     senha = models.CharField(max_length=50)
-#     tipos_de_conta = (
-#         ('cliente', 'Cliente'),
-#         ('funcionario', 'Funcionário'),
-#         ('admin', 'Administrador')
-#     )
-#     tipo_de_conta = models.CharField(choices=tipos_de_conta, max_length=20)
-
-# class Cliente(models.Model):
-#     conta = models.OneToOneField(Conta, on_delete=models.CASCADE)
-#     endereco = models.CharField(max_length=50)
-#     groups = models.ManyToManyField(Group, related_name='cli')
-
-# class Funcionario(UsuarioCustomizado):
-#     conta = models.OneToOneField(Conta, on_delete=models.CASCADE)
-#     departamento = models.CharField(max_length=50)
-#     groups = models.ManyToManyField(Group, related_name='fun')
-
-# class Administrador(UsuarioCustomizado):
-#     conta = models.OneToOneField(Conta, on_delete=models.CASCADE)
-#     nivel = models.CharField(max_length=50)
-#     groups = models.ManyToManyField(Group, related_name='adm')
-
-#     def __str__(self):
-#         return self.conta.nome
-    # --------------------------------------------------------------------------------
-

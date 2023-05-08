@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    # 'auth_firebase.apps.AuthFirebaseConfig',
+    'social_django',
     "allauth",
     "allauth.account",
     "rest_framework",
@@ -101,7 +100,10 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    "social_core.backends.google.GoogleOAuth2",
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
     "django.contrib.auth.backends.ModelBackend",
 ]
 SITE_ID = 1
@@ -192,6 +194,8 @@ FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(
     "FIREBASE_AUTH_PROVIDER_X509_CERT_URL"
 )
 FIREBASE_CLIENT_X509_CERT_URL = os.environ.get("FIREBASE_CLIENT_X509_CERT_URL")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+
 
 """LOG"""
 LOGGING = {

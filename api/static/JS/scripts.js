@@ -163,35 +163,35 @@ const emailInput = document.querySelector('#email-input');
 const passwordInput = document.querySelector('#password-input');
 const loginButton = document.querySelector('#login-button');
 
-loginForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  // fazer requisição AJAX para fazer login com email e senha
-});
+// loginForm.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   const email = emailInput.value;
+//   const password = passwordInput.value;
+//   // fazer requisição AJAX para fazer login com email e senha
+// });
 
-const googleButton = document.querySelector('#google-button');
+// const googleButton = document.querySelector('#google-button');
 
-googleButton.addEventListener('click', () => {
-  // redirecionar para página de login do Google
-});
+// googleButton.addEventListener('click', () => {
+//   // redirecionar para página de login do Google
+// });
 
-const registerButton = document.querySelector('#register-button');
+// const registerButton = document.querySelector('#register-button');
 
-registerButton.addEventListener('click', () => {
-  // redirecionar para página de cadastro
-});
+// registerButton.addEventListener('click', () => {
+//   // redirecionar para página de cadastro
+// });
 
-function signInWithGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
-    .then(function(result) {
-      // Redirecionar para a página inicial
-      window.location.href = '/home/';
-    }).catch(function(error) {
-      console.log(error);
-    });
-  }
+// function signInWithGoogle() {
+//     var provider = new firebase.auth.GoogleAuthProvider();
+//     firebase.auth().signInWithPopup(provider)
+//     .then(function(result) {
+//       // Redirecionar para a página inicial
+//       window.location.href = 'cardapio';
+//     }).catch(function(error) {
+//       console.log(error);
+//     });
+//   }
 
   (function ($) {
     "use strict";
@@ -212,7 +212,7 @@ function signInWithGoogle() {
         }
 
         return check;
-    });
+//     });
 
 
     $('.validate-form .input100').each(function(){
@@ -246,5 +246,18 @@ function signInWithGoogle() {
         $(thisAlert).removeClass('alert-validate');
     }
     
+})
 })(jQuery);
 
+    // Seleciona todas as divs com a classe "message"
+    var messages = document.querySelectorAll('.message');
+    
+    // Define o tempo que cada mensagem ficará visível (em milissegundos)
+    var timeout = 5000;
+    
+    // Loop através de cada mensagem e configura um temporizador para ocultá-la após o tempo definido
+    messages.forEach(function(message) {
+        setTimeout(function() {
+            message.style.display = 'none';
+        }, timeout);
+    });

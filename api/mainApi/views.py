@@ -1,23 +1,16 @@
-from firebase_admin import credentials, auth as firebase_auth, firestore as db
+import os
+import requests
 
+from firebase_admin import auth
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+
 from .models import Usuario, TipoUsuario
-# from .forms import ClienteCreationForm, FuncionarioCreationForm, AdministradorCreationForm
+from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
-from django.core.cache import cache
-import logging
 
-logger = logging.getLogger(__name__)
-
-# logger.debug('Debug message')
-# logger.info('Info message')
-# logger.warning('Warning message')
-# logger.error('Error message')
-# logger.critical('Critical message')
 
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
@@ -79,18 +72,18 @@ def dashboard_funcionario(request):
 
 @csrf_protect
 def cadastrar_usuario_cli(request):
+    form = CadastroClienteForm()
     if request.method == 'POST':
         nome = request.POST['nome']
         email = request.POST['email']
         telefone = request.POST['telefone']
         tipo = TipoUsuario.CLI
         password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
-
+        password1 = request.POST['password1']
         # Verifica se as senhas são iguais
-        if password != confirm_password:
+        if password != password1:
             messages.error(request, 'As senhas não são iguais')
-            return redirect('cadastrar_usuario')
+            return redirect('cadastrar_usuario_cli')
 
         try:
             # Cria uma instância do usuário
@@ -102,31 +95,31 @@ def cadastrar_usuario_cli(request):
             # Define o UID do usuário na instância
             usuario.uid = usuario_uid
 
-            # Salva o usuário no Firestore
-            usuario.salvar()
-
             messages.success(request, 'Usuário cadastrado com sucesso')
+            print('Usuário cadastrado com sucesso')
             return redirect('login')
         except Exception as e:
             messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
-            return redirect('cadastrar_usuario')
+            print(f'Ocorreu um erro ao cadastrar o usuário: {e}')
+            return redirect('cadastrar_usuario_cli')
     else:
-        return render(request, 'cadastrar_usuario.html')
+        return render(request, 'accounts/cadastrar_usuario.html',{'form': form})
     
 @csrf_protect
 def cadastrar_usuario_func(request):
+    form = CadastroClienteForm()
     if request.method == 'POST':
         nome = request.POST['nome']
         email = request.POST['email']
         telefone = request.POST['telefone']
         tipo = TipoUsuario.FUN
         password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+        password1 = request.POST['password1']
 
         # Verifica se as senhas são iguais
-        if password != confirm_password:
+        if password != password1:
             messages.error(request, 'As senhas não são iguais')
-            return redirect('login')
+            return redirect('login',{'error_message': 's senhas não são iguais.'})
 
         try:
             # Cria uma instância do usuário
@@ -145,51 +138,78 @@ def cadastrar_usuario_func(request):
             return redirect('listar_usuarios')
         except Exception as e:
             messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
-            return redirect('login')
+            return redirect('cadastro_funcionario')
     else:
-        return render(request, 'cadastrar_func.html')
+        return render(request, 'accounts/cadastro_funcionario.html',{'form': form})
 
-@csrf_protect
 def login(request):
+    form = LoginForm()
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
-        tipo = None
-
-        try:
-            uid = request.POST.get('uid')
-            decoded_token = firebase_auth.verify_id_token(uid)
-            tipo = decoded_token.get('tipo')
-        except:
-            messages.error(request, 'Erro ao fazer login')
-            return render(request, 'login', {'error_message': 'Usuário ou senha inválidos.'})
-            # return redirect('login')
-
-        if tipo == 'funcionario':
-            funcionario = Usuario.carregar(uid)
-            if funcionario is None:
-                messages.error(request, 'Funcionário não encontrado')
-                return render(request, 'login', {'error_message': 'Usuário ou senha inválidos.'})
-                # return redirect('login')
-            request.session['user'] = funcionario.to_dict()
-            return redirect('pagina-do-funcionario')
-        elif tipo == 'cliente':
-            cliente = Usuario.carregar(uid)
-            if cliente is None:
-                messages.error(request, 'Cliente não encontrado')
+        api_key = os.environ.get('GOOGLE_API_KEY')# Coloque aqui sua chave de API do Firebase
+        
+        # Criação do payload do body do request
+        payload = {
+            'email': email,
+            'password': password,
+            'returnSecureToken': True
+        }
+        # Faz uma requisição POST para o endpoint do Firebase com os dados do usuário
+        response = requests.post(f'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api_key}', json=payload)
+        # Verifica se a requisição foi bem-sucedida
+        if response.ok:
+            # Pega o token de ID do Firebase e o token de atualização associado à conta
+            uid = response.json()['localId']
+            refresh_token = response.json()['refreshToken']
+            # Faz a validação do token de ID do Firebase
+            try:
+                usuario = Usuario.buscar(uid)
+                tipo_user = usuario['tipo']
+            except ValueError as e:
+                messages.error(request, 'Erro ao fazer login')
+                print(f'Ocorreu um erro ao realizar login o usuário: {e}')
                 return redirect('login')
-            request.session['user'] = cliente.to_dict()
-            return redirect('pagina-do-cliente')
-        elif tipo == 'admin':
-            admin = Usuario.carregar(uid)
-            if admin is None:
-                messages.error(request, 'Admin não encontrado')
+
+            # Redireciona para a página correspondente ao tipo de usuário
+            if tipo_user == 'funcionario':
+                # Coloque aqui o código para redirecionar para a página do funcionário
+                print('funcionario logado')
+                return render(request, 'pagina-do-funci.html')
+            elif tipo_user == 'cliente':
+                # Coloque aqui o código para redirecionar para a página do cliente
+                print('logado cliente')
+                return redirect('cardapio')
+            elif tipo_user == 'administrador':
+                 # renderiza a página que só pode ser acessada pelo administrador
+                return render(request, 'pagina_admin.html')
+            else:
+                print('tipo de conta invalida')
+                messages.error(request, 'Tipo de conta inválido')
                 return redirect('login')
-            request.session['user'] = admin.to_dict()
-            request.session['user'] = {'email': email, 'tipo': '0'}
-            return redirect('pagina-do-admin')
         else:
-            messages.error(request, 'Tipo de conta inválido')
+            messages.error(request, 'Usuário ou senha inválidos.')
             return redirect('login')
 
-    return render(request, 'accounts/login.html')
+    return render(request, 'accounts/login.html', {'form': form})
+
+def reset(request):
+    form = LoginForm()
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            auth.generate_password_reset_link(email)
+            print('Link de redefinição de senha enviado com sucesso')
+            messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')
+            return redirect('login')
+        except auth.InvalidArgumentError: # type: ignore
+            messages.error(request, 'E-mail inválido.')
+        except auth.UserNotFoundError:
+            messages.error(request, 'Usuário não encontrado.')
+        except auth.EmailAlreadyExistsError:
+            messages.error(request, 'E-mail já cadastrado.')
+        except Exception as e:
+            messages.error(request, 'Ocorreu um erro ao enviar o link de redefinição de senha.')
+            print(f'Ocorreu um erro ao enviar o link de redefinição de senha: {e}')
+    
+    return render(request, 'accounts/reset.html', {'form': form})

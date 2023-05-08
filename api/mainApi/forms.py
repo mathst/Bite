@@ -1,33 +1,66 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from .models import Usuario
 
+class LoginForm(forms.Form):
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Email',
+            'data-validate': 'Email é necessario: ex@abc.xyz'
+        })
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Senha',
+            'data-validate': 'Senha é necessaria'
+        })
+    )
+    
+class CadastroClienteForm(forms.Form):
+    nome = forms.CharField(
+        label='nome',
+        widget=forms.TextInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Nome',
+            'data-validate': 'Nome é necessaria'
+        })
+    )
+    email = forms.EmailField(
+        widget=forms.TextInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Email',
+            'data-validate': 'Email é necessário: ex@abc.xyz'
+        })
+    )
+    password = forms.CharField(
+        label='Senha',
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Senha',
+            'data-validate': 'Senha é necessária'
+        })
+    )
+    password1 = forms.CharField(
+        label='Confirmar senha',
+        widget=forms.PasswordInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Confirme sua senha'
+        })
+    )
+    telefone = forms.CharField(
+        label='Telefone',
+        max_length=20,
+        widget=forms.TextInput(attrs={
+            'class': 'input100',
+            'placeholder': 'Telefone'
+        })
+    )
 
-class ClienteCreationForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, required=True, help_text='*')
-    name = forms.CharField(max_length=30, required=True, help_text='*')
-    telefone = forms.CharField(max_length=10, required=True)
-    class Meta:
-        model = Usuario
-        fields = ('email', 'password1', 'password2', 'name', 'telefone')
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
 
-class FuncionarioCreationForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')
-    name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    nivel_acesso = forms.CharField(max_length=10)
-    cargo = forms.CharField(max_length=50)
-
-    class Meta:
-        model = Usuario
-        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'cargo')
-
-
-class AdministradorCreationForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, required=True, help_text='Required. Inform a valid email address.')
-    name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    nivel_acesso = forms.CharField(max_length=10)
-    historico_login = forms.CharField(widget=forms.Textarea)
-
-    class Meta:
-        model = Usuario
-        fields = ('email', 'password1', 'password2', 'name', 'nivel_acesso', 'historico_login')
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError("As senhas não são iguais.")
+        return cleaned_data

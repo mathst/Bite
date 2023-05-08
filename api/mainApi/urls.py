@@ -9,11 +9,10 @@ urlpatterns = [
     path('financeiro/', views.finaceiro, name='financeiro'),
     path('cardapio/', views.cardapio, name='cardapio'),
     path('', views.login, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
+    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),
     # path('google-authenticate/', views.authenticate_with_google, name='google_authenticate'),
     path('auth/', include('social_django.urls', namespace='social')),
-    # path('reset/', views.reset),
-    # path('', views.login, name='login'),
+    path('reset/', views.reset,name='reset'),
     # path('logout/', views.logout, name='logout'),
 
 ]

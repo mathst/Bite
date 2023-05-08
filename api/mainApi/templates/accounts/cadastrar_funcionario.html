@@ -1,0 +1,68 @@
+{% extends 'bases/base2.html' %}
+{% load static %}
+{% block content %}
+      <div class="login100-pic js-tilt" data-tilt>
+        <img src="{% static 'images/img-01.png' %}" alt="IMG">
+      </div>
+      <form class="login100-form validate-form" method="POST">
+		{% csrf_token %}
+        <span class="login100-form-title">
+          Cadastro
+        </span>
+        
+        {% if messages %}
+            {% for m in messages %}
+                <div class="alert alert-warning" role="alert">
+                  {{ m }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+		<div class="wrap-input100 validate-input" data-validate="Nome é necessaria">
+			{{ form.nome }}
+			<span class="focus-input100"></span>
+			<span class="symbol-input100">
+				<i class="fa fa-user" aria-hidden="true"></i>
+			</span>
+		</div>
+        <div class="wrap-input100 validate-input" data-validate = "Email é necessario: ex@abc.xyz">
+          {{ form.email }}
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </span>
+        </div>
+      
+        <div class="wrap-input100 validate-input" data-validate = "Senha é necessaria">
+          {{ form.password }}
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+      
+        <div class="wrap-input100 validate-input" data-validate = "Confirmação de senha é necessaria">
+          {{ form.password1 }}
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+          </span>
+        </div>
+      
+        <div class="wrap-input100 validate-input" data-validate = "Telefone é necessario">
+          {{ form.telefone }}
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" type="submit">
+            Cadastrar
+          </button>
+        </div>
+          <div class="text-center p-t-12">
+        </div>
+      </form>
+{% endblock %}
