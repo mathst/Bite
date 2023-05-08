@@ -270,6 +270,31 @@
         "documentation": {}
     },
     {
+        "label": "google.auth",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "google.auth",
+        "description": "google.auth",
+        "detail": "google.auth",
+        "documentation": {}
+    },
+    {
+        "label": "id_token",
+        "importPath": "google.oauth2",
+        "description": "google.oauth2",
+        "isExtraImport": true,
+        "detail": "google.oauth2",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "google.auth.transport.requests",
+        "description": "google.auth.transport.requests",
+        "isExtraImport": true,
+        "detail": "google.auth.transport.requests",
+        "documentation": {}
+    },
+    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -631,7 +656,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"",
+        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -640,7 +665,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {",
+        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -649,7 +674,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,",
+        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -658,7 +683,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,",
+        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -667,7 +692,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {",
+        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -676,7 +701,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',",
+        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -685,7 +710,34 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',",
+        "peekOfCode": "GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_OAUTH2_CLIENT_ID",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_OAUTH2_CLIENT_SECRET",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_AUTH_REDIRECT_URI",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\nLOGGING = {\n    'version': 1,\n    'disable_existing_loggers': False,\n    'handlers': {\n        'file': {\n            'level': 'DEBUG',\n            'class': 'logging.handlers.RotatingFileHandler',\n            'filename': 'logs/debug.log',",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -865,7 +917,7 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    # path('google-authenticate/', views.authenticate_with_google, name='google_authenticate'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    path('reset/', views.reset,name='reset'),",
+        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    path('reset/', views.reset,name='reset'),",
         "detail": "api.mainApi.urls",
         "documentation": {}
     },
@@ -974,6 +1026,15 @@
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
         "peekOfCode": "def reset(request):\n    form = LoginForm()\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        try:\n            auth.generate_password_reset_link(email)\n            print('Link de redefinição de senha enviado com sucesso')\n            messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')\n            return redirect('login')\n        except auth.InvalidArgumentError: # type: ignore",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_google",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def login_google(request):\n    if request.method == 'POST':\n        # Recupera o ID do token enviado pelo cliente\n        id_token = request.POST.get('idtoken')\n        try:\n            # Verifica se o token é válido\n            google_request = Request()\n            credentials, _ = google.auth.default(scopes=['openid', 'email', 'profile'])\n            id_info = id_token.verify_oauth2_token(id_token, google_request, credentials.client_id) # type: ignore\n            uid = id_info['sub']",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

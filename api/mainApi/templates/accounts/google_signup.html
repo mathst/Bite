@@ -1,0 +1,15 @@
+{% extends 'bases/base2.html' %}
+{% load static %}
+{% block content %}
+<div>
+  <h1>Login com Google</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_token">ID Token:</label>
+      <input type="text" name="id_token" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+  </form>
+</div>  
+{% endblock %}

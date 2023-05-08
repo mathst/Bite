@@ -1,28 +1,39 @@
-# Use the official Python image as the base image
+# Use Python 3.11 image as base
 FROM python:3.11
 
-# Set the working directory in the container
-WORKDIR /Bite
+# Set working directory
+WORKDIR /app
 
-# Copy the application files into the working directory
-COPY . /Bite
+# Copy application files to container
+COPY . .
 
-# Install the application dependencies
+# Install required packages
 RUN pip install -r requirements.txt
 
-# Define the entry point for the container
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Set environment variables
+ENV FIREBASE_ACCOUNT_TYPE=service_account
+ENV FIREBASE_PROJECT_ID=bite-a-pp
+ENV FIREBASE_PRIVATE_KEY_ID=63c005a8e7034ec7b3a42f2f000d679b2b2e9413
+ENV FIREBASE_PRIVATE_KEY = -----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCl3BhnAKu7TbP5\nFMNkkqE8w2UnpDS3YsA/cBeRbRoHAew8fLGPheJsMBY5pOAqgsZAsMON59IL0+Wb\nbWNOUjmEmpHCnmzB60GqUvbOKxfKNPVBmiu32pUXtU+cFnaoYuzmuInWMDhCGqtx\ndmF3/JPHjh6tmjOJpQXDq3vdWRflP5PbDgzqsaNI4UcV5Bm7F2Tdc4FFwVw48q3n\nyCVPRtlW0u7k/Z7CN6+eCvYHPlWD5igNVuBRBYc0uCZam6f5THwkECoPbCYZVBWB\nXTunU0gQ8Tq4qmWUiMXU+OLSNilyUDTk0JYv5et/oiSOlRu3oUKxcHHUriMyUJW1\n0Ot9P+0JAgMBAAECggEAEFx2LEf+yNDlE2myziOgQ+sW+gp62EnFouRi8MmxRvZv\nuDZJOjoX8DnsoVZUNiFVHvnI6qFPATNvi43mfUoDakMopIkF+7miLkP1nHgYBk6D\n0Is9q4rkiPSN5Dz7isgKbEaRM0eprwysM5q8ye4ookdw24lx8s6sc0VB6F+C6c5b\nLNo3J5ddhqrSoR+wCGIv2IXAh6bXFinngpRi9FvOWYeQSZJUPK8f2JD96rIgjmfa\nhyqtid0nEwmpuwGXpgV5fNUhwd8zCd2AYp4PJovd+58M1HMi1E+X5i6pjc240MBa\nULMRyBAjHetDZU17ZQH8njeIaGFMZKf9AXC1rkPkkQKBgQDoN6xG2m12aNvny5GZ\nr3iivF/1+SdIoBMgDO3d93pKDSTTO+PDf6u5L70eRn936EvI5iCPb1iUrlpgYIT3\noi/kdJJPNWWf+/VOjkaOe1cLSajCKwEYO4G2wvgmfJOESEtQecz+czGP3dXbb6AG\nNxIYR+HOOIA9Spg2P5RUQQpNeQKBgQC22KQ0e2O+3m7hf2G5fsTlxQF3Hh5FoT0j\ndsf7l04NweUeJRv7iszDuOY/oeWCRHR7wKD4unw1eT6sQYB3JT9KWiWe5jQqMaSj\nksq8S1d8fPSIoWH+aj29vR2q/yLYi1xUChnc3HNy3oWxkIfuuwlF2yKFJHRkfmhQ\nHseTug0IEQKBgQCysFRy2RWuLhY5kZ3igvHzV70Hy8d8zSCqYwiO6yZA4Uha+xTS\nlOWRRLjkGR9xJ2FZoCuh8+5XyqpkyyDGZRkxVLpZFR+0Me+bmUOV1Dcwymd/shPP\nj8rK1dCZ3Paureq2bGNf0UhsCinMB2M+JRZZdMa/Jx8XCtWBuP7srne9EQKBgGwf\nW6p1NJyPp/3Md5tbLU+52Y34z2nZWO/5s3RBGrTj7XqP8yYiA8fRNMZ4E+GeXUs4\ns3ehvwVX9wmhijfqXKy49foqoro4tOTNTvldjBRfR7Lry6jIZk4m4L5XNOHcNvKz\nLmv+KH7Ku0Au+VLgYzFdzeHxlqo+XazTJq1inYYhAoGBAIUDkkdsmvp9jbFUByS4\nK6r6XrWY3hKMZNabCSkBd43up7UyOqPL4bObvRo3/ucEkG9qUbP8WTtXbCw+WOEI\nwUtvs8cYxISJ9qULkRiq5Kz5VkIn2FKtJTn6yGQi2+gjdBPmjjC9k6LRIWukexUz\n3KsiCgKbf4mSqBwzRNOh/j0U\n-----END PRIVATE KEY-----\n
+ENV FIREBASE_CLIENT_EMAIL=firebase-adminsdk-zhzha@bite-a-pp.iam.gserviceaccount.com
+ENV FIREBASE_CLIENT_ID=102618612532916274900
+ENV FIREBASE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+ENV FIREBASE_TOKEN_URI=https://oauth2.googleapis.com/token
+ENV FIREBASE_AUTH_PROVIDER_X509_CERT_URL=https://www.googleapis.com/oauth2/v1/certs
+ENV FIREBASE_CLIENT_X509_CERT_URL=https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zhzha%40bite-a-pp.iam.gserviceaccount.com
+ENV GOOGLE_OAUTH2_CLIENT_ID=871377606802-nu89pen59o7ka61ac0hv73cthrffs369.apps.googleusercontent.com
+ENV GOOGLE_OAUTH2_CLIENT_SECRET=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
+ENV GOOGLE_API_KEY=AIzaSyA4CnkanVSlOq9YOdTkPUZV4NEQkVYh87g
+ENV GOOGLE_AUTH_DOMAIN=bite-a-pp.firebaseapp.com
+ENV GOOGLE_DATABASE_URL=https://bite-a-pp-default-rtdb.firebaseio.com
+ENV GOOGLE_PROJECT_ID=bite-a-pp
+ENV GOOGLE_STORAGE_BUCKET=bite-a-pp.appspot.com
+ENV GOOGLE_MESSAGING_SENDER_ID=480172695212
+ENV GOOGLE_APP_ID=1:480172695212:web:efde2d926d5135ab540909
+ENV GOOGLE_MEASUREMENT_ID=G-HJ361CB6B1
 
-FROM python:3.11
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /Bite
-WORKDIR /Bite
-# Installing OS Dependencies
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-libsqlite3-dev
-RUN pip install -U pip setuptools
-COPY requirements.txt /Bite/
-RUN pip install -r /Bite/requirements.txt
-ADD . /Bite/
-# Django service
+# Expose port
 EXPOSE 8000
+
+# Start the Django development server
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

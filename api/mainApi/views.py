@@ -11,6 +11,9 @@ from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 
+import google.auth
+from google.oauth2 import id_token
+from google.auth.transport.requests import Request
 
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
@@ -156,7 +159,7 @@ def login(request):
             'returnSecureToken': True
         }
         # Faz uma requisição POST para o endpoint do Firebase com os dados do usuário
-        response = requests.post(f'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api_key}', json=payload)
+        response = requests.post(f'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api_key}', json=payload) # type: ignore
         # Verifica se a requisição foi bem-sucedida
         if response.ok:
             # Pega o token de ID do Firebase e o token de atualização associado à conta
@@ -213,3 +216,34 @@ def reset(request):
             print(f'Ocorreu um erro ao enviar o link de redefinição de senha: {e}')
     
     return render(request, 'accounts/reset.html', {'form': form})
+
+def login_google(request):
+    if request.method == 'POST':
+        # Recupera o ID do token enviado pelo cliente
+        id_token = request.POST.get('idtoken')
+
+        try:
+            # Verifica se o token é válido
+            google_request = Request()
+            credentials, _ = google.auth.default(scopes=['openid', 'email', 'profile'])
+            id_info = id_token.verify_oauth2_token(id_token, google_request, credentials.client_id) # type: ignore
+            uid = id_info['sub']
+
+            # Verifica se o usuário existe no Firestore
+            usuario = Usuario.buscar(uid)
+            if usuario is None:
+                messages.error(request, 'Usuário não encontrado')
+                return redirect('login')
+
+            # Verifica se o tipo de usuário é válido e redireciona para a página apropriada
+            if usuario['tipo'] == 'cliente':
+                return redirect('caradapio')
+            else:
+                messages.error(request, 'Tipo de usuário inválido')
+                return redirect('login')
+        except ValueError as e:
+            messages.error(request, 'Erro ao fazer login com o Google')
+            print(f'Ocorreu um erro ao realizar login com o Google: {e}')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
