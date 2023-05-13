@@ -31,7 +31,7 @@ ENV DJANGO_SECRET_KEY = $DJANGO_SECRET_KEY
 
 # Copy application files to container
 COPY . ./
-COPY /bite/api/api .env
+COPY .env /api/api/
 COPY /firebase/credentials.json .
 COPY /firebase/firebase_init.py .
 COPY requirements.txt /api
