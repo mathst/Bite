@@ -131,24 +131,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "uuid",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "uuid",
-        "description": "uuid",
-        "detail": "uuid",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -845,7 +827,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens = itens\n        self.valor_total = valor_total\n        self.data = datetime.datetime.now()\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
+        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens, valor_total, observacao):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens = itens\n        self.valor_total = valor_total\n        self.observacao = observacao\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -854,16 +836,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens:\n            item_carrinho = next((item for item in self.itens if item['nome'] == item_pedido.nome), None)\n            if item_carrinho:\n                item_carrinho['quantidade'] += item_pedido.quantidade",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "FilaDePedidos",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class FilaDePedidos:\n    def __init__(self):\n        self.fila = []\n    def adicionar_pedido(self, pedido):\n        self.fila.append(pedido)\n        print(f\"Pedido adicionado à fila: {pedido}\")\n    def remover_pedido(self, pedido_id):\n        pedido_removido = None\n        for i, pedido in enumerate(self.fila):\n            if pedido.id_pedido == pedido_id:",
+        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens.all():\n            # Verificar se o item já está no carrinho\n            item_carrinho = next((item for item in self.itens if item['nome'] == item_pedido.nome), None)\n            if item_carrinho:",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -877,29 +850,11 @@
         "documentation": {}
     },
     {
-        "label": "Cardapio",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class Cardapio:\n    def __init__(self):\n        pass\n    def list_from_db(self):\n        # Retorna uma lista com todos os itens do cardápio presentes no banco de dados\n        cardapio = []\n        for item_doc in db.collection(\"itens\").stream():\n            item_dict = item_doc.to_dict()\n            if item_dict.get(\"itens_combo\"):\n                # Se o item for um combo, cria um objeto Combo ao invés de Item",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "Combo",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class Combo(Item):\n    def __init__(self, nome, valor_unitario, itens_combo):\n        super().__init__(nome, 1, valor_unitario, \"combo\", [])\n        self.itens_combo = itens_combo\n    def to_dict(self):\n        item_dict = super().to_dict()\n        item_dict[\"itens_combo\"] = self.itens_combo\n        return item_dict\n    def add_to_db(self):\n        db.collection(\"itens\").document(self.nome).set(self.to_dict())",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
         "label": "Estoque",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Estoque:\n    def __init__(self, id: str, data_ultima_reposicao: str, quantidade_ultima_reposicao: int, valor_ultima_reposicao: float, quantidade_total: int, id_item: str):\n        self.id = id\n        self.data_ultima_reposicao = data_ultima_reposicao\n        self.quantidade_ultima_reposicao = quantidade_ultima_reposicao\n        self.valor_ultima_reposicao = valor_ultima_reposicao\n        self.quantidade_total = quantidade_total\n        self.id_item = id_item\n        self.valor_unitario = valor_ultima_reposicao / quantidade_ultima_reposicao\n    def adicionar_reposicao(self, data_reposicao: str,data_retirada:str, quantidade_reposicao: int, valor_reposicao: float):",
+        "peekOfCode": "class Estoque:\n    def __init__(self, id: str, data_ultima_reposicao: str, quantidade_ultima_reposicao: int, valor_ultima_reposicao: float, quantidade_total: int, id_item: str):\n        self.id = id\n        self.data_ultima_reposicao = data_ultima_reposicao\n        self.quantidade_ultima_reposicao = quantidade_ultima_reposicao\n        self.valor_ultima_reposicao = valor_ultima_reposicao\n        self.quantidade_total = quantidade_total\n        self.id_item = id_item\nclass HistoricoPedido:\n    def __init__(self, id: str, data_registro: str, valor_dia: float, valor_semana: float, valor_mes: float):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
