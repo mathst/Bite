@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Usuario, TipoUsuario
+from .models import Usuario, TipoUsuario, Cardapio
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
@@ -17,8 +17,13 @@ from google.auth.transport.requests import Request
 
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
-    # Lógica para listar produtos em estoque
-    return render(request, 'cardapio.html')
+    itens_cardapio, combos_cardapio = Cardapio.listar_itens_cardapio()
+    context = {
+        'itens_cardapio': itens_cardapio,
+        'combos_cardapio': combos_cardapio
+    }
+    return render(request, 'cardapio.html', context)
+
 # @login_required
 def estoque(request):
     # Lógica para listar produtos em estoque
@@ -32,46 +37,11 @@ def pedidos(request):
 def finaceiro(request):
     return render(request, "relFinaceiro.html")
 # @login_required
-def comanda(request):
-    return render(request, "comanda.html") 
+def carrinho(request):
+    return render(request, "carrinho.html") 
 
-def index(request):
-    return render(request, "index.html") 
-
-# Autentica o usuário usando o Google
-# def authenticate_with_google(request):
-#     id_token = request.POST.get('id_token')
-
-#     decoded_token = firebase_auth.verify_id_token(id_token)
-
-#     if decoded_token is None:
-#         return JsonResponse({'error': 'Invalid ID token'}, status=400)
-
-#     email = decoded_token['email']
-#     firebase_user = firebase_auth.get_user_by_email(email)
-
-#     try:
-#         user = UsuarioCustomizado.objects.get(email=email)
-#     except UsuarioCustomizado.DoesNotExist:
-#         user = UsuarioCustomizado(email=email, username=email)
-#         user.set_unusable_password()
-#         user.save()
-
-#     if user is not None:
-#         login(request, user)
-#         return JsonResponse({'redirect_url': '/cardapio/'})
-#     else:
-#         return JsonResponse({'error': 'Failed to authenticate user'}, status=400)
-
-
-@login_required
-@cache_page(60 * 15) # cache for 15 minutes
-def dashboard_admin(request):
-    return render(request, 'dashboard_admin.html')
-
-@login_required
-def dashboard_funcionario(request):
-    return render(request, 'dashboard_funcionario.html')
+def logout(request):
+    return render(request, "accounts/logout.html") 
 
 @csrf_protect
 def cadastrar_usuario_cli(request):
@@ -169,23 +139,23 @@ def login(request):
             try:
                 usuario = Usuario.buscar(uid)
                 tipo_user = usuario['tipo']
+                request.session['tipo_user'] = tipo_user
             except ValueError as e:
                 messages.error(request, 'Erro ao fazer login')
                 print(f'Ocorreu um erro ao realizar login o usuário: {e}')
                 return redirect('login')
-
             # Redireciona para a página correspondente ao tipo de usuário
-            if tipo_user == 'funcionario':
-                # Coloque aqui o código para redirecionar para a página do funcionário
-                print('funcionario logado')
-                return render(request, 'pagina-do-funci.html')
-            elif tipo_user == 'cliente':
+            if tipo_user == 'cliente':
                 # Coloque aqui o código para redirecionar para a página do cliente
                 print('logado cliente')
                 return redirect('cardapio')
+            elif tipo_user == 'funcionario':
+                # Coloque aqui o código para redirecionar para a página do funcionário
+                print('funcionario logado')
+                return render(request, 'pedidos.html')
             elif tipo_user == 'administrador':
                  # renderiza a página que só pode ser acessada pelo administrador
-                return render(request, 'pagina_admin.html')
+                return render(request, 'ficanceiro.html')
             else:
                 print('tipo de conta invalida')
                 messages.error(request, 'Tipo de conta inválido')

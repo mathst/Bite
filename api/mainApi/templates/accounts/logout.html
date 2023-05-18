@@ -1,19 +1,19 @@
-{% extends 'base.html' %}
-
+{% extends 'bases/base2.html' %}
 {% block content %}
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="mb-0">Logout</h4>
-        </div>
-        <div class="card-body">
-          <p>Você saiu da sua conta com sucesso.</p>
-          <a href="{% url 'login' %}" class="btn btn-primary">Fazer login</a>
-        </div>
+      <p>
+        <h4>Você saiu da sua conta com sucesso.</h4>
+
+      </p>
+      <a>
+      <div class="container-login100-form-btn">
+        <button class="login100-form-btn" type="submit">
+          Login
+        </button>
       </div>
-    </div>
+    </a>
   </div>
 </div>
 {% endblock %}

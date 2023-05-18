@@ -1,377 +1,144 @@
-import firebase_admin
-from firebase_admin import auth, credentials
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+# Criar um novo carrinho para o cliente com ID 123
+carrinho = Carrinho(123)
 
-cred = credentials.Certificate("credentials.json")
-firebase_admin.initialize_app(cred)
+# Criar um novo pedido com dois itens
+pedido = Pedido([
+    ItemPedido('Camisa', 2, 29.99),
+    ItemPedido('Calça', 1, 59.99)
+])
 
-# def home(request):
-#     login_form = AuthenticationForm()
-#     return render(request, 'home.html', {'login_form': login_form})
+# Adicionar o pedido ao carrinho
+carrinho.adicionar_pedido(pedido)
 
-# class SignupView(CreateView):
-#     form_class = UserCreationForm
-#     success_url = reverse_lazy('login')
-#     template_name = 'signup.html'
+# Mostrar o conteúdo atual do carrinho
+carrinho.mostrar_carrinho()
 
-# def login_view(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         form = AuthenticationForm()
-#     return render(request, 'login.html', {'form': form})
+# Remover o pedido do carrinho
+carrinho.remover_pedido_carrinho(pedido)
 
-# def signup_view(request):
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'signup.html', {'form': form})
+# Mostrar o conteúdo atual do carrinho novamente
+carrinho.mostrar_carrinho()
 
-# def logout_view(request):
-#     logout(request)
-#     return redirect('login')
+# Gerar um número de pedido único
+pedido_id = carrinho.gerar_numero_pedido()
 
-# def reset_password(request):
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         try:
-#             auth.generate_password_reset_link(email)
-#             message = 'Um link de redefinição de senha foi enviado para o seu email.'
-#             return render(request, 'reset_password.html', {'message': message})
-#         except:
-#             error_message = 'Não foi possível enviar o link de redefinição de senha. Por favor, verifique seu email e tente novamente.'
-#             return render(request, 'reset_password.html', {'error_message': error_message})
-#     else:
-#         return render(request, 'reset_password.html')
+# Alterar o status do pedido para "pronto"
+carrinho.alterar_status_pedido(pedido_id, EstadoPedido.PRONTO.value)
 
 
------models-----
+# Criar um objeto Cardapio
+cardapio = Cardapio("id_cardapio", "Nome do Cardapio", "Descrição do Cardapio")
 
-# from django.db import models
-# from django.utils import timezone
-# from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, AbstractUser
-# from django.contrib.auth.models import BaseUserManager
+# Adicionar um item
+item1 = ItemCardapio("id_item1", "Item 1", "Descrição do Item 1", 10.0)
+cardapio.add_item(item1)
 
-# from firebase_admin import auth
-# from firebase_admin import exceptions as firebase_exceptions
+# Adicionar um combo
+combo1 = ComboCardapio("id_combo1", "Combo 1", "Descrição do Combo 1", [item1])
+cardapio.add_combo(combo1)
 
-# class CustomUserManager(BaseUserManager):
-#     def create_user(self, email, password=None, **extra_fields):
-#         """
-#         Cria e salva um usuário com o email e a senha fornecidos.
-#         """
-#         if not email:
-#             raise ValueError('O email deve ser definido')
-#         email = self.normalize_email(email)
-#         user = self.model(email=email, **extra_fields)
-#         user.set_password(password)
-#         user.save()
-#         return user
+# Listar itens
+itens = cardapio.list_items()
+for item in itens:
+    print(item.nome)
 
-#     def create_superuser(self, email, password=None, **extra_fields):
-#         """
-#         Cria e salva um superusuário com o email e a senha fornecidos.
-#         """
-#         extra_fields.setdefault('is_staff', True)
-#         extra_fields.setdefault('is_superuser', True)
+# Listar combos
+combos = cardapio.list_combos()
+for combo in combos:
+    print(combo.nome)
 
-#         if extra_fields.get('is_staff') is not True:
-#             raise ValueError('Superuser deve ter is_staff=True.')
-#         if extra_fields.get('is_superuser') is not True:
-#             raise ValueError('Superuser deve ter is_superuser=True.')
+# Editar um item
+novo_item1 = ItemCardapio("id_item1", "Novo Item 1", "Nova descrição do Item 1", 15.0)
+cardapio.edit_item("id_item1", novo_item1)
 
-#         return self.create_user(email, password, **extra_fields)
+# Editar um combo
+novo_combo1 = ComboCardapio("id_combo1", "Novo Combo 1", "Nova descrição do Combo 1", [novo_item1])
+cardapio.edit_combo("id_combo1", novo_combo1)
 
-# class CustomUser(AbstractBaseUser, PermissionsMixin):
-#     email = models.EmailField('e-mail', unique=True)
-#     name = models.CharField('nome', max_length=100, blank=True)
-#     age = models.IntegerField('idade', blank=True, null=True)
-#     is_active = models.BooleanField('ativo', default=True)
-#     is_staff = models.BooleanField('funcionário', default=False)
-#     date_joined = models.DateTimeField('data de cadastro', default=timezone.now)
+# Excluir um item
+cardapio.delete_item("id_item1")
 
-#     USERNAME_FIELD = 'email'
-#     REQUIRED_FIELDS = []
+# Excluir um combo
+cardapio.delete_combo("id_combo1")
 
-#     objects = CustomUserManager()
+# Adicionar o cardápio ao banco de dados
+cardapio.add_to_db()
 
-#     def __str__(self):
-#         return self.email
+# Atualizar o cardápio no banco de dados
+cardapio.update_in_db()
 
-#     def get_full_name(self):
-#         return self.name
-
-#     def get_short_name(self):
-#         return self.name
-
-#     def generate_email_verification_link(self):
-#         try:
-#             link = auth.generate_email_verification_link(self.email)
-#         except firebase_exceptions.FirebaseError as e:
-#             raise ValueError(str(e))
-#         return link
-
-#     def generate_password_reset_link(self):
-#         try:
-#             link = auth.generate_password_reset_link(self.email)
-#         except firebase_exceptions.FirebaseError as e:
-#             raise ValueError(str(e))
-#         return link
-
--------------------------view -------------------------
-# import firebase_admin
-# from firebase_admin import credentials, auth, initialize_app
-# from firebase_admin import auth
-# from google.oauth2 import id_token
-# from google.auth.transport import requests
-# from django.shortcuts import render, redirect
-# from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
-# from django.views.generic import View, FormView, TemplateView
-# from django.views.generic.edit import FormView
-# from django.urls import reverse_lazy
-# from .forms import CustomUserCreationForm
-# from django.contrib import messages
-# from firebase_admin import auth, exceptions as firebase_exceptions
-# import json
-# import os
-
-# # Inicializando o SDK do Firebase usando credenciais do arquivo JSON
-# with open('../credentials/credentials.json', 'r') as f:
-#     credentials = json.load(f)
-# cred = credentials.Certificate(credentials)
-# firebase_admin.initialize_app(cred)
-
-# class IndexView(View):
-#     def get(self, request):
-#         return render(request, 'index.html')
-
-# class LoginView(View):
-#     def get(self, request):
-#         return render(request, 'login.html')
-
-#     def post(self, request):
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-#         try:
-#             user = auth.get_user_by_email(email)
-#             if user is not None:
-#                 # Verifica se a senha fornecida pelo usuário é válida
-#                 user_token = auth.create_custom_token(user.uid)
-#                 user_info = auth.verify_id_token(id_token, check_revoked=True)
-#                 # Se a senha for válida, realiza o login
-#                 user = authenticate(request, email=email, password=password)
-#                 if user is not None:
-#                     login(request, user)
-#                     messages.success(request, 'You are now logged in.')
-#                     return redirect('dashboard')
-#             messages.error(request, 'Invalid email/password.')
-#             return redirect('login')
-#         except (auth.InvalidIdTokenError, auth.UserNotFoundError, auth.EmailNotFoundError) as e:
-#             messages.error(request, 'Invalid email/password.')
-#             return redirect('login')
-#         except firebase_exceptions.FirebaseError as e:
-#             messages.error(request, 'Something went wrong. Please try again later.')
-#         return redirect('login')
+# Excluir o cardápio do banco de dados
+cardapio.delete_from_db()
 
 
-# class GoogleLoginView(View):
-#     def get(self, request):
-#         return redirect(auth.generate_sign_in_with_email_link(request.build_absolute_uri(), auth.SignInWithEmailLinkRequest(email=request.user.email)))
+from unittest import TestCase
+from datetime import datetime
+from firebase_admin import firestore
+from models import Estoque, Item, Combo
 
+class EstoqueTestCase(TestCase):
+    def setUp(self):
+        self.db = firestore.client()
+        self.item_id = "item_teste"
+        self.item_data = {
+            "nome": "Item de Teste",
+            "quantidade_total": 100,
+            "valor_unitario": 10.0,
+            "data_ultima_reposicao": "2023-01-01",
+            "quantidade_ultima_reposicao": 50,
+            "quantidade_ultima_retirada": 20
+        }
 
-# class RegisterView(View):
-#     def get(self, request):
-#         form = CustomUserCreationForm()
-#         return render(request, 'register.html', {'form': form})
+    def tearDown(self):
+        # Remove o item de teste do estoque
+        self.db.collection("estoque").document(self.item_id).delete()
 
-#     def post(self, request):
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             email = form.cleaned_data.get('email')
-#             raw_password = form.cleaned_data.get('password1')
-#             try:
-#                 # Cria um novo usuário no Firebase
-#                 user = auth.create_user(email=email, password=raw_password)
-#                 login(request, user)
-#                 messages.success(request, 'Account created successfully.')
-#                 return redirect('dashboard')
-#             except firebase_exceptions.FirebaseError as e:
-#                 messages.error(request, 'Something went wrong. Please try again later.')
-#                 return redirect('register')
-#         else:
-#             for field in form:
-#                 for error in field.errors:
-#                     messages.error(request, f"{field.label}: {error}")
-#         return render(request, 'register.html', {'form': form})
+    def test_subtrair_item_do_estoque(self):
+        estoque = Estoque()
+        # Adiciona o item de teste ao estoque
+        self.db.collection("estoque").document(self.item_id).set(self.item_data)
 
+        # Realiza a subtração de 30 unidades do item de teste
+        estoque.subtrair_item_do_estoque(self.item_id, 30)
 
-# class DashboardView(View):
-#     def get(self, request):
-#         return render(request, 'dashboard.html')
+        # Verifica se a quantidade total foi atualizada corretamente
+        doc_ref = self.db.collection("estoque").document(self.item_id)
+        doc = doc_ref.get().to_dict()
+        self.assertEqual(doc["quantidade_total"], 70)
 
+    def test_calcular_valor_total(self):
+        estoque = Estoque()
+        # Adiciona o item de teste ao estoque
+        self.db.collection("estoque").document(self.item_id).set(self.item_data)
 
-# class PasswordResetView(FormView):
-#     form_class = PasswordResetForm
-#     template_name = 'password_reset.html'
-#     success_url = reverse_lazy('password_reset_done')
+        # Calcula o valor total do item no estoque
+        valor_total = estoque.calcular_valor_total(self.item_id)
 
-#     def get(self, request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             return redirect('home')
-#         return super().get(request, *args, **kwargs)
+        # Verifica se o valor total foi calculado corretamente
+        self.assertEqual(valor_total, 1000.0)
 
-#     def form_valid(self, form):
-#         email = form.cleaned_data.get('email')
-#         try:
-#             # Send password reset email using Firebase Authentication API
-#             auth.generate_password_reset_link(email)
-#         except firebase_exceptions.FirebaseError as e:
-#             messages.error(self.request, str(e))
-#             return redirect('password_reset')
-#         messages.success(self.request, 'Password reset email sent! Please check your inbox to reset your password.')
-#         return super().form_valid(form)
+    def test_calcular_valor_medio(self):
+        estoque = Estoque()
+        # Adiciona o item de teste ao estoque
+        self.db.collection("estoque").document(self.item_id).set(self.item_data)
 
-# class PasswordResetDoneView(TemplateView):
-#     template_name = 'password_reset_done.html'
+        # Calcula o valor médio do item no estoque
+        valor_medio = estoque.calcular_valor_medio(self.item_id)
 
-# class PasswordResetConfirmView(FormView):
-#     form_class = SetPasswordForm
-#     template_name = 'password_reset_confirm.html'
-#     success_url = reverse_lazy('password_reset_complete')
+        # Verifica se o valor médio foi calculado corretamente
+        self.assertEqual(valor_medio, 10.0)
 
-#     def get(self, request, *args, **kwargs):
-#         if request.user.is_authenticated:
-#             return redirect('home')
-#         return super().get(request, *args, **kwargs)
+    def test_atualizar_valor_unitario(self):
+        estoque = Estoque()
+        # Adiciona o item de teste ao estoque
+        self.db.collection("estoque").document(self.item_id).set(self.item_data)
 
-#     def form_valid(self, form):
-#         uidb64 = self.kwargs['uidb64']
-#         token = self.kwargs['token']
-#         try:
-#             # Verify the password reset token using Firebase Authentication API
-#             auth.verify_password_reset_link(token)
-#         except firebase_exceptions.FirebaseError as e:
-#             messages.error(self.request, str(e))
-#             return redirect('password_reset_confirm', uidb64=uidb64, token=token)
-#         return super().form_valid(form)
+        # Atualiza o valor unitário do item
+        novo_valor = 15.0
+        estoque.atualizar_valor_unitario(self.item_id, novo_valor)
 
-# class PasswordResetCompleteView(TemplateView):
-#     template_name = 'password_reset_complete.html'
----------------------base template-----------------------------------
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav mr-auto">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ user.username }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-
-        passsword exemple
-
-        import bcrypt
-
-def save_password(email, password):
-    try:
-        # Generate a salt
-        salt = bcrypt.gensalt()
-
-        # Hash the password
-        hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
-
-        # Save the hashed password to Firestore
-        db.collection("users").document(email).set({
-            "hashed_password": hashed_password,
-            "salt": salt
-        })
-
-        print("Password saved successfully!")
-    except Exception as e:
-        print("An error occurred:", e)
-
-class Firebase:
-#     _instance = None
-
-#     def __new__(cls):
-#         if cls._instance is None:
-#             cls._instance = super().__new__(cls)
-#             # inicializar o Firebase aqui
-#         return cls._instance
-
-#     def verify_id_token(self, id_token):
-#         try:
-#             decoded_token = firebase_auth.verify_id_token(id_token)
-#         except firebase_auth.InvalidIdTokenError:
-#             logger.error({'error': 'Invalid ID token'})
-#             return None
-
-#         return decoded_token
-
-#     def user_exists(self, email):
-#         try:
-#             firebase_auth.get_user_by_email(email)
-#         except firebase_auth.UserNotFoundError:
-#             return False
-
-#         return True
-
-#     def create_user(self, email, password):
-#         try:
-#             user = firebase_auth.create_user(email=email, password=password)
-#         except:
-#             return None
-
-#         return user
-
-#     def authenticate_user(self, email, password):
-#         try:
-#             user = firebase_auth.get_user_by_email(email)
-#         except firebase_auth.UserNotFoundError:
-#             return None
-
-#         try:
-#             user = firebase_auth.get_user_by_email(email)
-#         except:
-#             return None
-
-#         return user
+        # Verifica se o valor unitário foi atualizado corretamente
+        doc_ref = self.db.collection("estoque").document(self.item_id)
+        doc = doc_ref.get().to_dict()
+        self.assertEqual(doc["valor_unitario"], novo_valor)
+        self.assertEqual(estoque.valor_unitario, novo_valor)

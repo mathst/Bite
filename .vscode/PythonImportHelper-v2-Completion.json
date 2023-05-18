@@ -99,6 +99,14 @@
         "documentation": {}
     },
     {
+        "label": "Cardapio",
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "isExtraImport": true,
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -467,7 +475,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django.contrib.sites\",\n    'social_django',\n    \"allauth\",",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"django.contrib.sites\",\n    \"social_django\",\n    \"allauth\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -521,7 +529,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'social_core.backends.open_id.OpenIdAuth',\n    'social_core.backends.google.GoogleOpenId',\n    'social_core.backends.google.GoogleOAuth2',\n    'social_core.backends.google.GoogleOAuth',\n    \"django.contrib.auth.backends.ModelBackend\",\n]\nSITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    'social_core.backends.open_id.OpenIdAuth',\n    'social_core.backends.google.GoogleOpenId',\n    'social_core.backends.google.GoogleOAuth2',\n    'social_core.backends.google.GoogleOAuth',\n    \"django.contrib.auth.backends.ModelBackend\",\n]\nSITE_ID = 1\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSOCIALACCOUNT_PROVIDERS = {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -530,7 +538,16 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SITE_ID = 1\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:\n        \"APP\": {\n            \"client_id\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\"),\n            \"secret\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\"),\n            \"key\": \"\",",
+        "peekOfCode": "SITE_ID = 1\nSESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:\n        \"APP\": {\n            \"client_id\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\"),\n            \"secret\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\"),",
+        "detail": "api.api.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_ENGINE",
+        "kind": 5,
+        "importPath": "api.api.settings",
+        "description": "api.api.settings",
+        "peekOfCode": "SESSION_ENGINE = 'django.contrib.sessions.backends.db'\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        # For each OAuth based provider, either add a ``SocialApp``\n        # (``socialaccount`` app) containing the required client\n        # credentials, or list them here:\n        \"APP\": {\n            \"client_id\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\"),\n            \"secret\": os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\"),\n            \"key\": \"\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -778,6 +795,78 @@
         "documentation": {}
     },
     {
+        "label": "cardapio",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "cardapio = Cardapio(id_cardapio=\"1card1\", nome=\"Cardápio do Restaurante\", descricao=\"Nosso cardápio variado.\")\n# Adicionar alguns itens ao cardápio\nitem1 = {\n    \"id\": \"item1\",\n    \"nome\": \"Hambúrguer\",\n    \"descricao\": \"Delicioso hambúrguer caseiro\",\n    \"ingredientes\": [\"Pão\", \"Carne\", \"Queijo\", \"Alface\", \"Tomate\"],\n}\nitem2 = {\n    \"id\": \"item2\",",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "item1",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "item1 = {\n    \"id\": \"item1\",\n    \"nome\": \"Hambúrguer\",\n    \"descricao\": \"Delicioso hambúrguer caseiro\",\n    \"ingredientes\": [\"Pão\", \"Carne\", \"Queijo\", \"Alface\", \"Tomate\"],\n}\nitem2 = {\n    \"id\": \"item2\",\n    \"nome\": \"Pizza\",\n    \"descricao\": \"Pizza de mussarela com tomate e manjericão\",",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "item2",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "item2 = {\n    \"id\": \"item2\",\n    \"nome\": \"Pizza\",\n    \"descricao\": \"Pizza de mussarela com tomate e manjericão\",\n    \"ingredientes\": [\"Massa de pizza\", \"Molho de tomate\", \"Queijo mussarela\", \"Tomate\", \"Manjericão\"],\n}\ncardapio.add_item(item1)\ncardapio.add_item(item2)\n# Adicionar alguns combos ao cardápio\ncombo1 = {",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "combo1",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "combo1 = {\n    \"id\": \"combo1\",\n    \"nome\": \"Combo Hambúrguer\",\n    \"descricao\": \"Hambúrguer + Batata frita + Refrigerante\",\n    \"itens\": [\n        {\n            \"item_id\": \"item1\",\n            \"quantidade\": 1,\n        },\n        {",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "item3",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "item3 = {\n    \"id\": \"item3\",\n    \"nome\": \"Salada Caesar\",\n    \"descricao\": \"Salada com alface, frango grelhado, croutons e molho caesar\",\n    \"ingredientes\": [\"Alface\", \"Frango grelhado\", \"Croutons\", \"Molho Caesar\"],\n}\nitem4 = {\n    \"id\": \"item4\",\n    \"nome\": \"Sushi\",\n    \"descricao\": \"Sushi de salmão com arroz e nori\",",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "item4",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "item4 = {\n    \"id\": \"item4\",\n    \"nome\": \"Sushi\",\n    \"descricao\": \"Sushi de salmão com arroz e nori\",\n    \"ingredientes\": [\"Salmão\", \"Arroz\", \"Nori\"],\n}\ncardapio.add_item(item3)\ncardapio.add_item(item4)\n# Adicionar mais combos ao cardápio\ncombo2 = {",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "combo2",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "combo2 = {\n    \"id\": \"combo2\",\n    \"nome\": \"Combo Pizza\",\n    \"descricao\": \"Pizza + Refrigerante\",\n    \"itens\": [\n        {\n            \"item_id\": \"item2\",\n            \"quantidade\": 1,\n        },\n        {",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
+        "label": "combo3",
+        "kind": 5,
+        "importPath": "api.mainApi.tests.popul",
+        "description": "api.mainApi.tests.popul",
+        "peekOfCode": "combo3 = {\n    \"id\": \"combo3\",\n    \"nome\": \"Combo Sushi\",\n    \"descricao\": \"Sushi + Chá verde\",\n    \"itens\": [\n        {\n            \"item_id\": \"item4\",\n            \"quantidade\": 2,\n        },\n        {",
+        "detail": "api.mainApi.tests.popul",
+        "documentation": {}
+    },
+    {
         "label": "MainapiConfig",
         "kind": 6,
         "importPath": "api.mainApi.apps",
@@ -809,7 +898,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário\nclass Usuario(models.Model):\n    nome = models.CharField(max_length=100)",
+        "peekOfCode": "class TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário\nclass Usuario(models.Model):\n    nome = models.CharField(max_length=100)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -827,43 +916,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\nclass ItemPedido:\n    def __init__(self, nome: str, quantidade: int, valor_unitario: float, especificacoes: str = None): # type: ignore\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.especificacoes = especificacoes",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "ItemPedido",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class ItemPedido:\n    def __init__(self, nome: str, quantidade: int, valor_unitario: float, especificacoes: str = None): # type: ignore\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.especificacoes = especificacoes\n    @classmethod\n    def from_dict(cls, data):\n        return cls(\n            nome=data['nome'],",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "Pedido",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens = itens\n        self.valor_total = valor_total\n        self.data = datetime.datetime.now()\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "Carrinho",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens:\n            item_carrinho = next((item for item in self.itens if item['nome'] == item_pedido.nome), None)\n            if item_carrinho:\n                item_carrinho['quantidade'] += item_pedido.quantidade",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "FilaDePedidos",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class FilaDePedidos:\n    def __init__(self):\n        self.fila = []\n    def adicionar_pedido(self, pedido):\n        self.fila.append(pedido)\n        print(f\"Pedido adicionado à fila: {pedido}\")\n    def remover_pedido(self, pedido_id):\n        pedido_removido = None\n        for i, pedido in enumerate(self.fila):\n            if pedido.id_pedido == pedido_id:",
+        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -877,15 +930,6 @@
         "documentation": {}
     },
     {
-        "label": "Cardapio",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class Cardapio:\n    def __init__(self):\n        pass\n    def list_from_db(self):\n        # Retorna uma lista com todos os itens do cardápio presentes no banco de dados\n        cardapio = []\n        for item_doc in db.collection(\"itens\").stream():\n            item_dict = item_doc.to_dict()\n            if item_dict.get(\"itens_combo\"):\n                # Se o item for um combo, cria um objeto Combo ao invés de Item",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
         "label": "Combo",
         "kind": 6,
         "importPath": "api.mainApi.models",
@@ -895,11 +939,65 @@
         "documentation": {}
     },
     {
+        "label": "Cardapio",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Cardapio:\n    def __init__(self, id_cardapio, nome, descricao, imagem=None):\n        self.id_cardapio = id_cardapio\n        self.nome = nome\n        self.descricao = descricao\n        self.imagem = imagem\n        self.itens = []\n        self.combos = []\n    def to_dict(self):\n        return {",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "ItemPedido",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class ItemPedido:\n    def __init__(self, item: Item, quantidade: int, especificacoes: str = None): # type: ignore\n        self.item = item\n        self.quantidade = quantidade\n        self.especificacoes = especificacoes\n    def calcular_valor_total(self):\n        return self.item.valor_unitario * self.quantidade\n    def to_dict(self):\n        return {\n            'item': self.item.to_dict(),",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Pedido",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens_pedido, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens_pedido = itens_pedido\n        self.valor_total = valor_total\n        self.data = datetime.datetime.now()\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
         "label": "Estoque",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Estoque:\n    def __init__(self, id: str, data_ultima_reposicao: str, quantidade_ultima_reposicao: int, valor_ultima_reposicao: float, quantidade_total: int, id_item: str):\n        self.id = id\n        self.data_ultima_reposicao = data_ultima_reposicao\n        self.quantidade_ultima_reposicao = quantidade_ultima_reposicao\n        self.valor_ultima_reposicao = valor_ultima_reposicao\n        self.quantidade_total = quantidade_total\n        self.id_item = id_item\n        self.valor_unitario = valor_ultima_reposicao / quantidade_ultima_reposicao\n    def adicionar_reposicao(self, data_reposicao: str,data_retirada:str, quantidade_reposicao: int, valor_reposicao: float):",
+        "peekOfCode": "class Estoque:\n    def __init__(self):\n        self.itens = []\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = next((i for i in self.itens if i.nome == item.nome), None)\n        if estoque_item:\n            # Atualiza as informações do item no estoque\n            estoque_item.quantidade += item.quantidade\n            estoque_item.valor_ultima_reposicao = item.valor_unitario",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "FilaDePedidos",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class FilaDePedidos:\n    def __init__(self):\n        self.fila = []\n    def adicionar_pedido(self, pedido):\n        self.fila.append(pedido)\n        print(f\"Pedido adicionado à fila: {pedido}\")\n    def remover_pedido(self, pedido_id):\n        pedido_removido = None\n        for i, pedido in enumerate(self.fila):\n            if pedido.id_pedido == pedido_id:",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCarrinho",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class ItemCarrinho:\n    def __init__(self, item, quantidade):\n        self.item = item\n        self.quantidade = quantidade\n    @property\n    def nome(self):\n        return self.item.nome\n    @property\n    def valor_unitario(self):\n        return self.item.valor_unitario",
+        "detail": "api.mainApi.models",
+        "documentation": {}
+    },
+    {
+        "label": "Carrinho",
+        "kind": 6,
+        "importPath": "api.mainApi.models",
+        "description": "api.mainApi.models",
+        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens:\n            item_carrinho = self.get_item_carrinho(item_pedido.nome)\n            if item_carrinho:\n                item_carrinho.quantidade += item_pedido.quantidade",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -926,7 +1024,7 @@
         "kind": 5,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "cred = Certificate(credentials)\nfirebase_admin.initialize_app(cred)\n# criação do objeto Firestore\ndb = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'",
+        "peekOfCode": "cred = Certificate(credentials)\nfirebase_admin.initialize_app(cred)\n# criação do objeto Firestore\ndb = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -935,7 +1033,7 @@
         "kind": 5,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "db = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI= 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário",
+        "peekOfCode": "db = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -944,7 +1042,7 @@
         "kind": 6,
         "importPath": "api.mainApi.serializers",
         "description": "api.mainApi.serializers",
-        "peekOfCode": "class VeiculoSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Veiculo\n        fields = \"__all__\"",
+        "peekOfCode": "class VeiculoSerializer(serializers.ModelSerializer):\n    class Meta:\n        fields = \"__all__\"",
         "detail": "api.mainApi.serializers",
         "documentation": {}
     },
@@ -953,7 +1051,7 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('comanda/', views.comanda, name='comanda'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    path('reset/', views.reset,name='reset'),",
+        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    path('reset/', views.reset,name='reset'),",
         "detail": "api.mainApi.urls",
         "documentation": {}
     },
@@ -962,7 +1060,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cardapio(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'cardapio.html')\n# @login_required\ndef estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")",
+        "peekOfCode": "def cardapio(request):\n    itens_cardapio, combos_cardapio = Cardapio.listar_itens_cardapio()\n    context = {\n        'itens_cardapio': itens_cardapio,\n        'combos_cardapio': combos_cardapio\n    }\n    return render(request, 'cardapio.html', context)\n# @login_required\ndef estoque(request):\n    # Lógica para listar produtos em estoque",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -980,7 +1078,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") ",
+        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") ",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -989,43 +1087,25 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')",
+        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") \n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "comanda",
+        "label": "carrinho",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def comanda(request):\n    return render(request, \"comanda.html\") \ndef index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')\n#     decoded_token = firebase_auth.verify_id_token(id_token)\n#     if decoded_token is None:\n#         return JsonResponse({'error': 'Invalid ID token'}, status=400)",
+        "peekOfCode": "def carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") \n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
-        "label": "index",
+        "label": "logout",
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def index(request):\n    return render(request, \"index.html\") \n# Autentica o usuário usando o Google\n# def authenticate_with_google(request):\n#     id_token = request.POST.get('id_token')\n#     decoded_token = firebase_auth.verify_id_token(id_token)\n#     if decoded_token is None:\n#         return JsonResponse({'error': 'Invalid ID token'}, status=400)\n#     email = decoded_token['email']\n#     firebase_user = firebase_auth.get_user_by_email(email)",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "dashboard_admin",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def dashboard_admin(request):\n    return render(request, 'dashboard_admin.html')\n@login_required\ndef dashboard_funcionario(request):\n    return render(request, 'dashboard_funcionario.html')\n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "dashboard_funcionario",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def dashboard_funcionario(request):\n    return render(request, 'dashboard_funcionario.html')\n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI",
+        "peekOfCode": "def logout(request):\n    return render(request, \"accounts/logout.html\") \n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

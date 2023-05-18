@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    'social_django',
+    "social_django",
     "allauth",
     "allauth.account",
     "rest_framework",
@@ -107,6 +107,8 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 SITE_ID = 1
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -174,12 +176,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 """FIREBASE CREDENTIALS"""
 FIREBASE_ACCOUNT_TYPE = os.environ.get("FIREBASE_ACCOUNT_TYPE")

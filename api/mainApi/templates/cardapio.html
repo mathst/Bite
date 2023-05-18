@@ -2,109 +2,94 @@
 {% load static %}
 {% block content %}
 <section class="dashboard">
-  <div class="dash-content">
-    <div class="overview">
-      <div class="title">
-        <span class="text">Fazer Pedido</span>
-      </div>
-    </div>
-  </div>
-  <!-- imagem 1 -->
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
-  <div class="geral">
-    <div class="imagem">
-      <a target="_blank" href="">
-        <img src="{% static 'img/img1.jpg' %}" alt="img1" width="100" height="100">
-      </a>
-      <div class="txtimagem">
-        <p>Cheese Burguer</p>
-        <p>18,90</p>
-        <p>Lorem Ipsum</p>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<h1>Cardápio</h1>
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			{% for cardapio in cardapios %}
+			<div class="col">
+				<div class="card h-100">
+					<h2>Itens</h2>
+					<ul>
+						{% for item in itens_cardapio %}
+							<li>
+								<h3>{{ item.nome }}</h3>
+								<p>{{ item.descricao }}</p>
+								<form method="POST" action="{% url 'adicionar_carrinho' %}">
+									{% csrf_token %}
+									<input type="hidden" name="item_id" value="{{ item.id }}">
+									<label for="ingredientes">Ingredientes:</label>
+									<input type="text" name="ingredientes" id="ingredientes" value="{{ item.ingredientes }}">
+									<input type="submit" value="Adicionar ao Carrinho">
+								</form>
+								<form method="POST" action="{% url 'editar_item' item.id %}">
+									{% csrf_token %}
+									<i class="uil uil-edit"></i>
+									<input type="submit" value="Editar">
+								</form>
+								<form method="POST" action="{% url 'excluir_item' item.id %}">
+									{% csrf_token %}
+									<i class="uil uil-trash-alt"></i>
+									<input type="submit" value="Excluir">
+								</form>
+							</li>
+						{% endfor %}
+						<!-- Adicionar formulário para adicionar novos itens -->
+						<li>
+							<i class="uil uil-plus-circle"></i>
+							<h3>Adicionar Novo Item</h3>
+							<form method="POST" action="{% url 'adicionar_item' %}">
+								{% csrf_token %}
+								<label for="nome">Nome:</label>
+								<input type="text" name="nome" id="nome">
+								<label for="descricao">Descrição:</label>
+								<input type="text" name="descricao" id="descricao">
+								<!-- Outros campos necessários para o item -->
+								<input type="submit" value="Adicionar">
+							</form>
+						</li>
+					</ul>
+					<h2>Combos</h2>
+					<ul>
+						{% for combo in combos_cardapio %}
+							<li>
+								<h3>{{ combo.nome }}</h3>
+								<p>{{ combo.descricao }}</p>
+								<form method="POST" action="{% url 'adicionar_carrinho' %}">
+									{% csrf_token %}
+									<input type="hidden" name="combo_id" value="{{ combo.id }}">
+									<label for="ingredientes">Ingredientes:</label>
+									<input type="text" name="ingredientes" id="ingredientes" value="{{ combo.ingredientes }}">
+									<input type="submit" value="Adicionar ao Carrinho">
+								</form>
+								<form method="POST" action="{% url 'editar_combo' combo.id %}">
+									{% csrf_token %}
+									<input type="submit" value="Editar">
+								</form>
+								<form method="POST" action="{% url 'excluir_combo' combo.id %}">
+									{% csrf_token %}
+									<input type="submit" value="Excluir">
+								</form>
+							</li>
+						{% endfor %}
+						<!-- Adicionar formulário para adicionar novos combos -->
+						<li>
+							<i class="uil uil-plus-circle"></i>
+							<h3>Adicionar Novo Combo</h3>
+							<form method="POST" action="{% url 'adicionar_combo' %}">
+								{% csrf_token %}
+								<label for="nome">Nome:</label>
+								<input type="text" name="nome" id="nome">
+								<label for="descricao">Descrição:</label>
+								<input type="text" name="descricao" id="descricao">
+								<!-- Outros campos necessários para o combo -->
+								<input type="submit" value="Adicionar">
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 </section>
 {% endblock %}
