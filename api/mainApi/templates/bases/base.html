@@ -13,11 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>  
 </head>
 <body>
-  <nav>
+  <nav >
     <!-- logo -->
     <div class="logo-name">
       <div class="logo-image">
-        <img src="{% static 'img/logo.jpg' %}" alt="logo">
+        <img src="{% static 'images/logo.jpg' %}" alt="logo">
       </div>
       <span class="logo_name">FFast Food</span>
     </div>
@@ -25,7 +25,7 @@
     <div class="menu-items">
       <ul class="nav-links">
         <!-- Conteúdo específico para clientes -->
-        {% if request.session.tipo_user == 'cliente' %}
+        {% if request.session.tipo_user|default:'' == 'cliente' %}
         <li><a href="{% url 'cardapio'%}">
           <i class="uil uil-clipboard-notes"></i>
           <span class="link-name">Cardapio</span>
@@ -35,7 +35,7 @@
           <span class="link-name">Carrinho</span>
         </a></li>
         <!-- Conteúdo específico para funcionários -->
-        {% elif request.session.tipo_user == 'funcionario' %}
+        {% elif request.session.tipo_user|default:'' == 'funcionario' %}
         <li><a href="{% url 'pedidos'%}">
           <i class="uil uil-cart"></i>
           <span class="link-name">Pedidos</span>
@@ -45,7 +45,7 @@
           <span class="link-name">Estoque</span>
         </a></li>
         <!-- Conteúdo específico para gerentes -->
-        {% elif request.session.tipo_user == 'gerente' %}
+        {% elif request.session.tipo_user|default:'' == 'gerente' %}
         <li><a href="{% url 'pedidos'%}">
           <i class="uil uil-cart"></i>
           <span class="link-name">Pedidos</span>
@@ -59,7 +59,7 @@
           <span class="link-name">Estoque</span>
         </a></li>
         <!-- Conteúdo específico para administradores -->
-        {% elif request.session.tipo_user == 'administrador' %}
+        {% elif request.session.tipo_user|default:'' == 'administrador' %}
         <li><a href="{% url 'pedidos'%}">
           <i class="uil uil-utensils"></i>
           <span class="link-name">Pedidos</span>
@@ -86,12 +86,9 @@
   
   <section class="dashboard">
     <div class="dash-content">
-      <div class="overview">
         {% block content %}
 
-        {% endblock %} 
-        </div>
-      </div>
+        {% endblock %}
     </div>
   </section>
   <script src="{% static 'JS/scripts.js' %}"></script>

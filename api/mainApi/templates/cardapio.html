@@ -1,95 +1,131 @@
 {% extends 'bases/base.html' %}
 {% load static %}
 {% block content %}
-<section class="dashboard">
-	<div class="container">
-		<h1>Cardápio</h1>
-		<div class="row row-cols-1 row-cols-md-3 g-4">
-			{% for cardapio in cardapios %}
-			<div class="col">
-				<div class="card h-100">
-					<h2>Itens</h2>
-					<ul>
-						{% for item in itens_cardapio %}
-							<li>
-								<h3>{{ item.nome }}</h3>
-								<p>{{ item.descricao }}</p>
-								<form method="POST" action="{% url 'adicionar_carrinho' %}">
-									{% csrf_token %}
-									<input type="hidden" name="item_id" value="{{ item.id }}">
-									<label for="ingredientes">Ingredientes:</label>
-									<input type="text" name="ingredientes" id="ingredientes" value="{{ item.ingredientes }}">
-									<input type="submit" value="Adicionar ao Carrinho">
-								</form>
-								<form method="POST" action="{% url 'editar_item' item.id %}">
-									{% csrf_token %}
-									<i class="uil uil-edit"></i>
-									<input type="submit" value="Editar">
-								</form>
-								<form method="POST" action="{% url 'excluir_item' item.id %}">
-									{% csrf_token %}
-									<i class="uil uil-trash-alt"></i>
-									<input type="submit" value="Excluir">
-								</form>
-							</li>
-						{% endfor %}
-						<!-- Adicionar formulário para adicionar novos itens -->
-						<li>
-							<i class="uil uil-plus-circle"></i>
-							<h3>Adicionar Novo Item</h3>
-							<form method="POST" action="{% url 'adicionar_item' %}">
-								{% csrf_token %}
-								<label for="nome">Nome:</label>
-								<input type="text" name="nome" id="nome">
-								<label for="descricao">Descrição:</label>
-								<input type="text" name="descricao" id="descricao">
-								<!-- Outros campos necessários para o item -->
-								<input type="submit" value="Adicionar">
-							</form>
-						</li>
-					</ul>
-					<h2>Combos</h2>
-					<ul>
-						{% for combo in combos_cardapio %}
-							<li>
-								<h3>{{ combo.nome }}</h3>
-								<p>{{ combo.descricao }}</p>
-								<form method="POST" action="{% url 'adicionar_carrinho' %}">
-									{% csrf_token %}
-									<input type="hidden" name="combo_id" value="{{ combo.id }}">
-									<label for="ingredientes">Ingredientes:</label>
-									<input type="text" name="ingredientes" id="ingredientes" value="{{ combo.ingredientes }}">
-									<input type="submit" value="Adicionar ao Carrinho">
-								</form>
-								<form method="POST" action="{% url 'editar_combo' combo.id %}">
-									{% csrf_token %}
-									<input type="submit" value="Editar">
-								</form>
-								<form method="POST" action="{% url 'excluir_combo' combo.id %}">
-									{% csrf_token %}
-									<input type="submit" value="Excluir">
-								</form>
-							</li>
-						{% endfor %}
-						<!-- Adicionar formulário para adicionar novos combos -->
-						<li>
-							<i class="uil uil-plus-circle"></i>
-							<h3>Adicionar Novo Combo</h3>
-							<form method="POST" action="{% url 'adicionar_combo' %}">
-								{% csrf_token %}
-								<label for="nome">Nome:</label>
-								<input type="text" name="nome" id="nome">
-								<label for="descricao">Descrição:</label>
-								<input type="text" name="descricao" id="descricao">
-								<!-- Outros campos necessários para o combo -->
-								<input type="submit" value="Adicionar">
-							</form>
-						</li>
-					</ul>
-				</div>
+	<h1>Cardápio</h1>
+	{% if request.session.tipo_user|default:'' == 'gerente' %}
+		<!-- Adicionar formulário para adicionar novos itens -->
+		<div class="add-item-forms">
+			<div class="add-item-form">
+				<form method="POST">
+					{% csrf_token %}
+					<h3>Adicionar Novo Item</h3>
+					<label for="nome_item">Nome:</label>
+					<input type="text" id="nome_item" name="nome_item">
+					<label for="descricao_item">Descrição:</label>
+					<input type="text" id="descricao_item" name="descricao_item">
+					<label for="ingredientes_item">Ingredientes:</label>
+					<input type="text" id="ingredientes_item" name="ingredientes_item">
+					<div class="add-item-button">
+						<i class="uil uil-plus-circle"></i>
+						<input class="uil uil-plus-circle" type="submit" value="Adicionar">
+					</div> 
+				</form>
 			</div>
+			<div class="add-item-form">
+			<!-- Adicionar formulário para adicionar novos combos -->
+				<form method="POST">
+					{% csrf_token %}
+					<h3>Adicionar Novo Combo</h3>
+					<label for="nome">Nome:</label>
+					<input type="text" name="nome" id="nome">
+					<label for="descricao">Descrição:</label>
+					<input type="text" name="descricao" id="descricao">
+					<!-- Outros campos necessários para o combo -->
+					<div class="add-item-button">
+						<i class="uil uil-plus-circle"></i>
+						<input type="submit" value="Adicionar">
+					</div>
+				</form>
+			</div>
+		</div>
+	{% endif %}
+		<h2>Itens</h2>
+		<div class="cards">
+			{% for item in itens_cardapio %}
+				<div class="card">
+					<div class="card-item-image">
+						<img src="{{ item.imagem.url }}" alt="{{ item.nome }}">
+					</div>
+					<div class="card-item-info">
+						<h3>{{ item.nome }}</h3>
+						<p>{{ item.ingredientes|join:', ' }}</p>
+					</div>
+					{% if request.session.tipo_user|default:'' == 'gerente' %}
+					<div class="card-item-actions">
+						<button type="button" class="edit-button" onclick="toggleEditForm('{{ item.id }}')">
+							<i class="uil uil-edit"></i>
+						</button>
+						<button type="button" class="delete-button" onclick="toggleDeleteForm('{{ item.id }}')">
+							<i class="uil uil-trash-alt"></i>
+						</button>
+						<form method="POST" id="edit-form-{{ item.id }}" style="display: none;">
+							{% csrf_token %}
+							<h3>Editar Item - {{ item.nome }}</h3>
+							<input type="hidden" name="id_item" value="{{ item.id }}">
+							<label for="nome_item">Nome:</label>
+							<input type="text" id="nome_item" name="nome_item" value="{{ item.nome }}">
+							<label for="descricao_item">Descrição:</label>
+							<input type="text" id="descricao_item" name="descricao_item" value="{{ item.descricao }}">
+							<label for="ingredientes_item">Ingredientes:</label>
+							<input type="text" id="ingredientes_item" name="ingredientes_item" value="{{ item.ingredientes|join:', ' }}">
+							<button type="submit" name="editar" class="edit-button">
+								<i class="uil uil-check"></i>
+							</button>
+						</form>
+						<form method="POST" id="delete-form-{{ item.id }}" style="display: none;">
+							{% csrf_token %}
+							<h3>Excluir Item - {{ item.nome }}</h3>
+							<input type="hidden" name="id_item" value="{{ item.id }}">
+							<p>Nome: {{ item.nome }}</p>
+							<p>Descrição: {{ item.descricao }}</p>
+							<p>Ingredientes: {{ item.ingredientes|join:', ' }}</p>
+							<button type="submit" name="excluir" class="delete-button">
+								<i class="uil uil-trash-alt"></i>
+							</button>
+						</form>
+					</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		<h1>Combos</h1>
+		<div class="grid-container">
+			{% for combo in combos_cardapio %}
+				<div class="card">
+					<div class="card-item-info">
+						<h3>{{ combo.nome }}</h3>
+						<p>Itens: {{ combo.itens|join:', ' }}</p>
+					</div>
+					{% if request.session.tipo_user|default:'' == 'gerente' %}
+					<div class="card-item-actions">
+						<button type="button" class="edit-button" onclick="toggleEditForm('{{ combo.id }}')">
+							<i class="uil uil-edit"></i>
+						</button>
+						<button type="button" class="delete-button" onclick="toggleDeleteForm('{{ combo.id }}')">
+							<i class="uil uil-trash-alt"></i>
+						</button>
+						<form method="POST" id="edit-form-{{ combo.id }}" style="display: none;">
+							{% csrf_token %}
+							<h3>Editar Combo - {{ combo.nome }}</h3>
+							<input type="hidden" name="id_combo" value="{{ combo.id }}">
+							<!-- Campos de edição para o combo -->
+							<button type="submit" name="editar" class="edit-button">
+								<i class="uil uil-check"></i>
+							</button>
+						</form>
+						<form method="POST" id="delete-form-{{ combo.id }}" style="display: none;">
+							{% csrf_token %}
+							<h3>Excluir Combo - {{ combo.nome }}</h3>
+							<input type="hidden" name="id_combo" value="{{ combo.id }}">
+							<p>Nome: {{ combo.nome }}</p>
+							<p>Itens: {{ combo.itens|join:', ' }}</p>
+							<button type="submit" name="excluir" class="delete-button">
+								<i class="uil uil-trash-alt"></i>
+							</button>
+						</form>
+					</div>
+					{% endif %}
+				</div>
 			{% endfor %}
 		</div>
 	</div>
-</section>
 {% endblock %}

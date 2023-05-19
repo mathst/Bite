@@ -17,10 +17,46 @@ from google.auth.transport.requests import Request
 
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
-    itens_cardapio, combos_cardapio = Cardapio.listar_itens_cardapio()
+    # Obter os dados do cardápio do Firestore
+    cardapio = Cardapio()
+    itens_cardapio = cardapio.list_combos()
+    combos_cardapio = cardapio.list_items()
+
+    if request.method == 'POST':
+        # Verificar se a ação é adicionar, editar ou excluir
+        if 'adicionar' in request.POST:
+            # Lógica para adicionar um novo item/combo ao cardápio
+            # Obter os dados do novo item/combo do request.POST
+            novo_item = {
+                'nome': request.POST.get('nome_item'),
+                'descricao': request.POST.get('descricao_item'),
+                'ingredientes': request.POST.getlist('ingredientes_item')
+            }
+            Cardapio.add_item(novo_item) # type: ignore
+
+        elif 'editar' in request.POST:
+            # Lógica para editar um item/combo existente no cardápio
+            # Obter os dados do item/combo a ser editado do request.POST
+            id_item = request.POST.get('id_item')
+            novo_item = {
+                'nome': request.POST.get('nome_item'),
+                'descricao': request.POST.get('descricao_item'),
+                'ingredientes': request.POST.getlist('ingredientes_item')
+            }
+            Cardapio.edit_item(id_item, novo_item) # type: ignore
+
+        elif 'excluir' in request.POST:
+            # Lógica para excluir um item/combo do cardápio
+            # Obter o ID do item/combo a ser excluído do request.POST
+            id_item = request.POST.get('id_item')
+            Cardapio.delete_item(id_item) # type: ignore
+
+        # Redirecionar para a página do cardápio após a ação
+        return redirect('cardapio')
+
     context = {
         'itens_cardapio': itens_cardapio,
-        'combos_cardapio': combos_cardapio
+        'combos_cardapio': combos_cardapio,
     }
     return render(request, 'cardapio.html', context)
 
@@ -153,6 +189,10 @@ def login(request):
                 # Coloque aqui o código para redirecionar para a página do funcionário
                 print('funcionario logado')
                 return render(request, 'pedidos.html')
+            elif tipo_user == 'gerente':
+                # Coloque aqui o código para redirecionar para a página do funcionário
+                print('gerente logado')
+                return render(request, 'cardapio.html')
             elif tipo_user == 'administrador':
                  # renderiza a página que só pode ser acessada pelo administrador
                 return render(request, 'ficanceiro.html')

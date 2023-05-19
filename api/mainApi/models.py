@@ -125,12 +125,13 @@ class EstadoPedido(Enum):
      
 # Classe de Item
 class Item:
-    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None):
+    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):
         self.nome = nome
         self.quantidade = quantidade
         self.valor_unitario = valor_unitario
         self.tipo = tipo
         self.ingredientes = ingredientes
+        self.imagem = imagem
 
     def to_dict(self):
         item_dict = {
@@ -154,9 +155,10 @@ class Item:
 
 #Classe de combo
 class Combo(Item):
-    def __init__(self, nome, valor_unitario, itens_combo):
+    def __init__(self, nome, valor_unitario, itens_combo,imagem=None):
         super().__init__(nome, 1, valor_unitario, "combo", [])
         self.itens_combo = itens_combo
+        self.imagem = imagem
 
     def to_dict(self):
         item_dict = super().to_dict()
@@ -187,7 +189,6 @@ class Cardapio:
             "id_cardapio": self.id_cardapio,
             "nome": self.nome,
             "descricao": self.descricao,
-            "imagem": self.imagem,
             "itens": self.itens,
             "combos": self.combos,
         }
@@ -239,7 +240,11 @@ class Cardapio:
             raise ValueError("Combo não encontrado.")
 
     def add_to_db(self):
-        db.collection("cardapios").document(self.id_cardapio).set(self.to_dict())
+        try:
+            db.collection("cardapios").document(self.id_cardapio).set(self.to_dict())
+            print ("foi")
+        except Exception as e:
+            print( f'Ocorreu um erro ao add iten: {e}')
 
     def update_in_db(self):
         db.collection("cardapios").document(self.id_cardapio).update(self.to_dict())
@@ -252,40 +257,6 @@ class Cardapio:
             if item.id == id:
                 return i
         return None
-    
-    @staticmethod
-    def listar_itens_cardapio():
-        # Acessar a coleção "cardapios" no banco de dados
-        collection_ref = firestore.client().collection('cardapios')
-        # Consultar todos os documentos na coleção
-        cardapios = collection_ref.get()
-        # Lista para armazenar os itens do cardápio
-        itens_cardapio = []
-        combos_cardapio = []
-        # Percorrer cada documento do cardápio
-        for cardapio in cardapios:
-            cardapio_data = cardapio.to_dict()
-
-            # Obter a lista de itens do cardápio
-            itens = cardapio_data.get('itens', [])
-            combos = cardapio_data.get('combos', [])
-
-            # Adicionar os itens do cardápio à lista
-            for item in itens:
-                nome = item.get('nome', '')
-                descricao = item.get('descricao', '')
-                ingredientes = item.get('ingredientes', [])
-                itens_cardapio.append({'nome': nome, 'descricao': descricao, 'ingredientes': ingredientes})
-
-            # Adicionar os combos do cardápio à lista
-            for combo in combos:
-                nome = combo.get('nome', '')
-                descricao = combo.get('descricao', '')
-                ingredientes = combo.get('ingredientes', [])
-                combos_cardapio.append({'nome': nome, 'descricao': descricao, 'ingredientes': ingredientes})
-
-        # Retornar os itens e combos do cardápio
-        return itens_cardapio, combos_cardapio
 
 # Classe de ItemPedido
 class ItemPedido:

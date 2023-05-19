@@ -916,7 +916,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario",
+        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -925,7 +925,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.ingredientes = ingredientes\n    def to_dict(self):\n        item_dict = {\n            \"nome\": self.nome,",
+        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.ingredientes = ingredientes\n        self.imagem = imagem\n    def to_dict(self):\n        item_dict = {",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -934,7 +934,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Combo(Item):\n    def __init__(self, nome, valor_unitario, itens_combo):\n        super().__init__(nome, 1, valor_unitario, \"combo\", [])\n        self.itens_combo = itens_combo\n    def to_dict(self):\n        item_dict = super().to_dict()\n        item_dict[\"itens_combo\"] = self.itens_combo\n        return item_dict\n    def add_to_db(self):\n        db.collection(\"itens\").document(self.nome).set(self.to_dict())",
+        "peekOfCode": "class Combo(Item):\n    def __init__(self, nome, valor_unitario, itens_combo,imagem=None):\n        super().__init__(nome, 1, valor_unitario, \"combo\", [])\n        self.itens_combo = itens_combo\n        self.imagem = imagem\n    def to_dict(self):\n        item_dict = super().to_dict()\n        item_dict[\"itens_combo\"] = self.itens_combo\n        return item_dict\n    def add_to_db(self):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -1051,7 +1051,7 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),\n    path('reset/', views.reset,name='reset'),",
+        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('pedidos/', views.pedidos, name='pedidos'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),",
         "detail": "api.mainApi.urls",
         "documentation": {}
     },
@@ -1060,7 +1060,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cardapio(request):\n    itens_cardapio, combos_cardapio = Cardapio.listar_itens_cardapio()\n    context = {\n        'itens_cardapio': itens_cardapio,\n        'combos_cardapio': combos_cardapio\n    }\n    return render(request, 'cardapio.html', context)\n# @login_required\ndef estoque(request):\n    # Lógica para listar produtos em estoque",
+        "peekOfCode": "def cardapio(request):\n    # Obter os dados do cardápio do Firestore\n    cardapio = Cardapio()\n    itens_cardapio = cardapio.list_combos()\n    combos_cardapio = cardapio.list_items()\n    if request.method == 'POST':\n        # Verificar se a ação é adicionar, editar ou excluir\n        if 'adicionar' in request.POST:\n            # Lógica para adicionar um novo item/combo ao cardápio\n            # Obter os dados do novo item/combo do request.POST",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
