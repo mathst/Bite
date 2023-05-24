@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import uuid
 from django.db import models
 import firebase_admin
@@ -122,10 +122,19 @@ class EstadoPedido(Enum):
     ESPERANDO = 'esperando'
     PREPARANDO = 'preparando'
     PRONTO = 'pronto'
-     
+
+# class Tipos(Enum):
+    
+#     INGREDIENTES="ingredientes"
+#     BEBIDAS="bebidas"
+#     LIMPEZA="limpeza"
+#     EMBALAGENS="embalagens"
+#     UTENSILHOS="utensilhos"
+#     EQUIPAMENTO="equipamento"
+#     HIGIENE="higiene"
 # Classe de Item
 class Item:
-    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):
+    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None, imagem=None):
         self.nome = nome
         self.quantidade = quantidade
         self.valor_unitario = valor_unitario
@@ -305,7 +314,7 @@ class Pedido:
         self.status = status
         self.itens_pedido = itens_pedido
         self.valor_total = valor_total
-        self.data = datetime.datetime.now()
+        self.data = datetime.now() # type: ignore
         
     def to_dict(self):
         return {
@@ -338,75 +347,67 @@ class Pedido:
 # Classe de Estoque
 class Estoque:
     def __init__(self):
-        self.itens = []
+        self.db = firestore.client()
+        self.collection = self.db.collection('estoque')
 
+
+    
     def adicionar_item(self, item):
         # Verifica se o item já existe no estoque
-        estoque_item = next((i for i in self.itens if i.nome == item.nome), None)
+        estoque_item = self.pesquisar_item(item.nome)
+        print(estoque_item)
         if estoque_item:
+            print("item existente")
             # Atualiza as informações do item no estoque
             estoque_item.quantidade += item.quantidade
             estoque_item.valor_ultima_reposicao = item.valor_unitario
-            estoque_item.data_ultima_reposicao = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # type: ignore
+            estoque_item.data_ultima_reposicao = datetime.now()
+            estoque_item.update_in_db()
         else:
-            # Adiciona o item ao estoque
+            print("item novo")
+            # Cria um novo item
             item.quantidade_total = item.quantidade
-            item.data_ultima_reposicao = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # type: ignore
-            self.itens.append(item)
-
+            item.data_ultima_reposicao = datetime.now()
+            item.add_to_db()
+            self.collection.document(item.nome).set(item.to_dict())
+            
+            
     def remover_item(self, nome_item, quantidade):
         # Verifica se o item existe no estoque
-        estoque_item = next((i for i in self.itens if i.nome == nome_item), None)
+        estoque_item = self.pesquisar_item(nome_item)
         if estoque_item:
             # Verifica se a quantidade a ser removida não excede a quantidade disponível no estoque
             if quantidade <= estoque_item.quantidade:
                 # Atualiza a quantidade do item no estoque
                 estoque_item.quantidade -= quantidade
                 estoque_item.data_ultima_retirada = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # type: ignore
+                estoque_item.update_in_db()
             else:
                 print("Quantidade solicitada excede a quantidade disponível no estoque.")
         else:
             print("Item não encontrado no estoque.")
 
     def listar_itens(self):
-        return self.itens
+        itens = []
+        docs = self.collection.stream()
+        for doc in docs:
+            item = doc.to_dict()
+            itens.append(item)
+        return itens
 
-    def ver_item(self, nome_item):
-        # Verifica se o item existe no estoque
-        estoque_item = next((i for i in self.itens if i.nome == nome_item), None)
-        if estoque_item:
-            return estoque_item
+    def pesquisar_item(self, nome_item):
+        doc_ref = self.collection.document(nome_item)
+        doc = doc_ref.get()
+        if doc.exists:
+            item = doc.to_dict()
+            return item
         else:
             return None
 
-    def subtrair_item_do_estoque(self, id_item: str, quantidade: int):
-        doc_ref = db.collection(u'estoque').document(id_item)
-        doc = doc_ref.get().to_dict()
-        if not doc:
-            raise ValueError(f'Item {id_item} não encontrado no estoque.')
-        quantidade_total = doc.get('quantidade_total')
-        if quantidade > quantidade_total:
-            raise ValueError(f'Quantidade solicitada é maior que a quantidade em estoque para o item {id_item}.')
-        doc_ref.update({
-            u'quantidade_total': quantidade_total - quantidade,
-            u'quantidade_ultima_retirada': quantidade,
-            u'data_ultima_retirada': datetime.today().strftime('%Y-%m-%d'), # type: ignore
-        })
-    
     def calcular_valor_total(self):
-        return sum(item.quantidade_total * item.valor_unitario for item in self.itens)
+        itens = self.listar_itens()
+        return sum(item['quantidade'] * item['valor_unitario'] for item in itens)
 
-    def calcular_valor_medio(self):
-        quantidade_total = sum(item.quantidade_total for item in self.itens)
-        valor_total = sum(item.quantidade_total * item.valor_unitario for item in self.itens)
-        return valor_total / quantidade_total if quantidade_total else 0.0
-
-    def atualizar_valor_unitario(self, novo_valor: float):
-        doc_ref = db.collection(u'estoque').document(self.nome) # type: ignore
-        doc_ref.update({
-            u'valor_unitario': novo_valor
-        })
-        self.valor_unitario = novo_valor
 
 # logica de fila de pedidos
 class FilaDePedidos:

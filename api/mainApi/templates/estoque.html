@@ -1,90 +1,105 @@
 {% extends 'bases/base.html' %}
-{% load static %}
+
 {% block content %}
-    <!-- Relatorio -->
-        <div class="title">
-          <h1 class="text">Relatório de Estoque</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title">Quantidade Total de Itens</h5>
         </div>
-      </div>
-          <!-- Estoque -->
-      <div class="cards">
-          <div class="card">
-              <i class="uil uil-users-alt"></i>
-              <h2>Clientes</h2>
-              <h3>200</h3>
-          </div>
-          <div class="card">
-              <i class="uil uil-bill"></i>
-              <h2>Vendas</h2>
-              <h3>225</h3>
-          </div>
-          <div class="card">
-              <i class="uil uil-chart-line"></i>
-              <h2>Lucro</h2>
-              <h3>R$3470,00</h3>
-          </div>
-          <div class="card">
-              <i class="uil uil-coins"></i>
-              <h2>Despesas</h2>
-              <h3>R$1695,00</h3>
-          </div>
-      </div>
-      <main>
-          <div class="data">
-              <div class="content-data">
-                  <div class="head">
-                      <h3>Produtos</h3>
-                  </div>
-                  <div class="chart">
-                      <div id="pizza"></div>
-                  </div>
-              </div>
-              <div class="content-data">
-                  <div class="head">
-                      <h3></h3>
-                  </div>
-                  <div class="chart">
-                      <div id="barras"></div>
-                  </div>
-              </div>
-          </div>
-      </main>
-    </div>
-    </div>
-    <div class="activity">
-      <div class="activity-data">
-        <div class="data names">
-          <span class="data-title">Código</span>
-          {% for i in id %}
-            <span class="data-list">#{{ i }}<</span>
-          {% endfor %}
-        </div>
-        <div class="data names">
-          <span class="data-title">Produto</span>
-          {% for p in produtos %}
-            <span class="data-list">{{ p }}<</span>
-          {% endfor %}
-        </div>
-        <div class="data names">
-          <span class="data-title">Disponibilidade</span>
-          {% for d in status %}
-            <span class="data-list">{% if d == 1 %}disponivel{% endif %}</span>
-          {% endfor %}
-        </div>
-        <div class="data names">
-          <span class="data-title">Quantidade</span>
-          {% for q in quant %}
-            <span class="data-list">{{ q }}<</span>
-          {% endfor %}
-        </div>
-        <div class="data names">
-          <span class="data-title">Fornecedor</span>
-          {% for f in fornecedor %}
-            <span class="data-list">{{ f }}<</span>
-          {% endfor %}
+        <div class="card-body">
+          <h1 class="card-text">{{ quantidade_total_itens }}</h1>
         </div>
       </div>
     </div>
-    <script src="{% static 'JS/scripts.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="card-title">Valor Total em Estoque</h5>
+        </div>
+        <div class="card-body">
+          <h1 class="card-text">{{ valor_total_estoque }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="dropdown">
+        <button class="uil uil-plus dropdown-btn ">  Adicionar Item</button>
+        <div class="dropdown-content">
+          <form method="POST" class="adicionar" id="adicionar">
+            {% csrf_token %}
+            <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
+            <input type="text" name="quantidade_item" class="drop-form mb-2"placeholder="Quantidade do Item">
+            <input type="text" name="valor_item"class="drop-form mb-2"placeholder="Valor do Item">
+            <input type="text" name="tipo_item" class="drop-form mb-2"placeholder="Tipo do Item">
+            <input type="text" name="ingredientes_item" placeholder="Ingredientes do Item">
+            <input type="text" name="imagem_item" class="drop-form mb-2"placeholder="Imagem do Item">
+            <button type="submit" name="adicionar"class="dropdown-btn">Confirmar</button>
+          </form>  
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="uil uil-redo dropdown-btn">  Reabastecer Item</button>
+        <div class="dropdown-content">
+          <form method="POST" id="reabastecer-item-form">
+            {% csrf_token %}
+            <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
+            <input type="text" name="quantidade_item" class="drop-form mb-2" placeholder="Quantidade do Item">
+            <input type="text" name="valor_item" class="drop-form mb-2" placeholder="valor do Item">
+            <button type="submit" cname="adicionar"class="dropdown-btn">Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "col-md-6">
+  <table class="table table-striped ">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Valor Unitário</th>
+        <th scope="col">Ações</th>
+        <th scope="col">
+          <form method="GET">
+            <div class="input-group">
+              <input type="text" name="search_query" class="add-item-form" placeholder="Pesquisar Item">
+              <button class="add-item-button" type="submit">Buscar</button>
+            </div>
+          </form>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in itens %}
+      <tr>
+        <td>{{ item.nome }}</td>
+        <td>{{ item.quantidade }}</td>
+        <td>R$ {{ item.valor_unitario }}</td>
+        <td>
+          <form method="POST" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" name="remover" class="add-item-button btn-sm "><i class="uil uil-trash-alt"></i></button>
+          </form>
+          <div class="dropdown">
+            <button class="dropdown-btn"><i class="uil uil-edit"></i></button>
+            <div class="dropdown-content">
+              <form method="POST" id="reabastecer-item-form">
+                {% csrf_token %}
+                <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
+                <input type="text" name="quantidade_item" class="drop-form mb-2" placeholder="Quantidade do Item">
+                <input type="text" name="valor_item" class="drop-form mb-2" placeholder="valor do Item">
+                <button type="submit" cname="adicionar"class="dropdown-btn">ok</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
 {% endblock %}

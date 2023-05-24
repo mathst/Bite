@@ -140,10 +140,9 @@
     },
     {
         "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
         "importPath": "datetime",
         "description": "datetime",
+        "isExtraImport": true,
         "detail": "datetime",
         "documentation": {}
     },
@@ -244,6 +243,15 @@
         "description": "django.contrib.auth",
         "isExtraImport": true,
         "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
         "documentation": {}
     },
     {
@@ -916,7 +924,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario",
+        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# class Tipos(Enum):\n#     INGREDIENTES=\"ingredientes\"\n#     BEBIDAS=\"bebidas\"\n#     LIMPEZA=\"limpeza\"\n#     EMBALAGENS=\"embalagens\"\n#     UTENSILHOS=\"utensilhos\"",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -925,7 +933,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None,imagem=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.ingredientes = ingredientes\n        self.imagem = imagem\n    def to_dict(self):\n        item_dict = {",
+        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None, imagem=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.ingredientes = ingredientes\n        self.imagem = imagem\n    def to_dict(self):\n        item_dict = {",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -961,7 +969,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens_pedido, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens_pedido = itens_pedido\n        self.valor_total = valor_total\n        self.data = datetime.datetime.now()\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
+        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens_pedido, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens_pedido = itens_pedido\n        self.valor_total = valor_total\n        self.data = datetime.now() # type: ignore\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -970,7 +978,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Estoque:\n    def __init__(self):\n        self.itens = []\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = next((i for i in self.itens if i.nome == item.nome), None)\n        if estoque_item:\n            # Atualiza as informações do item no estoque\n            estoque_item.quantidade += item.quantidade\n            estoque_item.valor_ultima_reposicao = item.valor_unitario",
+        "peekOfCode": "class Estoque:\n    def __init__(self):\n        self.db = firestore.client()\n        self.collection = self.db.collection('estoque')\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = self.pesquisar_item(item.nome)\n        print(estoque_item)\n        if estoque_item:\n            print(\"item existente\")",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -1060,7 +1068,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cardapio(request):\n    # Obter os dados do cardápio do Firestore\n    cardapio = Cardapio()\n    itens_cardapio = cardapio.list_combos()\n    combos_cardapio = cardapio.list_items()\n    if request.method == 'POST':\n        # Verificar se a ação é adicionar, editar ou excluir\n        if 'adicionar' in request.POST:\n            # Lógica para adicionar um novo item/combo ao cardápio\n            # Obter os dados do novo item/combo do request.POST",
+        "peekOfCode": "def cardapio(request):\n    # Obter os dados do cardápio do Firestore\n    cardapio = Cardapio() # type: ignore\n    itens_cardapio = cardapio.list_combos()\n    combos_cardapio = cardapio.list_items()\n    if request.method == 'POST':\n        # Verificar se a ação é adicionar, editar ou excluir\n        if 'adicionar' in request.POST:\n            # Lógica para adicionar um novo item/combo ao cardápio\n            # Obter os dados do novo item/combo do request.POST",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1069,7 +1077,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def estoque(request):\n    # Lógica para listar produtos em estoque\n    return render(request, 'estoque.html')\n# @login_required\ndef pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required",
+        "peekOfCode": "def estoque(request):\n    estoque = Estoque()\n    if request.method == 'POST':\n        if 'adicionar' in request.POST:\n            nome = request.POST.get('nome_item')\n            quantidade = int(request.POST.get('quantidade_item'))\n            valor_unitario = float(request.POST.get('valor_item'))\n            tipo = request.POST.get('tipo_item')\n            ingredientes = request.POST.get('ingredientes_item')\n            imagem = request.POST.get('imagem_item')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

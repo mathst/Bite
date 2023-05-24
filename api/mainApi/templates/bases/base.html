@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- JS -->
     <script src="{% static 'JS/scripts.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
 </head>
-<body>
-  <nav >
+<body class = "col-12">
+  <nav class="col-2">
     <!-- logo -->
     <div class="logo-name">
       <div class="logo-image">
         <img src="{% static 'images/logo.jpg' %}" alt="logo">
       </div>
-      <span class="logo_name">FFast Food</span>
+      <span class="logo-name-text">FFast Food</span>
     </div>
     <!-- lista -->
     <div class="menu-items">
@@ -37,7 +37,7 @@
         <!-- Conteúdo específico para funcionários -->
         {% elif request.session.tipo_user|default:'' == 'funcionario' %}
         <li><a href="{% url 'pedidos'%}">
-          <i class="uil uil-cart"></i>
+          <i class="uil uil-table"></i>
           <span class="link-name">Pedidos</span>
         </a></li>
         <li><a href="{% url 'estoque'%}">
@@ -47,7 +47,7 @@
         <!-- Conteúdo específico para gerentes -->
         {% elif request.session.tipo_user|default:'' == 'gerente' %}
         <li><a href="{% url 'pedidos'%}">
-          <i class="uil uil-cart"></i>
+          <i class="uil uil-table"></i>
           <span class="link-name">Pedidos</span>
         </a></li>
         <li><a href="{% url 'cardapio'%}">
@@ -61,7 +61,7 @@
         <!-- Conteúdo específico para administradores -->
         {% elif request.session.tipo_user|default:'' == 'administrador' %}
         <li><a href="{% url 'pedidos'%}">
-          <i class="uil uil-utensils"></i>
+          <i class="uil uil-table"></i>
           <span class="link-name">Pedidos</span>
         </a></li>
         <li><a href="{% url 'estoque'%}">
@@ -84,15 +84,12 @@
     </div>
   </nav>
   
-  <section class="dashboard">
-    <div class="dash-content">
-        {% block content %}
-
-        {% endblock %}
+  <section class="dashboard col-10">
+    <div class="content">
+      {% block content %}
+      {% endblock %}
     </div>
   </section>
-  <script src="{% static 'JS/scripts.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> 
 </body>
 </html>
 

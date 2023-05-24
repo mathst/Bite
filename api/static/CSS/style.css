@@ -1,317 +1,476 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap');
 
 :root {
-    /* Cores */
-    --primary-color: #709775;
-    --panel-color: #FFF;
-    --text-color: #000;
-    --black-light-color: #707070;
-    --border-color: #E6E5E5;
-    --toggle-color: #DDD;
-    --box1-color: #4DA3FF;
-    --box2-color: #FFE6AC;
-    --box3-color: #E7D1FC;
-    --title-icon-color: #FFF;
+  /* Cores */
+  --primary-color: #709775;
+  --panel-color: #FFF;
+  --text-color: #000;
+  --black-light-color: #707070;
+  --border-color: #E6E5E5;
+  --toggle-color: #DDD;
+  --box1-color: #4DA3FF;
+  --box2-color: #FFE6AC;
+  --box3-color: #E7D1FC;
+  --title-icon-color: #FFF;
 
-    /* Transição */
-    --tran-05: all 0.5s ease;
-    --tran-03: all 0.3s ease;
-    --tran-02: all 0.2s ease;
+  /* Transição */
+  --tran-05: all 0.5s ease;
+  --tran-03: all 0.3s ease;
+  --tran-02: all 0.2s ease;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background-color: #FFF;
+  min-height: 100vh;
+  background-color: #FFF;
 }
 
 nav {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 20%;
-    float: left;
-    padding: 10px 14px;
-    background-color: var(--panel-color);
-    border-right: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 15%;
+  padding: 10px 14px;
+  background-color: var(--panel-color);
+  border-right: 1px solid var(--border-color);
 }
 
 nav .logo-name {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 nav .logo-image {
-    display: flex;
-    justify-content: center;
-    min-width: 45px;
+  display: flex;
+  justify-content: center;
+  min-width: 45px;
 }
 
 nav .logo-image img {
-    width: 40px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-nav .logo-name .logo_name {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-left: 14px;
+nav .logo-name .logo-name-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-left: 14px;
 }
 
-nav .menu-items {
-    margin-top: 40px;
-    height: calc(100% - 90px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.menu-items {
+  margin-top: 40px;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .menu-items li {
-    list-style: none;
+  list-style: none;
 }
 
 .menu-items li a {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    text-decoration: none;
-    position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  text-decoration: none;
+  position: relative;
 }
 
-.nav-links li a:hover:before {
-    content: "";
-    position: absolute;
-    left: -7px;
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
+.menu-items li a:hover:before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
 }
 
 .menu-items li a i {
-    font-size: 24px;
-    min-width: 45px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--black-light-color);
+  font-size: 24px;
+  min-width: 45px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black-light-color);
 }
 
 .menu-items li a .link-name {
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--black-light-color);
-}
-
-.nav-links li a:hover i,
-.nav-links li a:hover .link-name {
-    color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--black-light-color);
 }
 
 .menu-items .logout-mode {
-    padding-top: 10px;
-    border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
 }
 
 .nav-links li a:hover {
-    background-color: var(--toggle-color);
+  background-color: var(--toggle-color);
 }
 
-/* <-----------------------------------------> */
+/* <------------------dashboard-----------------------> */
 
 .dashboard {
-    width: 80%;
-    float: left;
-    /* margin-left: 250px; */
-    /* Adicionado para ajustar o espaço da barra lateral */
+  margin-left: 17%;
+  /* Adicionado para ajustar o espaço da barra lateral */
 }
 
 .dashboard .content {
-    padding: 20px;
+  padding: 20px;
 }
 
 .dashboard .content .cards {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; */
+  display: grid;
+  /* aqui eu determino é são 3 colunas de tamanhos iguas, cada coluna tem uma fração */
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* esssa é a altura das linhas, se vc quiser pode apaga-la caso não queira uma altura definida */
+  grid-auto-rows: 100px;
+  /* espaço entre um elemento interno e outro */
+  grid-gap: 5px 5px;
+  /* margem interna que afasta os elementos da borda do grid */
+  padding: 20px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+
 }
 
 .dashboard .content .cards .card {
-    width: calc(33.33% - 10px);
-    background-color: var(--card-color);
-    padding: 1rem;
-    height: 4rem;
-    margin-bottom: 20px;
+  background-color: var(--panel-color);
+  padding: 1rem;
+  margin-bottom: 20px;
 }
 
 .dashboard .content .cards .card h2 {
-    margin-top: 0;
+  margin-top: 0;
 }
-
-@media (min-width: 600px) {
-    .cards { grid-template-columns: repeat(2, 1fr); }
-  }
-
-@media (min-width: 900px) {
-    .cards { grid-template-columns: repeat(3, 1fr); }
-  }
 
 .dashboard .content .cards .card p {
-    margin-bottom: 0;
-}
-
-.dashboard .content .add-item-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 60px;
-    margin: 0 auto;
-    background-color: var(--button-color);
-    border-radius: 5px;
-    color: var(--text-color);
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dashboard .content .add-item-button i {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-.dashboard .content .add-item-button:hover {
-    background-color: var(--button-color-hover);
-}
-
-.dashboard .content .add-item-form {
-    display: none;
-    background-color: var(--card-color);
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.dashboard .content .add-item-form.show {
-    display: block;
-}
-
-.dashboard .content .add-item-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.dashboard .content .add-item-form input[type="text"] {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 20px;
-}
-
-.dashboard .content .add-item-form input[type="submit"] {
-    width: 100%;
-    height: 60px;
-    background-color: var(--button-color);
-    border-radius: 5px;
-    color: var(--text-color);
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dashboard .content .add-item-form input[type="submit"]:hover {
-    background-color: var(--button-color-hover);
+  margin-bottom: 0;
 }
 
 .dashboard .content .card-item {
-    background-color: var(--panel-color);
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: var(--panel-color);
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
 .dashboard .content .card-item-actions {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .dashboard .content .card-item-actions button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin-left: 10px;
-    color: var(--black-light-color);
-    transition: color var(--tran-03);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  color: var(--black-light-color);
+  transition: color var(--tran-03);
 }
 
 .dashboard .content .card-item-actions button:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .dashboard .content .card-item-form {
-    display: none;
-    background-color: var(--panel-color);
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 10px;
+  display: none;
+  background-color: var(--panel-color);
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .dashboard .content .card-item-form.show {
-    display: block;
+  display: block;
 }
 
 .dashboard .content .card-item-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.dashboard .content .c input[type="text"] {
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    margin-bottom: 20px;
+.dashboard .content .card-item-form input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
 }
 
 .dashboard .content .card-item-form button {
-    background-color: var(--button-color);
-    border-radius: 10px;
-    color: var(--text-color);
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    padding: 10px 20px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
 }
 
 .dashboard .content .card-item-form button:hover {
-    background-color: var(--button-color-hover);
+  background-color: #558f61;
+}
+
+.dashboard .content .add-item-form {
+  background-color: var(--panel-color);
+  width: 50%;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.dashboard .content .add-item-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dashboard .content .add-item-button {
+  background-color: var(--primary-color);
+  width: auto;
+  height: auto;
+  color: var(--text-color);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard .content .add-item-button i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.dashboard .content .add-item-button:hover {
+  background-color: #558f61;
+}
+
+.dashboard .content .add-item-form input[type="text"] {
+  width: 50%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.dashboard .content .add-item-form input[type="submit"] {
+  width: 50%;
+  height: 60px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard .content .add-item-form input[type="submit"]:hover {
+  background-color: #558f61;
+}
+
+@media screen and (max-width: 960px) {
+  nav {
+    width: 10%;
+    height: 100%;
+    padding: 10px;
+  }
+
+  .logo-name .logo-name-text {
+    display: none;
+  }
+
+
+  .menu-items li a .link-name {
+    display: none;
+  }
+  .menu-items li a i {
+    display: flex;
+    justify-content: center;
+  }
+
+  .dashboard {
+    width: 90%;
+    margin-left: 12%;
+  }
+
+  .dashboard .content .cards {
+    display: grid;
+    /* aqui eu determino é são 2 colunas de tamanhos iguas, cada coluna tem uma fração */
+    grid-template-columns: repeat(2, 1fr);
+    /* esssa é a altura das linhas, se vc quiser pode apaga-la caso não queira uma altura definida */
+    grid-auto-rows: 100px;
+    /* espaço entre um elemento interno e outro */
+    grid-gap: 5px 8px;
+    /* margem interna que afasta os elementos da borda do grid */
+    padding: 20px 10px;
+  }
+  
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+  }
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* dropdown */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 30px;
+}
+
+.dropdown-btn  i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.dropdown-btn hover {
+  background-color: #558f61;
+}
+
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--panel-color);
+  display: block;
+  min-width: 160px;
+  padding: 5px;
+  z-index: 1;
+}
+
+.dropdown-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content form input[type="text"] {
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-bottom: 5px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.input-group{
+  display: flex;
+  flex-direction:center;
+}
+
+/* Tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  padding: 10px;
+  background-color: var(--panel-color);
+  color: var(--text-color);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Outros elementos */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.error-message {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.success-message {
+  margin-bottom: 10px;
+  color: green;
 }

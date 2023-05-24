@@ -1,3 +1,4 @@
+import asyncio
 import os
 import requests
 
@@ -6,7 +7,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Usuario, TipoUsuario, Cardapio
+from .models import Estoque, Item, Usuario, TipoUsuario, Cardapio
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
@@ -18,7 +19,7 @@ from google.auth.transport.requests import Request
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
     # Obter os dados do cardápio do Firestore
-    cardapio = Cardapio()
+    cardapio = Cardapio() # type: ignore
     itens_cardapio = cardapio.list_combos()
     combos_cardapio = cardapio.list_items()
 
@@ -62,8 +63,45 @@ def cardapio(request):
 
 # @login_required
 def estoque(request):
-    # Lógica para listar produtos em estoque
-    return render(request, 'estoque.html')
+    estoque = Estoque()
+
+    if request.method == 'POST':
+        if 'adicionar' in request.POST:
+            nome = request.POST.get('nome_item')
+            quantidade = int(request.POST.get('quantidade_item'))
+            valor_unitario = float(request.POST.get('valor_item'))
+            tipo = request.POST.get('tipo_item')
+            ingredientes = request.POST.get('ingredientes_item')
+            imagem = request.POST.get('imagem_item')
+
+            item = Item(nome, quantidade, valor_unitario, tipo, ingredientes, imagem)
+            estoque.adicionar_item(item)
+            
+
+        elif 'remover' in request.POST:
+            nome = request.POST.get('nome_item')
+            quantidade = int(request.POST.get('quantidade_item'))
+            estoque.remover_item(nome, quantidade)
+
+        elif 'pesquisar' in request.POST:
+            nome = request.POST.get('nome_item')
+            item = estoque.pesquisar_item(nome)
+            context = {'item': item}
+            return render(request, 'estoque.html', context)
+
+        return redirect('estoque')
+
+    itens = estoque.listar_itens()
+    quantidade_total_itens = len(itens)
+    valor_total_estoque = estoque.calcular_valor_total()
+    context = {
+        'itens': itens,
+        'quantidade_total_itens': quantidade_total_itens,
+        'valor_total_estoque': valor_total_estoque
+    }
+
+    return render(request, 'estoque.html', context)
+
 
 # @login_required
 def pedidos(request):
