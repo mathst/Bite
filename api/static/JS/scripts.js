@@ -143,14 +143,56 @@
 
 /*  dropdown */
 
-$(document).ready(function() {
-    $('.dropdown-btn').click(function() {
-      $(this).siblings('.dropdown-content').toggle();
+// $(document).ready(function() {
+//     $('.dropdown-btn').click(function() {
+//       $(this).siblings('.dropdown-content').toggle();
+//     });
+//   });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     var dropdownButton = document.querySelector('.dropdown-btn' || '.btn-table-dropdown');
+//     var dropdownContent = document.querySelector('.dropdown-content');
+
+//     dropdownButton.addEventListener('click', function() {
+//         dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+//     });
+// });
+
+// funçaõ de pesquisar com enter
+
+document.addEventListener('DOMContentLoaded', function() {
+    var searchInput = document.getElementById('search-input');
+    
+    searchInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        performSearch(searchInput.value);
+      }
     });
+    
+    function performSearch(query) {
+      // Aqui você pode executar a ação desejada com o valor do campo de pesquisa
+      console.log('Pesquisar:', query);
+    }
   });
 
+// função do dropdown
 
-  (function ($) {
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdownButtons = document.querySelectorAll('.dropdown-btn');
+
+  dropdownButtons.forEach(function(button) {
+    var dropdownContent = button.nextElementSibling;
+
+    button.addEventListener('click', function() {
+      dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+});
+
+// função de validação
+
+(function ($) {
     "use strict";
     /*==================================================================
     [ Validate ]*/
@@ -169,7 +211,7 @@ $(document).ready(function() {
         return check;
     });
 
-    $('.validate-form .input100').each(function(){
+$('.validate-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
         });
@@ -201,6 +243,9 @@ $(document).ready(function() {
     }
     
 })
+
+// função para ocultar mensagem
+
 (jQuery);
 
     // Seleciona todas as divs com a classe "message"

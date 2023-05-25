@@ -78,21 +78,28 @@ def estoque(request):
             estoque.adicionar_item(item)
             
 
-        elif 'remover' in request.POST:
-            nome = request.POST.get('nome_item')
-            quantidade = int(request.POST.get('quantidade_item'))
-            estoque.remover_item(nome, quantidade)
+        elif 'delete' in request.POST:
+            nome = request.POST.get('nome')
+            estoque.delete_item(nome)
+            
+        elif 'restoque' in request.POST:
+            nome = request.POST.get('nome')
+            estoque.delete_item(nome)
 
         elif 'pesquisar' in request.POST:
-            nome = request.POST.get('nome_item')
-            item = estoque.pesquisar_item(nome)
-            context = {'item': item}
+            nome = request.POST.get('nome')
+            itens = estoque.pesquisar_item(nome)
+            context = {
+                'itens': itens,
+                'quantidade_total_itens': "0",
+                'valor_total_estoque': "0"
+                }
             return render(request, 'estoque.html', context)
 
         return redirect('estoque')
 
     itens = estoque.listar_itens()
-    quantidade_total_itens = len(itens)
+    quantidade_total_itens = estoque.total_items_estoque()
     valor_total_estoque = estoque.calcular_valor_total()
     context = {
         'itens': itens,

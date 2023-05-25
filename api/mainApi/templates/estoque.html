@@ -26,9 +26,9 @@
   <div class="row mb-4">
     <div class="col-md-6">
       <div class="dropdown">
-        <button class="uil uil-plus dropdown-btn ">  Adicionar Item</button>
+        <button class="uil uil-plus dropdown-btn "> Adicionar Item</button>
         <div class="dropdown-content">
-          <form method="POST" class="adicionar" id="adicionar">
+          <form method="POST" class="add" id="adicionar">
             {% csrf_token %}
             <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
             <input type="text" name="quantidade_item" class="drop-form mb-2"placeholder="Quantidade do Item">
@@ -36,25 +36,29 @@
             <input type="text" name="tipo_item" class="drop-form mb-2"placeholder="Tipo do Item">
             <input type="text" name="ingredientes_item" placeholder="Ingredientes do Item">
             <input type="text" name="imagem_item" class="drop-form mb-2"placeholder="Imagem do Item">
-            <button type="submit" name="adicionar"class="dropdown-btn">Confirmar</button>
+            <button type="submit" name="adicionar"class="btn-table">
+              <i class="uil uil-check"></i>
+            </button>
           </form>  
         </div>
       </div>
       <div class="dropdown">
-        <button class="uil uil-redo dropdown-btn">  Reabastecer Item</button>
+        <button class="uil uil-redo dropdown-btn"> Reabastecer Item</button>
         <div class="dropdown-content">
-          <form method="POST" id="reabastecer-item-form">
+          <form method="POST" class="update" id="update">
             {% csrf_token %}
             <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
             <input type="text" name="quantidade_item" class="drop-form mb-2" placeholder="Quantidade do Item">
             <input type="text" name="valor_item" class="drop-form mb-2" placeholder="valor do Item">
-            <button type="submit" cname="adicionar"class="dropdown-btn">Confirmar</button>
+            <button type="submit" cname="adicionar"class="btn-table">
+              <i class="uil uil-check"></i>
+            </button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div class = "col-md-6">
+  <div class = "col-md-10">
   <table class="table table-striped ">
     <thead>
       <tr>
@@ -62,13 +66,18 @@
         <th scope="col">Quantidade</th>
         <th scope="col">Valor Unitário</th>
         <th scope="col">Ações</th>
-        <th scope="col">
-          <form method="GET">
-            <div class="input-group">
-              <input type="text" name="search_query" class="add-item-form" placeholder="Pesquisar Item">
-              <button class="add-item-button" type="submit">Buscar</button>
+        <th scope="col" class="search-label-column">
+          <div class="dropdown">
+            <button class="btn-table btn-circle">
+              <i class="uil uil-search"></i>
+            </button>
+            <div class="dropdown-content">
+              <form method="POST" id="pesquisar">
+                {% csrf_token %}
+                <input type="text" id='search-input' name="pesquisar" class="pesquisar" placeholder="Pesquisar Item">
+              </form>
             </div>
-          </form>
+          </div>
         </th>
       </tr>
     </thead>
@@ -79,23 +88,30 @@
         <td>{{ item.quantidade }}</td>
         <td>R$ {{ item.valor_unitario }}</td>
         <td>
-          <form method="POST" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" name="remover" class="add-item-button btn-sm "><i class="uil uil-trash-alt"></i></button>
-          </form>
           <div class="dropdown">
-            <button class="dropdown-btn"><i class="uil uil-edit"></i></button>
+            <form method="POST" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" name="remover" class="btn-table btn-circle">
+                <i class="uil uil-trash-alt"></i>
+              </button>
+            </form>
+          </div>
+          <div class="dropdown">
+            <button class="btn-table btn-circle">
+              <i class="uil uil-edit"></i>
+            </button>
             <div class="dropdown-content">
               <form method="POST" id="reabastecer-item-form">
                 {% csrf_token %}
                 <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
                 <input type="text" name="quantidade_item" class="drop-form mb-2" placeholder="Quantidade do Item">
                 <input type="text" name="valor_item" class="drop-form mb-2" placeholder="valor do Item">
-                <button type="submit" cname="adicionar"class="dropdown-btn">ok</button>
+                <button type="submit" name="adicionar"class="btn-table btn-circle">
+                  <i class="uil uil-check"></i>
+                </button>
               </form>
             </div>
           </div>
-        </div>
         </td>
       </tr>
       {% endfor %}

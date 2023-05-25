@@ -280,7 +280,7 @@ nav .logo-name .logo-name-text {
   margin-bottom: 10px;
 }
 
-.dashboard .content .add-item-form input[type="submit"] {
+.dashboard .content .add-itqem-form input[type="submit"] {
   width: 50%;
   height: 60px;
   background-color: var(--primary-color);
@@ -347,10 +347,44 @@ nav .logo-name .logo-name-text {
   .table th,
   .table td {
     padding: 8px;
-    text-align: left;
+    text-align: center;
   }
 }
 
+/* Tabela */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  padding: 10px;
+  background-color: var(--panel-color);
+  color: var(--text-color);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.search-label-column {
+  position: relative;
+}
+
+.search-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
 .row {
   display: flex;
@@ -363,38 +397,33 @@ nav .logo-name .logo-name-text {
 .dropdown {
   position: relative;
   display: inline-block;
+  overflow: visible;
 }
 
-.dropdown-btn {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 30px;
-}
 
-.dropdown-btn  i {
-  font-size: 24px;
-  margin-right: 10px;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
-
-.dropdown-btn hover {
-  background-color: #558f61;
-}
-
 
 .dropdown-content {
   position: absolute;
+  display: none;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-60%);
   background-color: var(--panel-color);
-  display: block;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
   min-width: 160px;
   padding: 5px;
   z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .dropdown-content form {
@@ -411,44 +440,65 @@ nav .logo-name .logo-name-text {
   margin-bottom: 5px;
 }
 
-.dropdown-content a {
-  display: block;
-  padding: 8px 16px;
-  text-decoration: none;
+/* botões */
+
+.search-form {
+  width: 50%;
+  height: 30%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  margin-right: 5px;
+}
+
+.dropdown-btn {
+  background-color: var(--primary-color);
   color: var(--text-color);
+  padding: 10px 20px;
+  margin-right: 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown-btn i {
+  font-size: 24px;
+  margin-right: 10px;
+  font-weight: bold;
 }
 
-
-.input-group{
-  display: flex;
-  flex-direction:center;
+.dropdown-btn:hover {
+  background-color: #558f61;
 }
 
-/* Tabela */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table thead th {
-  padding: 10px;
-  background-color: var(--panel-color);
+.btn-table {
+  background-color: var(--primary-color);
   color: var(--text-color);
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
+  border: none;
+  padding: 0; /* Removido o padding */
+  width: 30px; /* Largura fixa */
+  height: 30px; /* Altura fixa */
+  border-radius: 10%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex; /* Adicionado para centralizar o ícone verticalmente */
+  justify-content: center; /* Adicionado para centralizar o ícone horizontalmente */
+  align-items: center; /* Adicionado para centralizar o ícone verticalmente */
+}
+.btn-table i {
+  font-size: 100%;
+  font-weight: bold;
+}
+.btn-circle {
+  border-radius: 50%; /* Formato de círculo */
+}
+.btn-table:hover {
+  background-color: #558f61;
 }
 
-.table tbody td {
-  padding: 10px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.table tbody tr:last-child td {
-  border-bottom: none;
+.dropdown:hover .btn-table + .dropdown-content {
+  display: block;
 }
 
 /* Outros elementos */

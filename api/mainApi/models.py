@@ -350,19 +350,13 @@ class Estoque:
         self.db = firestore.client()
         self.collection = self.db.collection('estoque')
 
-
-    
     def adicionar_item(self, item):
         # Verifica se o item já existe no estoque
         estoque_item = self.pesquisar_item(item.nome)
         print(estoque_item)
         if estoque_item:
             print("item existente")
-            # Atualiza as informações do item no estoque
-            estoque_item.quantidade += item.quantidade
-            estoque_item.valor_ultima_reposicao = item.valor_unitario
-            estoque_item.data_ultima_reposicao = datetime.now()
-            estoque_item.update_in_db()
+          
         else:
             print("item novo")
             # Cria um novo item
@@ -371,10 +365,22 @@ class Estoque:
             item.add_to_db()
             self.collection.document(item.nome).set(item.to_dict())
             
-            
-    def remover_item(self, nome_item, quantidade):
+    def restoque_item(self,nome):
+        estoque_item = self.pesquisar_item(nome)
+        print(estoque_item)
+        if estoque_item:
+            # Atualiza as informações do item no estoque
+            estoque_item.quantidade += item.quantidade
+            estoque_item.valor_ultima_reposicao = item.valor_unitario
+            estoque_item.data_ultima_reposicao = datetime.now()
+            estoque_item.update_in_db()
+        else:    
+        
+        
+               
+    def subtrai_item(self, nome, quantidade):
         # Verifica se o item existe no estoque
-        estoque_item = self.pesquisar_item(nome_item)
+        estoque_item = self.pesquisar_item(nome)
         if estoque_item:
             # Verifica se a quantidade a ser removida não excede a quantidade disponível no estoque
             if quantidade <= estoque_item.quantidade:
@@ -386,6 +392,13 @@ class Estoque:
                 print("Quantidade solicitada excede a quantidade disponível no estoque.")
         else:
             print("Item não encontrado no estoque.")
+            
+    def delete_item(self,nome):
+        estoque_item = self.pesquisar_item(nome)
+        if estoque_item:
+            db.collection("estoque").document(nome).delete()
+        else:
+            print("Item não encontrado no estoque.")
 
     def listar_itens(self):
         itens = []
@@ -395,15 +408,19 @@ class Estoque:
             itens.append(item)
         return itens
 
-    def pesquisar_item(self, nome_item):
-        doc_ref = self.collection.document(nome_item)
-        doc = doc_ref.get()
+    def pesquisar_item(self, nome):
+        doc = self.collection.document('estoque').get(nome)
         if doc.exists:
             item = doc.to_dict()
             return item
         else:
+            print("Item não encontrado no estoque.")
             return None
-
+        
+    def total_items_estoque(self):
+        itens = self.listar_itens()
+        return sum(item['quantidade']for item in itens)
+    
     def calcular_valor_total(self):
         itens = self.listar_itens()
         return sum(item['quantidade'] * item['valor_unitario'] for item in itens)
