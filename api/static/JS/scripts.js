@@ -179,9 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // função do dropdown
 
 document.addEventListener('DOMContentLoaded', function() {
-  var dropdownButtons = document.querySelectorAll('.dropdown-btn');
+    var dropdownButtons = document.querySelectorAll('.dropdown-btn, .btn-table');
+    // var dropdownContent = dropdownButton.nextElementSibling;
 
-  dropdownButtons.forEach(function(button) {
+    dropdownButtons.forEach(function(button) {
     var dropdownContent = button.nextElementSibling;
 
     button.addEventListener('click', function() {
@@ -189,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+  
 
 // função de validação
 

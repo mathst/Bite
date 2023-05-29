@@ -26,8 +26,8 @@
   <div class="row mb-4">
     <div class="col-md-6">
       <div class="dropdown">
-        <button class="uil uil-plus dropdown-btn "> Adicionar Item</button>
-        <div class="dropdown-content">
+        <button class=" dropdown-btn" id="dropdown1" ><i class = "uil uil-plus"></i>Adicionar Item</button>
+        <div class="dropdown-content" id="dropdown-content1">
           <form method="POST" class="add" id="adicionar">
             {% csrf_token %}
             <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
@@ -43,8 +43,8 @@
         </div>
       </div>
       <div class="dropdown">
-        <button class="uil uil-redo dropdown-btn"> Reabastecer Item</button>
-        <div class="dropdown-content">
+        <button class="dropdown-btn" id="dropdown2"><i class = "uil uil-redo"></i>Reabastecer Item</button>
+        <div class="dropdown-content"id="dropdown-content2">
           <form method="POST" class="update" id="update">
             {% csrf_token %}
             <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
@@ -97,10 +97,10 @@
             </form>
           </div>
           <div class="dropdown">
-            <button class="btn-table btn-circle">
+            <button class="btn-table btn-circle"id="dropdown3">
               <i class="uil uil-edit"></i>
             </button>
-            <div class="dropdown-content">
+            <div class="dropdown-content" id="dropdown-content3">
               <form method="POST" id="reabastecer-item-form">
                 {% csrf_token %}
                 <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">

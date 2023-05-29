@@ -132,22 +132,34 @@ class EstadoPedido(Enum):
 #     UTENSILHOS="utensilhos"
 #     EQUIPAMENTO="equipamento"
 #     HIGIENE="higiene"
+
+class Categoria(Enum):
+    COMIDAS = 'comidas'
+    APERITIVOS = 'aperitivos'
+    SOBREMESAS = 'sobremesas'
+    BEBIDAS = 'bebidas'
+
 # Classe de Item
 class Item:
-    def __init__(self, nome, quantidade, valor_unitario, tipo, ingredientes=None, imagem=None):
+    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None, img=None):
         self.nome = nome
         self.quantidade = quantidade
         self.valor_unitario = valor_unitario
         self.tipo = tipo
+        self.categoria = categoria
+        self.valor_venda = valor_venda
         self.ingredientes = ingredientes
-        self.imagem = imagem
+        self.img = img
 
     def to_dict(self):
         item_dict = {
             "nome": self.nome,
             "quantidade": self.quantidade,
             "valor_unitario": self.valor_unitario,
-            "tipo": self.tipo
+            "tipo": self.tipo,
+            "categoria": self.categoria,
+            "valor_venda": self.valor_venda,
+            "img": self.img
         }
         if self.ingredientes:
             item_dict["ingredientes"] = self.ingredientes
@@ -185,87 +197,91 @@ class Combo(Item):
 
 #classe do cardapio
 class Cardapio:
-    def __init__(self, id_cardapio, nome, descricao, imagem=None):
-        self.id_cardapio = id_cardapio
-        self.nome = nome
-        self.descricao = descricao
-        self.imagem = imagem
+    def __init__(self, descricao=None, imagem=None):
+        self.db = firestore.client()
+        self.collection = self.db.collection('cardapio')
+
         self.itens = []
         self.combos = []
 
-    def to_dict(self):
-        return {
-            "id_cardapio": self.id_cardapio,
-            "nome": self.nome,
-            "descricao": self.descricao,
-            "itens": self.itens,
-            "combos": self.combos,
-        }
+    def adicionar_item(self, item):
+        # Verifica se o item já existe no estoque
+        estoque_item = self.pesquisar_item(item.nome)
+        if estoque_item:
+            print("item existente")
+        else:
+            item.add_to_db()
+            self.collection.document(item.nome).set(item.to_dict())
+            print(item.to_dict())
 
-    def add_item(self, item):
-        self.itens.append(item)
-        self.update_in_db()
+    def pesquisar_item(self, nome):
+        doc = self.collection.document(nome).get()
+        if doc.exists:
+            item = doc.to_dict()
+            return item
+        else:
+            print("Item não encontrado no CARDAPIO.")
+            return None
 
-    def add_combo(self, combo):
+    def adicionar_combo(self, combo):
         self.combos.append(combo)
         self.update_in_db()
 
-    def list_items(self):
-        return self.itens
+    def adicionar_item_ao_combo(self, combo, item, quantidade):
+        combo.adicionar_item(item, quantidade)
+        self.update_in_db()
 
-    def list_combos(self):
-        return self.combos
-
-    def edit_item(self, id_item, novo_item):
-        index = self._get_index_by_id(id_item, self.itens)
-        if index is not None:
-            self.itens[index] = novo_item
-            self.update_in_db()
+    def editar_item(self, nome_item, novo_item):
+        doc_ref = self.collection.document(nome_item)
+        doc = doc_ref.get()
+        if doc.exists:
+            doc_ref.update(novo_item.to_dict())
         else:
-            raise ValueError("Item não encontrado.")
+            print("Item não encontrado no cardápio.")
 
-    def edit_combo(self, id_combo, novo_combo):
-        index = self._get_index_by_id(id_combo, self.combos)
-        if index is not None:
-            self.combos[index] = novo_combo
-            self.update_in_db()
+    def editar_combo(self, nome_combo, novo_combo):
+        doc_ref = self.collection.document(nome_combo)
+        doc = doc_ref.get()
+        if doc.exists:
+            doc_ref.update(novo_combo.to_dict())
         else:
-            raise ValueError("Combo não encontrado.")
+            print("Combo não encontrado no cardápio.")
 
-    def delete_item(self, id_item):
-        index = self._get_index_by_id(id_item, self.itens)
-        if index is not None:
-            del self.itens[index]
-            self.update_in_db()
+    def remover_item(self, nome_item):
+        doc_ref = self.collection.document(nome_item)
+        doc = doc_ref.get()
+        if doc.exists:
+            doc_ref.delete()
         else:
-            raise ValueError("Item não encontrado.")
+            print("Item não encontrado no cardápio.")
 
-    def delete_combo(self, id_combo):
-        index = self._get_index_by_id(id_combo, self.combos)
-        if index is not None:
-            del self.combos[index]
-            self.update_in_db()
+    def remover_combo(self, nome_combo):
+        doc_ref = self.collection.document(nome_combo)
+        doc = doc_ref.get()
+        if doc.exists:
+            doc_ref.delete()
         else:
-            raise ValueError("Combo não encontrado.")
+            print("Combo não encontrado no cardápio.")
 
-    def add_to_db(self):
-        try:
-            db.collection("cardapios").document(self.id_cardapio).set(self.to_dict())
-            print ("foi")
-        except Exception as e:
-            print( f'Ocorreu um erro ao add iten: {e}')
+    def listar_itens(self):
+        items = self.collection.get()
+        for item in items:
+            print(item.to_dict())
+
+    def listar_combos(self):
+        combos = self.collection.get()
+        for combo in combos:
+            print(combo.to_dict())
 
     def update_in_db(self):
-        db.collection("cardapios").document(self.id_cardapio).update(self.to_dict())
+        try:
+            for item in self.itens:
+                self.collection.document(item.nome).update(item.to_dict())
+            for combo in self.combos:
+                self.collection.document(combo.nome).update(combo.to_dict())
+        except Exception as e:
+            print(f'Ocorreu um erro ao atualizar item/combo: {e}')
 
-    def delete_from_db(self):
-        db.collection("cardapios").document(self.id_cardapio).delete()
-
-    def _get_index_by_id(self, id, lista):
-        for i, item in enumerate(lista):
-            if item.id == id:
-                return i
-        return None
 
 # Classe de ItemPedido
 class ItemPedido:
@@ -364,30 +380,35 @@ class Estoque:
             item.data_ultima_reposicao = datetime.now()
             item.add_to_db()
             self.collection.document(item.nome).set(item.to_dict())
-            
-    def restoque_item(self,nome):
-        estoque_item = self.pesquisar_item(nome)
-        print(estoque_item)
-        if estoque_item:
-            # Atualiza as informações do item no estoque
-            estoque_item.quantidade += item.quantidade
-            estoque_item.valor_ultima_reposicao = item.valor_unitario
-            estoque_item.data_ultima_reposicao = datetime.now()
-            estoque_item.update_in_db()
-        else:    
         
-        
-               
+    def restoque_item(self, nome):
+        doc_ref = self.collection.document(nome)
+        subcolecao_ref = doc_ref.collection('reposicoes')
+        doc = doc_ref.get()
+        if doc.exists:
+            novo_doc_ref = subcolecao_ref.document()
+            estoque_item = doc.to_dict()
+            # Atualize as informações do item no estoque
+            quantidade_atual = estoque_item['quantidade']
+            estoque_item['quantidade'] = quantidade_atual + estoque_item['quantidade']
+            estoque_item['valor_ultima_reposicao'] = estoque_item['valor_unitario']
+            estoque_item['data_ultima_reposicao'] = datetime.now()
+            novo_doc_ref.set(estoque_item)
+        else:
+            print("Item não encontrado no estoque.")
+            pass
+
     def subtrai_item(self, nome, quantidade):
-        # Verifica se o item existe no estoque
-        estoque_item = self.pesquisar_item(nome)
-        if estoque_item:
-            # Verifica se a quantidade a ser removida não excede a quantidade disponível no estoque
-            if quantidade <= estoque_item.quantidade:
-                # Atualiza a quantidade do item no estoque
-                estoque_item.quantidade -= quantidade
-                estoque_item.data_ultima_retirada = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # type: ignore
-                estoque_item.update_in_db()
+        doc_ref = self.collection.document(nome)
+        doc = doc_ref.get()
+        if doc.exists:
+            estoque_item = doc.to_dict()
+            # Verifique se a quantidade a ser removida não excede a quantidade disponível no estoque
+            if quantidade <= estoque_item['quantidade']:
+                # Atualize a quantidade do item no estoque
+                estoque_item['quantidade'] -= quantidade
+                estoque_item['data_ultima_retirada'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                doc_ref.set(estoque_item)
             else:
                 print("Quantidade solicitada excede a quantidade disponível no estoque.")
         else:

@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Estoque, Item, Usuario, TipoUsuario, Cardapio
+from .models import Combo, Estoque, Item, Usuario, TipoUsuario, Cardapio
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
@@ -18,42 +18,93 @@ from google.auth.transport.requests import Request
 
 @cache_page(60 * 15) # cache for 15 minutes
 def cardapio(request):
-    # Obter os dados do cardápio do Firestore
-    cardapio = Cardapio() # type: ignore
-    itens_cardapio = cardapio.list_combos()
-    combos_cardapio = cardapio.list_items()
+    # Instanciar a classe Cardapio
+    cardapio = Cardapio()
 
     if request.method == 'POST':
         # Verificar se a ação é adicionar, editar ou excluir
         if 'adicionar' in request.POST:
-            # Lógica para adicionar um novo item/combo ao cardápio
-            # Obter os dados do novo item/combo do request.POST
-            novo_item = {
-                'nome': request.POST.get('nome_item'),
-                'descricao': request.POST.get('descricao_item'),
-                'ingredientes': request.POST.getlist('ingredientes_item')
-            }
-            Cardapio.add_item(novo_item) # type: ignore
+            # Obter os dados do item a ser adicionado
+            nome = request.POST.get('nome')
+            quantidade = int(request.POST.get('quantidade_item') or 0)
+            valor_unitario = float(request.POST.get('quantidade_item') or 0)
+            tipo = "CARDAPIO"
+            categoria = request.POST.get('categoria')
+            ingredientes = request.POST.get('ingredientes')
+            if ingredientes is not None:
+                ingredientes = ingredientes.split(',')  # Converte a string em uma lista
+            else:
+                ingredientes = []  # Define uma lista vazia caso nenhum valor seja fornecido
+            valor_venda = request.POST.get('valor_item')
+            if valor_venda is not None:
+                valor_venda = str(valor_venda).replace('$', '').replace(',', '')
+                valor_venda = float(valor_venda)
+            else:
+                print('Valor não fornecido')
+                # Lógica para tratar o caso em que o valor não foi fornecido
+            img = request.POST.get('imagem')
+
+            # Criar uma instância do Item
+            item = Item(nome, quantidade, valor_unitario, tipo,categoria,valor_venda, ingredientes, img)
+            # Adicionar o item ao cardápio
+            cardapio.adicionar_item(item)
 
         elif 'editar' in request.POST:
-            # Lógica para editar um item/combo existente no cardápio
-            # Obter os dados do item/combo a ser editado do request.POST
-            id_item = request.POST.get('id_item')
-            novo_item = {
-                'nome': request.POST.get('nome_item'),
+            # Lógica para editar um item existente no cardápio
+            # Obter os dados do item a ser editado
+            nome = request.POST.get('nome')
+            att_item = {
+                'nome': request.POST.get('nome'),
                 'descricao': request.POST.get('descricao_item'),
-                'ingredientes': request.POST.getlist('ingredientes_item')
+                'ingredientes': request.POST.getlist('ingredientes_item'),
             }
-            Cardapio.edit_item(id_item, novo_item) # type: ignore
+            # Editar o item no cardápio
+            cardapio.editar_item(nome, att_item)
 
         elif 'excluir' in request.POST:
-            # Lógica para excluir um item/combo do cardápio
-            # Obter o ID do item/combo a ser excluído do request.POST
-            id_item = request.POST.get('id_item')
-            Cardapio.delete_item(id_item) # type: ignore
+            # Lógica para excluir um item do cardápio
+            # Obter o nome do item a ser excluído
+            nome_item = request.POST.get('nome')
+            # Remover o item do cardápio
+            cardapio.remover_item(nome_item)
+
+        elif 'adicionar_combo' in request.POST:
+            # Obter os dados do combo a ser adicionado
+            nome = request.POST.get('nome')
+            valor_unitario = float(request.POST.get('valor_item'))
+            itens_combo = request.POST.getlist('itens_combo')
+            img = request.POST.get('imagem_item')
+
+            # Criar uma instância do Combo
+            combo = Combo(nome, valor_unitario, itens_combo, img)
+            # Adicionar o combo ao cardápio
+            cardapio.adicionar_combo(combo)
+
+        elif 'editar_combo' in request.POST:
+            # Lógica para editar um combo existente no cardápio
+            # Obter os dados do combo a ser editado
+            nome = request.POST.get('nome')
+            att_combo = {
+                'nome': request.POST.get('nome'),
+                'descricao': request.POST.get('descricao_item'),
+                'itens_combo': request.POST.getlist('itens_combo'),
+            }
+            # Editar o combo no cardápio
+            cardapio.editar_combo(nome, att_combo)
+
+        elif 'excluir_combo' in request.POST:
+            # Lógica para excluir um combo do cardápio
+            # Obter o nome do combo a ser excluído
+            nome_combo = request.POST.get('nome')
+            # Remover o combo do cardápio
+            cardapio.remover_combo(nome_combo)
 
         # Redirecionar para a página do cardápio após a ação
         return redirect('cardapio')
+
+    # Obter os itens e combos do cardápio
+    itens_cardapio = cardapio.listar_itens()
+    combos_cardapio = cardapio.listar_combos()
 
     context = {
         'itens_cardapio': itens_cardapio,
@@ -74,7 +125,7 @@ def estoque(request):
             ingredientes = request.POST.get('ingredientes_item')
             imagem = request.POST.get('imagem_item')
 
-            item = Item(nome, quantidade, valor_unitario, tipo, ingredientes, imagem)
+            item = Item(nome, quantidade, valor_unitario, tipo, ingredientes)
             estoque.adicionar_item(item)
             
 
