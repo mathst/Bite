@@ -38,14 +38,13 @@ def cardapio(request):
             valor_venda = request.POST.get('valor_item')
             if valor_venda is not None:
                 valor_venda = str(valor_venda).replace('$', '').replace(',', '')
-                valor_venda = float(valor_venda)
             else:
                 print('Valor não fornecido')
                 # Lógica para tratar o caso em que o valor não foi fornecido
             img = request.POST.get('imagem')
 
             # Criar uma instância do Item
-            item = Item(nome, quantidade, valor_unitario, tipo,categoria,valor_venda, ingredientes, img)
+            item = Item(nome, quantidade, valor_unitario, tipo, categoria,valor_venda, ingredientes, img)
             # Adicionar o item ao cardápio
             cardapio.adicionar_item(item)
 
@@ -103,11 +102,11 @@ def cardapio(request):
         return redirect('cardapio')
 
     # Obter os itens e combos do cardápio
-    itens_cardapio = cardapio.listar_itens()
+    categorias = cardapio.listar_itens()
     combos_cardapio = cardapio.listar_combos()
 
     context = {
-        'itens_cardapio': itens_cardapio,
+        'categorias': dict(categorias),
         'combos_cardapio': combos_cardapio,
     }
     return render(request, 'cardapio.html', context)

@@ -1,3 +1,4 @@
+from collections import defaultdict
 from datetime import datetime
 import uuid
 from django.db import models
@@ -197,7 +198,7 @@ class Combo(Item):
 
 #classe do cardapio
 class Cardapio:
-    def __init__(self, descricao=None, imagem=None):
+    def __init__(self):
         self.db = firestore.client()
         self.collection = self.db.collection('cardapio')
 
@@ -265,8 +266,13 @@ class Cardapio:
 
     def listar_itens(self):
         items = self.collection.get()
+        categorias = defaultdict(list)
         for item in items:
-            print(item.to_dict())
+            item_data = item.to_dict()
+            categoria = item_data.get('categoria')
+            if categoria:
+                categorias[categoria].append(item_data)
+        return categorias
 
     def listar_combos(self):
         combos = self.collection.get()

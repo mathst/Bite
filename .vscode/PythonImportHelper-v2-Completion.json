@@ -139,6 +139,14 @@
         "documentation": {}
     },
     {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
         "label": "datetime",
         "importPath": "datetime",
         "description": "datetime",
@@ -960,7 +968,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Cardapio:\n    def __init__(self, descricao=None, imagem=None):\n        self.db = firestore.client()\n        self.collection = self.db.collection('cardapio')\n        self.itens = []\n        self.combos = []\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = self.pesquisar_item(item.nome)\n        if estoque_item:",
+        "peekOfCode": "class Cardapio:\n    def __init__(self):\n        self.db = firestore.client()\n        self.collection = self.db.collection('cardapio')\n        self.itens = []\n        self.combos = []\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = self.pesquisar_item(item.nome)\n        if estoque_item:",
         "detail": "api.mainApi.models",
         "documentation": {}
     },

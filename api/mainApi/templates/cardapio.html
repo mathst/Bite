@@ -13,16 +13,20 @@
 			  <div class="dropdown-content">
 				<form method="POST">
 					{% csrf_token %}
-					<input type="text" id="nome_item" name="nome" placeholder="Nome">
-					<input type="text" id="descricao_item" name="descricao" placeholder="Descrição">
-					<input type="text" id="categoria" name="categoria" placeholder="Categoria">
-					<input type="text" id="ingredientes" name="ingredientes" placeholder="Ingredientes">
-					<input type="text" id="valor_venda" name="valor_item" placeholder="Valor de venda">
-					<input type="text" id="imagem" name="imagem" placeholder="Imagem">
-					<button type="submit" name="adicionar" class="btn-table btn-circle">
-					  <i class="uil uil-check"></i>
-					</button>
-				  </form>
+					<input type="text" name="nome" placeholder="Nome">
+					<input type="text" name="quantidade" placeholder="Quantidade">
+					<input type="text" name="valor_unitario" placeholder="Valor Unitário">
+					<input type="text" name="tipo" placeholder="Tipo">
+					<input type="text" name="categoria" placeholder="Categoria">
+					<input type="text" name="valor_venda" placeholder="Valor de Venda">
+					<input type="text" name="ingredientes" placeholder="Ingredientes">
+					<input type="text" name="img" placeholder="URL da Imagem">
+					<div class="add-item-button">
+						<i class="uil uil-plus-circle"></i>
+						<input class="uil uil-plus-circle" type="submit" value="Adicionar">
+					</div>
+				</form>
+				
 				  
 			  </div>
 			  <div class="dropdown-btn">Combo</div>
@@ -55,7 +59,7 @@
                         <!-- Ícones de editar/excluir visíveis apenas para o gerente -->
                         <div class="card-actions dropdown">
                             <button class="btn-table btn-circle">
-                                <i class="fas fa-edit"></i>
+                                <i class="uil uil-edit"></i>
                             </button>
                             <div class="dropdown-content">
                                 <form method="POST">
@@ -64,15 +68,15 @@
                                     <input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
                                     <input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
                                     <input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-									<div class="edit-item-button">
-                                        <i class="uil uil-check-circle"></i>
-                                        <input class="uil uil-check-circle" type="submit" value="Editar">
+									<div class="btn-table">
+                                        <i class="uil uil-check"></i>
+                                        <input class="uil uil-check" type="submit" value="Editar">
                                     </div>
                                 </form>
                                 <form method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" name="combo_id" value="{{ combo.id }}">
-                                    <div class="delete-item-button">
+                                    <div class="btn-table">
                                         <i class="uil uil-trash-alt"></i>
                                         <input class="uil uil-trash-alt" type="submit" value="Excluir">
                                     </div>
@@ -85,183 +89,52 @@
         {% endfor %}
     </div>
 	<div class="categories">
+		{% for categoria, itens_categoria in categorias.items %}
 		<div class="category">
-			<h2>Comidas</h2>
-			<div class="items">
-				{% for item in alimentos %}
-					<div class="item">
-						<img src="{{ item.imagem }}" alt="{{ item.nome }}" class="item-image">
-						<div class="item-info">
-							<h3>{{ item.nome }}</h3>
-							<p>{{ item.descricao }}</p>
-							<p>Preço: R$ {{ item.preco }}</p>
-							{% if request.session.tipo_user|default:'' == 'gerente' %}
-								<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-								<div class="card-actions dropdown">
-									<button class="btn-table btn-circle">
-										<i class="fas fa-edit"></i>
+			<h2>{{ categoria }}</h2>
+			<div class="cards">
+				{% for item in itens_categoria %}
+				<div class="card">
+					<img src="{{ item.img }}" alt="{{ item.nome }}" class="card-image">
+					<div class="card-content ">
+						<span>{{ item.nome }}</span>
+						<p>{{ item.descricao }}</p>
+						<p>Preço: R$ {{ item.valor_venda }}</p>
+						{% if request.session.tipo_user|default:'' == 'gerente' %}
+						<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
+						<div class="card-actions dropdown">
+							<button class="btn-table btn-circle">
+								<i class="fas fa-edit"></i>
+							</button>
+							<div class="dropdown-content">
+								<form method="POST">
+									{% csrf_token %}
+									<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
+									<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
+									<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
+									<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
+									<div class="add-item-button">
+										<i class="uil uil-plus-circle"></i>
+										<input class="uil uil-plus-circle" type="submit" value="Adicionar">
+									</div>
+								</form>
+							</div>
+							<div class="dropdown">
+								<form method="POST" style="display: inline;">
+									{% csrf_token %}
+									<button type="submit" name="remover" class="btn-table btn-circle">
+										<i class="uil uil-trash-alt"></i>
 									</button>
-									<div class="dropdown-content">
-										<form method="POST">
-											{% csrf_token %}
-											<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-											<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-											<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-											<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-											<div class="add-item-button">
-												<i class="uil uil-plus-circle"></i>
-												<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-											</div>
-										</form>
-									</div>
-									<div class="dropdown">
-										<form method="POST" style="display: inline;">
-											{% csrf_token %}
-											<button type="submit" name="remover" class="btn-table btn-circle">
-												<i class="uil uil-trash-alt"></i>
-											</button>
-										</form>
-									</div>
-								</div>
-							{% endif %}
+								</form>
+							</div>
 						</div>
+						{% endif %}
 					</div>
+				</div>
 				{% endfor %}
 			</div>
 		</div>
-		<div class="category">
-			<h2>Aperitivos</h2>
-			<div class="items">
-				{% for item in aperitivos %}
-					<div class="item">
-						<img src="{{ item.imagem }}" alt="{{ item.nome }}" class="item-image">
-						<div class="item-info">
-							<h3>{{ item.nome }}</h3>
-							<p>{{ item.descricao }}</p>
-							<p>Preço: R$ {{ item.preco }}</p>
-							{% if request.session.tipo_user|default:'' == 'gerente' %}
-								<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-								<div class="card-actions dropdown">
-									<button class="btn-table btn-circle">
-										<i class="fas fa-edit"></i>
-									</button>
-									<div class="dropdown-content">
-										<form method="POST">
-											{% csrf_token %}
-											<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-											<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-											<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-											<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-											<div class="add-item-button">
-												<i class="uil uil-plus-circle"></i>
-												<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-											</div>
-										</form>
-									</div>
-									<div class="dropdown">
-										<form method="POST" style="display: inline;">
-											{% csrf_token %}
-											<button type="submit" name="remover" class="btn-table btn-circle">
-												<i class="uil uil-trash-alt"></i>
-											</button>
-										</form>
-									</div>
-								</div>
-							{% endif %}
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		<div class="category">
-			<h2>Sobremesas</h2>
-			<div class="items">
-				{% for item in aperitivos %}
-					<div class="item">
-						<img src="{{ item.imagem }}" alt="{{ item.nome }}" class="item-image">
-						<div class="item-info">
-							<h3>{{ item.nome }}</h3>
-							<p>{{ item.descricao }}</p>
-							<p>Preço: R$ {{ item.preco }}</p>
-							{% if request.session.tipo_user|default:'' == 'gerente' %}
-								<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-								<div class="card-actions dropdown">
-									<button class="btn-table btn-circle">
-										<i class="fas fa-edit"></i>
-									</button>
-									<div class="dropdown-content">
-										<form method="POST">
-											{% csrf_token %}
-											<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-											<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-											<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-											<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-											<div class="add-item-button">
-												<i class="uil uil-plus-circle"></i>
-												<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-											</div>
-										</form>
-									</div>
-									<div class="dropdown">
-										<form method="POST" style="display: inline;">
-											{% csrf_token %}
-											<button type="submit" name="remover" class="btn-table btn-circle">
-												<i class="uil uil-trash-alt"></i>
-											</button>
-										</form>
-									</div>
-								</div>
-							{% endif %}
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		<div class="category">
-			<h2>Bebidas</h2>
-			<div class="items">
-				{% for item in bebidas %}
-					<div class="item">
-						<img src="{{ item.imagem }}" alt="{{ item.nome }}" class="item-image">
-						<div class="item-info">
-							<h3>{{ item.nome }}</h3>
-							<p>{{ item.descricao }}</p>
-							<p>Preço: R$ {{ item.preco }}</p>
-							{% if request.session.tipo_user|default:'' == 'gerente' %}
-								<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-								<div class="card-actions dropdown">
-									<button class="btn-table btn-circle">
-										<i class="fas fa-edit"></i>
-									</button>
-									<div class="dropdown-content">
-										<form method="POST">
-											{% csrf_token %}
-											<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-											<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-											<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-											<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-											<div class="add-item-button">
-												<i class="uil uil-plus-circle"></i>
-												<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-											</div>
-										</form>
-									</div>
-									<div class="dropdown">
-										<form method="POST" style="display: inline;">
-											{% csrf_token %}
-											<button type="submit" name="remover" class="btn-table btn-circle">
-												<i class="uil uil-trash-alt"></i>
-											</button>
-										</form>
-									</div>
-								</div>
-							{% endif %}
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		<!-- Repita o código acima para outras categorias de itens -->
+		{% endfor %}
 	</div>
 	
 {% endblock %}
