@@ -41,6 +41,7 @@ def cardapio(request):
             else:
                 print('Valor não fornecido')
                 # Lógica para tratar o caso em que o valor não foi fornecido
+            descricao= request.POST.get('descricao')
             img = request.POST.get('imagem')
 
             # Criar uma instância do Item

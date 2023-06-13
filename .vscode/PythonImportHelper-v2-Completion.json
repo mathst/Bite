@@ -941,7 +941,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Categoria(Enum):\n    COMIDAS = 'comidas'\n    APERITIVOS = 'aperitivos'\n    SOBREMESAS = 'sobremesas'\n    BEBIDAS = 'bebidas'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade",
+        "peekOfCode": "class Categoria(Enum):\n    COMIDAS = 'comidas'\n    APERITIVOS = 'aperitivos'\n    SOBREMESAS = 'sobremesas'\n    BEBIDAS = 'bebidas'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None,descircao=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -950,7 +950,7 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.categoria = categoria\n        self.valor_venda = valor_venda\n        self.ingredientes = ingredientes\n        self.img = img",
+        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None,descircao=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.categoria = categoria\n        self.valor_venda = valor_venda\n        self.ingredientes = ingredientes\n        self.descircao = descircao",
         "detail": "api.mainApi.models",
         "documentation": {}
     },

@@ -14,20 +14,16 @@
 				<form method="POST">
 					{% csrf_token %}
 					<input type="text" name="nome" placeholder="Nome">
-					<input type="text" name="quantidade" placeholder="Quantidade">
-					<input type="text" name="valor_unitario" placeholder="Valor Unitário">
-					<input type="text" name="tipo" placeholder="Tipo">
 					<input type="text" name="categoria" placeholder="Categoria">
 					<input type="text" name="valor_venda" placeholder="Valor de Venda">
 					<input type="text" name="ingredientes" placeholder="Ingredientes">
+					<input type="text" id="descricao" name="descricao" placeholder="Descrição">
 					<input type="text" name="img" placeholder="URL da Imagem">
-					<div class="add-item-button">
-						<i class="uil uil-plus-circle"></i>
-						<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-					</div>
+					<button type="submit" name="adicionar"class="btn-table btn-circle" value="Adicionar">
+						<i class="uil uil-check"></i>
+					</button>
 				</form>
 				
-				  
 			  </div>
 			  <div class="dropdown-btn">Combo</div>
 			  <div class="dropdown-content">
@@ -37,7 +33,7 @@
 				  <input type="text" id="descricao_combo" name="descricao_combo" placeholder="Descrição">
 				  <input type="text" id="itens" name="itens" placeholder="Ingredientes">
 				  <input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-				  <button type="submit" name="adicionar"class="btn-table btn-circle">
+				  <button type="submit" name="adicionar"class="btn-table btn-circle" value="Adicionar">
 					<i class="uil uil-check"></i>
 				  </button>
 				</form>
@@ -88,54 +84,39 @@
             </div>
         {% endfor %}
     </div>
+
 	<div class="categories">
 		{% for categoria, itens_categoria in categorias.items %}
-		<div class="category">
+		  <div class="category">
 			<h2>{{ categoria }}</h2>
 			<div class="cards">
-				{% for item in itens_categoria %}
+			  {% for item in itens_categoria %}
 				<div class="card">
-					<img src="{{ item.img }}" alt="{{ item.nome }}" class="card-image">
-					<div class="card-content ">
-						<span>{{ item.nome }}</span>
-						<p>{{ item.descricao }}</p>
-						<p>Preço: R$ {{ item.valor_venda }}</p>
-						{% if request.session.tipo_user|default:'' == 'gerente' %}
-						<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-						<div class="card-actions dropdown">
-							<button class="btn-table btn-circle">
-								<i class="fas fa-edit"></i>
-							</button>
-							<div class="dropdown-content">
-								<form method="POST">
-									{% csrf_token %}
-									<input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-									<input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-									<input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-									<input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-									<div class="add-item-button">
-										<i class="uil uil-plus-circle"></i>
-										<input class="uil uil-plus-circle" type="submit" value="Adicionar">
-									</div>
-								</form>
-							</div>
-							<div class="dropdown">
-								<form method="POST" style="display: inline;">
-									{% csrf_token %}
-									<button type="submit" name="remover" class="btn-table btn-circle">
-										<i class="uil uil-trash-alt"></i>
-									</button>
-								</form>
-							</div>
-						</div>
-						{% endif %}
+				  <img class="card_background" src="{{ item.img }}" alt="{{ item.nome }}" />
+				  <div class="card_content">
+					{% if request.session.tipo_user|default:'' == 'gerente' %}
+					<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
+					<div class="card_actions">
+					  <button class="btn-table btn-circle">
+						<i class="uil uil-edit"></i>
+					  </button>
+					  <button type="submit" name="remover" class="btn-table btn-circle">
+						<i class="uil uil-trash-alt"></i>
+					  </button>
 					</div>
+					{% endif %}
+					<h2 class="card_title">{{ item.nome }}</h2>
+					<p>{{ item.descricao }}</p>
+					<button class="btn-table">{{ item.valor_venda }}<i class="uil uil-cart"></i></button>
+				  </div>
 				</div>
-				{% endfor %}
+			  {% endfor %}
 			</div>
-		</div>
+		  </div>
 		{% endfor %}
-	</div>
-	
+	  </div>
+	  
+	  
+</div>
 {% endblock %}
 

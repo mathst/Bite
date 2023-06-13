@@ -142,7 +142,7 @@ class Categoria(Enum):
 
 # Classe de Item
 class Item:
-    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None, img=None):
+    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None,descircao=None, img=None):
         self.nome = nome
         self.quantidade = quantidade
         self.valor_unitario = valor_unitario
@@ -150,6 +150,7 @@ class Item:
         self.categoria = categoria
         self.valor_venda = valor_venda
         self.ingredientes = ingredientes
+        self.descircao = descircao
         self.img = img
 
     def to_dict(self):
@@ -160,6 +161,7 @@ class Item:
             "tipo": self.tipo,
             "categoria": self.categoria,
             "valor_venda": self.valor_venda,
+            "descircao": self.descircao,
             "img": self.img
         }
         if self.ingredientes:
