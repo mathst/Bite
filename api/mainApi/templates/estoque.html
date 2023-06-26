@@ -1,9 +1,44 @@
 {% extends 'bases/base.html' %}
 
 {% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Distribuição de Itens</h5>
+      </div>
+      <div class="card-body">
+        <div id="pizza"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Logística de Demanda x Consumo</h5>
+      </div>
+      <div class="card-body">
+        <div id="barras"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Progresso das Vendas</h5>
+      </div>
+      <div class="card-body">
+        <div id="chart"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="row">
     <div class="col-md-6">
-      <div class="card mb-4">
+      <div class="deposito-card mb-4">
         <div class="card-header">
           <h5 class="card-title">Quantidade Total de Itens</h5>
         </div>
@@ -13,7 +48,7 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card mb-4">
+      <div class="deposito-card mb-4">
         <div class="card-header">
           <h5 class="card-title">Valor Total em Estoque</h5>
         </div>
@@ -23,33 +58,18 @@
       </div>
     </div>
   </div>
+  
   <div class="row mb-4">
     <div class="col-md-6">
       <div class="dropdown">
-        <button class=" dropdown-btn" id="dropdown1" ><i class = "uil uil-plus"></i>Adicionar Item</button>
-        <div class="dropdown-content" id="dropdown-content1">
-          <form method="POST" class="add" id="adicionar">
-            {% csrf_token %}
-            <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
-            <input type="text" name="quantidade_item" class="drop-form mb-2"placeholder="Quantidade do Item">
-            <input type="text" name="valor_item"class="drop-form mb-2"placeholder="Valor do Item">
-            <input type="text" name="tipo_item" class="drop-form mb-2"placeholder="Tipo do Item">
-            <input type="text" name="ingredientes_item" placeholder="Ingredientes do Item">
-            <input type="text" name="imagem_item" class="drop-form mb-2"placeholder="Imagem do Item">
-            <button type="submit" name="adicionar"class="btn-table">
-              <i class="uil uil-check"></i>
-            </button>
-          </form>  
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropdown-btn" id="dropdown2"><i class = "uil uil-redo"></i>Reabastecer Item</button>
-        <div class="dropdown-content"id="dropdown-content2">
+        <button class="dropdown-btn"><i class = "uil uil-redo"></i>Reabastecer Item</button>
+        <div class="dropdown-content">
           <form method="POST" class="update" id="update">
             {% csrf_token %}
             <input type="text" name="nome_item" class="drop-form mb-2" placeholder="Nome do Item">
             <input type="text" name="quantidade_item" class="drop-form mb-2" placeholder="Quantidade do Item">
             <input type="text" name="valor_item" class="drop-form mb-2" placeholder="valor do Item">
+            <input type="text" name="data_validade" class="drop-form mb-2" placeholder="Data de Validade">
             <button type="submit" cname="adicionar"class="btn-table">
               <i class="uil uil-check"></i>
             </button>
@@ -118,4 +138,39 @@
     </tbody>
   </table>
   </div>
+  {% block extra_js %}
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+  <script>
+  window.onload = function() {
+    /* Gráfico 1 */
+    var options1 = {
+      series: [44, 55, 13, 43, 22],
+      chart: { width: 380, type: 'pie' },
+      labels: ['Hamburguer', 'Pão', 'Bacon', 'Queijo', 'Maionese'],
+      responsive: [{ breakpoint: 480, options: { chart: { width: 200 }, legend: { position: 'bottom' } } }]
+    };
+    var chart1 = new ApexCharts(document.querySelector("#pizza"), options1);
+    chart1.render();
+
+    /* Gráfico 2 */
+    var options2 = {
+      series: [{ name: 'Inflation', data: [5.4, 7.3, 8.0, 9.2, 9.5, 10] }],
+      chart: { height: 350, type: 'bar' },
+      /* Resto do seu código */
+    };
+    var chart2 = new ApexCharts(document.querySelector("#barras"), options2);
+    chart2.render();
+
+    /* Gráfico 3 */
+    var options3 = {
+      series: [{ name: "Vendas", data: [10, 41, 35, 51, 49, 68, 69, 91, 148] }],
+      chart: { height: 350, type: 'line', zoom: { enabled: false } },
+      /* Resto do seu código */
+    };
+    var chart3 = new ApexCharts(document.querySelector("#chart"), options3);
+    chart3.render();
+  };
+  </script>
+{% endblock extra_js %}
 {% endblock %}

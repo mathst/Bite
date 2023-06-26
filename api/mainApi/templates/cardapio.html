@@ -1,122 +1,90 @@
 {% extends 'bases/base.html' %}
-{% load static %}
+  {% load static %}
+  
 {% block content %}
-    <h1>Cardápio</h1>
-    {% if request.session.tipo_user|default:'' == 'gerente' %}
-        <!-- Adicionar formulário para adicionar novos itens -->
-        <div class="dropdown">
-			<button class="dropdown-btn">
-			  <i class="uil uil-plus-circle"></i>
-			</button>
-			<div class="dropdown-content">
-			  <div class="dropdown-btn">Item</div>
-			  <div class="dropdown-content">
-				<form method="POST">
-					{% csrf_token %}
-					<input type="text" name="nome" placeholder="Nome">
-					<input type="text" name="categoria" placeholder="Categoria">
-					<input type="text" name="valor_venda" placeholder="Valor de Venda">
-					<input type="text" name="ingredientes" placeholder="Ingredientes">
-					<input type="text" id="descricao" name="descricao" placeholder="Descrição">
-					<input type="text" name="img" placeholder="URL da Imagem">
-					<button type="submit" name="adicionar"class="btn-table btn-circle" value="Adicionar">
-						<i class="uil uil-check"></i>
-					</button>
-				</form>
-				
-			  </div>
-			  <div class="dropdown-btn">Combo</div>
-			  <div class="dropdown-content">
-				<form method="POST">
-				  {% csrf_token %}
-				  <input type="text" id="nome_combo" name="nome_combo" placeholder="Nome">
-				  <input type="text" id="descricao_combo" name="descricao_combo" placeholder="Descrição">
-				  <input type="text" id="itens" name="itens" placeholder="Ingredientes">
-				  <input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-				  <button type="submit" name="adicionar"class="btn-table btn-circle" value="Adicionar">
-					<i class="uil uil-check"></i>
-				  </button>
-				</form>
-			  </div>
-			</div>
-		  </div>  
-    {% endif %}
-	<h1>Combos</h1>
-    <div class="cards">
-        <!-- Listagem dos combos em cards -->
-        {% for combo in combos %}
-            <div class="card">
-                <img src="{{ combo.imagem }}" alt="{{ combo.nome }}" class="card-image">
-                <div class="card-info">
-                    <h2>{{ combo.nome }}</h2>
-                    <p>{{ combo.descricao }}</p>
-                    <p>Preço: R$ {{ combo.preco }}</p>
-                    {% if request.session.tipo_user|default:'' == 'gerente' %}
-                        <!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-                        <div class="card-actions dropdown">
-                            <button class="btn-table btn-circle">
-                                <i class="uil uil-edit"></i>
-                            </button>
-                            <div class="dropdown-content">
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input type="text" id="nome_item" name="nome_item" placeholder="Nome">
-                                    <input type="text" id="descricao_item" name="descricao_item" placeholder="Descrição">
-                                    <input type="text" id="ingredientes_item" name="ingredientes_item" placeholder="Ingredientes">
-                                    <input type="text" id="valor_venda" name="valor_venda" placeholder="Valor de venda">
-									<div class="btn-table">
-                                        <i class="uil uil-check"></i>
-                                        <input class="uil uil-check" type="submit" value="Editar">
-                                    </div>
-                                </form>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="combo_id" value="{{ combo.id }}">
-                                    <div class="btn-table">
-                                        <i class="uil uil-trash-alt"></i>
-                                        <input class="uil uil-trash-alt" type="submit" value="Excluir">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-	<div class="categories">
-		{% for categoria, itens_categoria in categorias.items %}
-		  <div class="category">
-			<h2>{{ categoria }}</h2>
-			<div class="cards">
-			  {% for item in itens_categoria %}
-				<div class="card">
-				  <img class="card_background" src="{{ item.img }}" alt="{{ item.nome }}" />
-				  <div class="card_content">
-					{% if request.session.tipo_user|default:'' == 'gerente' %}
-					<!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-					<div class="card_actions">
-					  <button class="btn-table btn-circle">
-						<i class="uil uil-edit"></i>
-					  </button>
-					  <button type="submit" name="remover" class="btn-table btn-circle">
-						<i class="uil uil-trash-alt"></i>
-					  </button>
-					</div>
-					{% endif %}
-					<h2 class="card_title">{{ item.nome }}</h2>
-					<p>{{ item.descricao }}</p>
-					<button class="btn-table">{{ item.valor_venda }}<i class="uil uil-cart"></i></button>
-				  </div>
-				</div>
-			  {% endfor %}
-			</div>
-		  </div>
-		{% endfor %}
+<h1>Cardápio</h1>
+	{% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%}
+	<div class="dropdown">
+        <button class=" dropdown-btn" id="dropdown1" ><i class = "uil uil-plus"></i>Adicionar Item</button>
+        <div class="dropdown-content" id="dropdown-content1">
+          <form method="POST" class="add" id="adicionar">
+            {% csrf_token %}
+			<input type="text" name="nome" placeholder="Nome">
+			<input type="text" name="categoria" placeholder="Categoria">
+			<input type="text" name="subcategoria" placeholder="Subcategoria">
+			<input type="text" name="valor_venda" placeholder="Valor de Venda">
+			<input type="text" name="descricao" placeholder="Descrição">
+			<input type="text" name="img" placeholder="URL da Imagem">
+            <button type="submit" name="adicionar"class="btn-table">
+              <i class="uil uil-check"></i>
+            </button>
+          </form>  
+        </div>
+      </div>
+	<!-- Formulário para adicionar combos -->
+	  {% csrf_token %}
+	  <div class="dropdown">
+		<button class=" dropdown-btn" id="dropdown1" ><i class = "uil uil-plus"></i>Adicionar Combo</button>
+        <div class="dropdown-content" id="dropdown-content1">
+        	<form method="POST" class="add" id="adicionar">
+		  	<input type="text" name="nome" placeholder="Nome do Combo">
+		  	<input type="text" name="valor_item" placeholder="Valor do Combo">
+		  	<select name="itens_combo" multiple>
+				{% for categoria, itens_categoria in categorias.items %}
+				{% for item in itens_categoria %}
+					<option value="{{ item.nome }}">{{ item.nome }}</option>
+				{% endfor %}
+				{% endfor %}
+			</select>
+		  <input type="text" name="imagem_item" placeholder="URL da Imagem">
+		  <button type="submit" name="action" value="adicionar_combo" class="btn-table">
+			<i class="uil uil-check"></i>
+		  </button>
+		</div>
 	  </div>
-	  
-	  
-</div>
-{% endblock %}
+	</form>
+	
+	{% endif %}
+  <div class="categories">
+    {% for categoria, itens_categoria in categorias.items %}
+      <div class="category">
+        <h2>{{ categoria }}</h2>
+        <div class="cards">
+          {% for item in itens_categoria %}
+            <div class="card">
+              <img class="card_background" src="{{ item.img }}" alt="{{ item.nome }}" />
+              <div class="card_content">
+                <!-- Ícones de editar/excluir visíveis apenas para o gerente -->
+				{% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%}
+				<div class="card_actions">
+                    <button class="btn-table btn-circle">
+                      <i class="uil uil-edit"></i>
+                    </button>
+                    <button type="submit" name="action" value="excluir" class="btn-table btn-circle">
+                      <i class="uil uil-trash-alt"></i>
+                    </button>
+                  </div>
+				  	{	% endif %}
+                {% endif %}
+                <h2 class="card_title">{{ item.nome }}</h2>
+                <p>{{ item.descricao }}</p>
+                <button class="btn-table">{{ item.valor }}<i class="uil uil-cart"></i></button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 
+  <script>
+    // Código JavaScript para fazer o dropdown funcionar
+    const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+
+    dropdownBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.nextElementSibling.classList.toggle('show');
+      });
+    });
+  </script>
+{% endblock %}

@@ -1,12 +1,35 @@
 {% extends 'bases/base.html' %}
 {% load static %}
-    <div class="title">
-      <span class="text">Pedido feitos</span>
-      <h1>Alterar Item de Pedido</h1>
-      <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Salvar alterações</button>
-      </form>
-    </div>
-</section>
+
+{% block content %}
+<h1>Meus Pedidos</h1>
+
+{% if pedidos %}
+  <table>
+    <thead>
+      <tr>
+        <th>Pedido ID</th>
+        <th>Status</th>
+        <th>Valor Total</th>
+        <th>Data/Hora do Pedido</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pedido in pedidos %}
+        <tr>
+          <td>{{ pedido.id_pedido }}</td>
+          <td>{{ pedido.status }}</td>
+          <td>{{ pedido.valor_total }}</td>
+          <td>{{ pedido.horario }}</td>
+          <td>
+            <a href="{% url 'detalhes_pedido' pedido.id_pedido %}">Ver detalhes</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>Você ainda não realizou nenhum pedido.</p>
+{% endif %}
+{% endblock %}

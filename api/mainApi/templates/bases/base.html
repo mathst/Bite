@@ -59,7 +59,15 @@
           <span class="link-name">Estoque</span>
         </a></li>
         <!-- Conteúdo específico para administradores -->
-        {% elif request.session.tipo_user|default:'' == 'administrador' %}
+        {% elif request.session.tipo_user|default:'' == 'adm' %}
+        <li><a href="{% url 'cardapio'%}">
+          <i class="uil uil-clipboard-notes"></i>
+          <span class="link-name">Cardapio</span>
+        </a></li>
+        <li><a href="{% url 'carrinho'%}">
+          <i class="uil uil-shopping-cart"></i>
+          <span class="link-name">Carrinho</span>
+        </a></li>
         <li><a href="{% url 'pedidos'%}">
           <i class="uil uil-table"></i>
           <span class="link-name">Pedidos</span>
@@ -67,10 +75,6 @@
         <li><a href="{% url 'estoque'%}">
           <i class="uil uil-box"></i>
           <span class="link-name">Estoque</span>
-        </a></li>
-        <li><a href="{% url 'finaceiro'%}">
-          <i class="uil uil-dollar-alt"></i>
-          <span class="link-name">Financeiro</span>
         </a></li>
         {% endif %}
       </ul>
@@ -86,6 +90,13 @@
   
   <section class="dashboard col-10">
     <div class="content">
+        {% if messages %}
+          {% for messagem in messages %}
+              <div class="alert alert-warning" role="alert">
+                {{ messagem }}
+              </div>
+          {% endfor %}
+        {% endif %}
       {% block content %}
       {% endblock %}
     </div>

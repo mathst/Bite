@@ -1,0 +1,35 @@
+<!-- fila_pedidos.html -->
+{% extends 'bases/base.html' %}
+
+{% block content %}
+    <h1>Fila de Pedidos</h1>
+    <div id="fila-pedidos" class="grid-container">
+        {% for pedido in fila_pedidos %}
+            <div class="pedido grid-item">
+                <h3>Pedido ID: {{ pedido.id_pedido }}</h3>
+                <p>Status: {{ pedido.status }}</p>
+                <h4>Itens do Pedido:</h4>
+                <ul>
+                    {% for item in pedido.itens_pedido %}
+                        <li>{{ item.nome }}</li>
+                        {% if item.ingredientes %}
+                            <ul>
+                                {% for ingrediente in item.ingredientes %}
+                                    <li>{{ ingrediente }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="botoes-pedido">
+                    {% if pedido.status != 'finalizado' %}
+                        {% if pedido.status != 'em preparo' %}
+                            <button class="btn-preparo" data-pedido-id="{{ pedido.id_pedido }}">Em Preparo</button>
+                        {% endif %}
+                        <button class="btn-finalizado" data-pedido-id="{{ pedido.id_pedido }}">Finalizado</button>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

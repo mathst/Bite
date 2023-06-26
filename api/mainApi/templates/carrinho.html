@@ -1,113 +1,27 @@
 {% extends 'bases/base.html' %}
-{% load static %}
 {% block content %}
-  <section class="dashboard">
-    <div class="dash-content">
-      <div class="overview">
-        <div class="title">
-          <span class="text">Fazer Pedido</span>
+    <h1>Carrinho</h1>
+    <div>
+        {% for item in itens_carrinho %}
+        <div>
+            <p>{{ item.nome }}</p>
+            <form method="POST" action="{% url 'carrinho' %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remover">
+                <input type="hidden" name="item_id" value="{{ item.id }}">
+                <input type="number" name="quantidade" value="{{ item.quantidade }}">
+                <button type="submit">Remover</button>
+            </form>
+            <form method="POST" action="{% url 'carrinho' %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="editar_ingredientes">
+                <input type="hidden" name="item_id" value="{{ item.id }}">
+                <input type="text" name="ingredientes" value="{{ item.ingredientes }}">
+                <button type="submit">Editar Ingredientes</button>
+            </form>
         </div>
-      </div>
+        {% endfor %}
+        <p>Total: {{ valor_total_carrinho }}</p>
     </div>
-    <!-- imagem 1 -->
-    <div class="geral">
-      <div class="imagem">
-        <a target="_blank" href="">
-        <img src="{% static 'img/status1.png' %}"width="100" height="100">
-        </a>
-        <div class="txtimagem">
-          <div class="activity">
-            <div class="activity-data">
-              <div class="data names">
-                <span class="data-list">1</span>
-                <span class="detail">x</span>
-                <span class="detail">x</span>
-                <span class="data-list">1</span>
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-              </div>
-              <div class="data names">
-                <span class="data-list">Cheeseburguer</span>
-                <span class="detail">alface</span>
-                <span class="detail">tomate</span>
-                <span class="data-list">CheeseBurguer</span>
-                <span class="data-list">Batata</span>
-                <span class="data-list">Coca-cola</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
-      </div>
-    </div>
-    <div class="geral">
-      <div class="imagem">
-        <a target="_blank" href="">
-          <img src="{% static 'img/status2.png' %}"width="100" height="100">
-        </a>
-        <div class="txtimagem">
-          <div class="activity">
-            <div class="activity-data">
-              <div class="data names">
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-              </div>
-              <div class="data names">
-                <span class="data-list">Cheese Hamburguer</span>
-                <span class="data-list">Batata</span>
-                <span class="data-list">Coca-cola</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="geral">
-      <div class="imagem">
-        <a target="_blank" href="">
-          <img src="{% static 'img/status3.png' %}"width="100" height="100">
-        </a>
-        <div class="txtimagem">
-          <div class="activity">
-            <div class="activity-data">
-              <div class="data names">
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-              </div>
-              <div class="data names">
-                <span class="data-list">Cheese Hamburguer</span>
-                <span class="data-list">Batata</span>
-                <span class="data-list">Coca-cola</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="geral">
-      <div class="imagem">
-        <a target="_blank" href="">
-          <img src="{% static 'img/status4.png' %}"width="100" height="100">
-        </a>
-        <div class="txtimagem">
-          <div class="activity">
-            <div class="activity-data">
-              <div class="data names">
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-                <span class="data-list">2</span>
-              </div>
-              <div class="data names">
-                <span class="data-list">Cheese Hamburguer</span>
-                <span class="data-list">Batata</span>
-                <span class="data-list">Coca-cola</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <a href="{% url 'finalizar_pagamento' %}">Finalizar Compra</a>
 {% endblock %}
