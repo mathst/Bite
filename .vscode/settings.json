@@ -4,5 +4,25 @@
     "git.ignoreLimitWarning": true,
     "python.analysis.extraPaths": [
         "./firebase"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#55aaaa33",
+        "activityBar.background": "#55aaaa33",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#954a95",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#55aaaa33",
+        "statusBar.background": "#44888833",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#55aaaa33",
+        "statusBarItem.remoteBackground": "#44888833",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#44888833",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#44888899",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#4883"
 }
