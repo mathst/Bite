@@ -3,7 +3,7 @@
   
 {% block content %}
 <h1>Cardápio</h1>
-	{% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%}
+	<!-- {% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%} -->
 	<div class="dropdown">
         <button class=" dropdown-btn" id="dropdown1" ><i class = "uil uil-plus"></i>Adicionar Item</button>
         <div class="dropdown-content" id="dropdown-content1">
@@ -44,7 +44,7 @@
 	  </div>
 	</form>
 	
-	{% endif %}
+	<!-- {% endif %} -->
   <div class="categories">
     {% for categoria, itens_categoria in categorias.items %}
       <div class="category">
@@ -55,7 +55,7 @@
               <img class="card_background" src="{{ item.img }}" alt="{{ item.nome }}" />
               <div class="card_content">
                 <!-- Ícones de editar/excluir visíveis apenas para o gerente -->
-				{% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%}
+				<!-- {% if request.session.tipo_user|default:'' == 'gerente' or rrequest.session.tipo_user|default:'' == 'adm'%} -->
 				<div class="card_actions">
                     <button class="btn-table btn-circle">
                       <i class="uil uil-edit"></i>

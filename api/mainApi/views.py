@@ -1,20 +1,40 @@
 from collections import defaultdict
-import firebase_admin
 import json
 import os
 import uuid
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from google.auth.transport import requests as google_request
-from google.oauth2 import id_token
 from requests import Request
 import requests
-from firebase_admin import auth
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Carrinho, Combo, Estoque, Item, ItemCardapio, Pedidos, TransacaoFinanceira, Usuario, TipoUsuario, Cardapio
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+
+# @login_required
+# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.CLIENTE)
+# def cliente_view(request):
+#     # Sua lógica para visualização do cliente
+
+# @login_required
+# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.COZINHA or user.tipo_usuario == CustomUser.ADM)
+# def cozinha_view(request):
+#     # Sua lógica para visualização da cozinha
+
+# @login_required
+# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.GERENTE or user.tipo_usuario == CustomUser.ADM)
+# def gerente_view(request):
+#     # Sua lógica para visualização do gerente
+
+# @login_required
+# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.ADM)
+# def administrador_view(request):
+#     # Sua lógica para visualização do administrador
+    
 
 @cache_page(60 * 15)  # Cache de 15 minutos
 def cardapio(request):

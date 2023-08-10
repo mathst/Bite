@@ -25,41 +25,6 @@
     <div class="menu-items">
       <ul class="nav-links">
         <!-- Conteúdo específico para clientes -->
-        {% if request.session.tipo_user|default:'' == 'cliente' %}
-        <li><a href="{% url 'cardapio'%}">
-          <i class="uil uil-clipboard-notes"></i>
-          <span class="link-name">Cardapio</span>
-        </a></li>
-        <li><a href="{% url 'carrinho'%}">
-          <i class="uil uil-shopping-cart"></i>
-          <span class="link-name">Carrinho</span>
-        </a></li>
-        <!-- Conteúdo específico para funcionários -->
-        {% elif request.session.tipo_user|default:'' == 'funcionario' %}
-        <li><a href="{% url 'pedidos'%}">
-          <i class="uil uil-table"></i>
-          <span class="link-name">Pedidos</span>
-        </a></li>
-        <li><a href="{% url 'estoque'%}">
-          <i class="uil uil-box"></i>
-          <span class="link-name">Estoque</span>
-        </a></li>
-        <!-- Conteúdo específico para gerentes -->
-        {% elif request.session.tipo_user|default:'' == 'gerente' %}
-        <li><a href="{% url 'pedidos'%}">
-          <i class="uil uil-table"></i>
-          <span class="link-name">Pedidos</span>
-        </a></li>
-        <li><a href="{% url 'cardapio'%}">
-          <i class="uil uil-clipboard-notes"></i>
-          <span class="link-name">Cardapio</span>
-        </a></li>
-        <li><a href="{% url 'estoque'%}">
-          <i class="uil uil-box"></i>
-          <span class="link-name">Estoque</span>
-        </a></li>
-        <!-- Conteúdo específico para administradores -->
-        {% elif request.session.tipo_user|default:'' == 'adm' %}
         <li><a href="{% url 'cardapio'%}">
           <i class="uil uil-clipboard-notes"></i>
           <span class="link-name">Cardapio</span>
@@ -76,7 +41,6 @@
           <i class="uil uil-box"></i>
           <span class="link-name">Estoque</span>
         </a></li>
-        {% endif %}
       </ul>
       <ul class="logout-mode">
         <li><a href="{% url 'logout'%}">

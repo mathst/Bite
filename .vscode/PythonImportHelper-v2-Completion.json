@@ -148,14 +148,6 @@
         "documentation": {}
     },
     {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -204,11 +196,37 @@
         "documentation": {}
     },
     {
-        "label": "Cardapio",
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
+        "label": "firebase_admin",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "api.mainApi.models",
+        "importPath": "firebase_admin",
+        "description": "firebase_admin",
+        "detail": "firebase_admin",
+        "documentation": {}
+    },
+    {
+        "label": "Certificate",
+        "importPath": "firebase_admin.credentials",
+        "description": "firebase_admin.credentials",
+        "isExtraImport": true,
+        "detail": "firebase_admin.credentials",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -244,28 +262,27 @@
         "documentation": {}
     },
     {
-        "label": "defaultdict",
-        "importPath": "collections",
-        "description": "collections",
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
         "isExtraImport": true,
-        "detail": "collections",
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "BaseUserManager",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
-        "label": "uuid",
-        "kind": 6,
+        "label": "PermissionsMixin",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
         "isExtraImport": true,
-        "importPath": "uuid",
-        "description": "uuid",
-        "detail": "uuid",
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -277,69 +294,11 @@
         "documentation": {}
     },
     {
-        "label": "firebase_admin",
-        "kind": 6,
+        "label": "gettext_lazy",
+        "importPath": "django.utils.translation",
+        "description": "django.utils.translation",
         "isExtraImport": true,
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "auth",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "firestore",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "auth",
-        "importPath": "firebase_admin",
-        "description": "firebase_admin",
-        "isExtraImport": true,
-        "detail": "firebase_admin",
-        "documentation": {}
-    },
-    {
-        "label": "Enum",
-        "importPath": "enum",
-        "description": "enum",
-        "isExtraImport": true,
-        "detail": "enum",
-        "documentation": {}
-    },
-    {
-        "label": "Certificate",
-        "importPath": "firebase_admin.credentials",
-        "description": "firebase_admin.credentials",
-        "isExtraImport": true,
-        "detail": "firebase_admin.credentials",
-        "documentation": {}
-    },
-    {
-        "label": "Certificate",
-        "importPath": "firebase_admin.credentials",
-        "description": "firebase_admin.credentials",
-        "isExtraImport": true,
-        "detail": "firebase_admin.credentials",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "detail": "django.utils.translation",
         "documentation": {}
     },
     {
@@ -359,21 +318,28 @@
         "documentation": {}
     },
     {
-        "label": "asyncio",
-        "kind": 6,
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
         "isExtraImport": true,
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "detail": "asyncio",
+        "detail": "collections",
         "documentation": {}
     },
     {
-        "label": "requests",
+        "label": "uuid",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponseForbidden",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -393,7 +359,48 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "requests",
+        "description": "requests",
+        "isExtraImport": true,
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
         "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "user_passes_test",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "user_passes_test",
         "importPath": "django.contrib.auth.decorators",
         "description": "django.contrib.auth.decorators",
         "isExtraImport": true,
@@ -417,82 +424,57 @@
         "documentation": {}
     },
     {
-        "label": "google.auth",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "google.auth",
-        "description": "google.auth",
-        "detail": "google.auth",
-        "documentation": {}
-    },
-    {
-        "label": "id_token",
-        "importPath": "google.oauth2",
-        "description": "google.oauth2",
-        "isExtraImport": true,
-        "detail": "google.oauth2",
-        "documentation": {}
-    },
-    {
-        "label": "Request",
-        "importPath": "google.auth.transport.requests",
-        "description": "google.auth.transport.requests",
-        "isExtraImport": true,
-        "detail": "google.auth.transport.requests",
-        "documentation": {}
-    },
-    {
         "label": "firestore_adminCallTransformer",
         "kind": 6,
-        "importPath": ".venv.bin.fixup_firestore_admin_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_admin_v1_keywords",
+        "description": ".env.bin.fixup_firestore_admin_v1_keywords",
         "peekOfCode": "class firestore_adminCallTransformer(cst.CSTTransformer):\n    CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')\n    METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {\n        'create_index': ('parent', 'index', ),\n        'delete_index': ('name', ),\n        'export_documents': ('name', 'collection_ids', 'output_uri_prefix', ),\n        'get_database': ('name', ),\n        'get_field': ('name', ),\n        'get_index': ('name', ),\n        'import_documents': ('name', 'collection_ids', 'input_uri_prefix', ),",
-        "detail": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_admin_v1_keywords",
         "documentation": {}
     },
     {
         "label": "partition",
         "kind": 2,
-        "importPath": ".venv.bin.fixup_firestore_admin_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_admin_v1_keywords",
+        "description": ".env.bin.fixup_firestore_admin_v1_keywords",
         "peekOfCode": "def partition(\n    predicate: Callable[[Any], bool],\n    iterator: Sequence[Any]\n) -> Tuple[List[Any], List[Any]]:\n    \"\"\"A stable, out-of-place partition.\"\"\"\n    results = ([], [])\n    for i in iterator:\n        results[int(predicate(i))].append(i)\n    # Returns trueList, falseList\n    return results[1], results[0]",
-        "detail": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_admin_v1_keywords",
         "documentation": {}
     },
     {
         "label": "fix_files",
         "kind": 2,
-        "importPath": ".venv.bin.fixup_firestore_admin_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_admin_v1_keywords",
+        "description": ".env.bin.fixup_firestore_admin_v1_keywords",
         "peekOfCode": "def fix_files(\n    in_dir: pathlib.Path,\n    out_dir: pathlib.Path,\n    *,\n    transformer=firestore_adminCallTransformer(),\n):\n    \"\"\"Duplicate the input dir to the output dir, fixing file method calls.\n    Preconditions:\n    * in_dir is a real directory\n    * out_dir is a real, empty directory",
-        "detail": ".venv.bin.fixup_firestore_admin_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_admin_v1_keywords",
         "documentation": {}
     },
     {
         "label": "firestoreCallTransformer",
         "kind": 6,
-        "importPath": ".venv.bin.fixup_firestore_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_v1_keywords",
+        "description": ".env.bin.fixup_firestore_v1_keywords",
         "peekOfCode": "class firestoreCallTransformer(cst.CSTTransformer):\n    CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')\n    METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {\n        'batch_get_documents': ('database', 'documents', 'mask', 'transaction', 'new_transaction', 'read_time', ),\n        'batch_write': ('database', 'writes', 'labels', ),\n        'begin_transaction': ('database', 'options', ),\n        'commit': ('database', 'writes', 'transaction', ),\n        'create_document': ('parent', 'collection_id', 'document', 'document_id', 'mask', ),\n        'delete_document': ('name', 'current_document', ),\n        'get_document': ('name', 'mask', 'transaction', 'read_time', ),",
-        "detail": ".venv.bin.fixup_firestore_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_v1_keywords",
         "documentation": {}
     },
     {
         "label": "partition",
         "kind": 2,
-        "importPath": ".venv.bin.fixup_firestore_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_v1_keywords",
+        "description": ".env.bin.fixup_firestore_v1_keywords",
         "peekOfCode": "def partition(\n    predicate: Callable[[Any], bool],\n    iterator: Sequence[Any]\n) -> Tuple[List[Any], List[Any]]:\n    \"\"\"A stable, out-of-place partition.\"\"\"\n    results = ([], [])\n    for i in iterator:\n        results[int(predicate(i))].append(i)\n    # Returns trueList, falseList\n    return results[1], results[0]",
-        "detail": ".venv.bin.fixup_firestore_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_v1_keywords",
         "documentation": {}
     },
     {
         "label": "fix_files",
         "kind": 2,
-        "importPath": ".venv.bin.fixup_firestore_v1_keywords",
-        "description": ".venv.bin.fixup_firestore_v1_keywords",
+        "importPath": ".env.bin.fixup_firestore_v1_keywords",
+        "description": ".env.bin.fixup_firestore_v1_keywords",
         "peekOfCode": "def fix_files(\n    in_dir: pathlib.Path,\n    out_dir: pathlib.Path,\n    *,\n    transformer=firestoreCallTransformer(),\n):\n    \"\"\"Duplicate the input dir to the output dir, fixing file method calls.\n    Preconditions:\n    * in_dir is a real directory\n    * out_dir is a real, empty directory",
-        "detail": ".venv.bin.fixup_firestore_v1_keywords",
+        "detail": ".env.bin.fixup_firestore_v1_keywords",
         "documentation": {}
     },
     {
@@ -509,7 +491,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, \"firebase\"))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ['DJANGO_SECRET_KEY']\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))\nsys.path.append(os.path.join(BASE_DIR, \"firebase\"))\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -518,7 +500,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "SECRET_KEY = os.environ['DJANGO_SECRET_KEY']\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",",
+        "peekOfCode": "SECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []\n# Application definition\nINSTALLED_APPS = [\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -752,7 +734,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")",
+        "peekOfCode": "FIREBASE_PRIVATE_KEY = os.environ.get(\"FIREBASE_PRIVATE_KEY\")\nFIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -761,7 +743,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")",
+        "peekOfCode": "FIREBASE_CLIENT_EMAIL = os.environ.get(\"FIREBASE_CLIENT_EMAIL\")\nFIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -770,7 +752,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")",
+        "peekOfCode": "FIREBASE_CLIENT_ID = os.environ.get(\"FIREBASE_CLIENT_ID\")\nFIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\n# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -779,7 +761,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"",
+        "peekOfCode": "FIREBASE_AUTH_URI = os.environ.get(\"FIREBASE_AUTH_URI\")\nFIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\n# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\n# GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -788,7 +770,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"",
+        "peekOfCode": "FIREBASE_TOKEN_URI = os.environ.get(\"FIREBASE_TOKEN_URI\")\nFIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\n# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\n# GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -797,7 +779,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {",
+        "peekOfCode": "FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(\n    \"FIREBASE_AUTH_PROVIDER_X509_CERT_URL\"\n)\nFIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\n# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\n# GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -806,43 +788,7 @@
         "kind": 5,
         "importPath": "api.api.settings",
         "description": "api.api.settings",
-        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\nGOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {",
-        "detail": "api.api.settings",
-        "documentation": {}
-    },
-    {
-        "label": "GOOGLE_API_KEY",
-        "kind": 5,
-        "importPath": "api.api.settings",
-        "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\nGOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {",
-        "detail": "api.api.settings",
-        "documentation": {}
-    },
-    {
-        "label": "GOOGLE_OAUTH2_CLIENT_ID",
-        "kind": 5,
-        "importPath": "api.api.settings",
-        "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\nGOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',",
-        "detail": "api.api.settings",
-        "documentation": {}
-    },
-    {
-        "label": "GOOGLE_OAUTH2_CLIENT_SECRET",
-        "kind": 5,
-        "importPath": "api.api.settings",
-        "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\nGOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',\n#             'class': 'logging.handlers.RotatingFileHandler',",
-        "detail": "api.api.settings",
-        "documentation": {}
-    },
-    {
-        "label": "GOOGLE_AUTH_REDIRECT_URI",
-        "kind": 5,
-        "importPath": "api.api.settings",
-        "description": "api.api.settings",
-        "peekOfCode": "GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {\n#         'file': {\n#             'level': 'DEBUG',\n#             'class': 'logging.handlers.RotatingFileHandler',\n#             'filename': 'logs/debug.log',",
+        "peekOfCode": "FIREBASE_CLIENT_X509_CERT_URL = os.environ.get(\"FIREBASE_CLIENT_X509_CERT_URL\")\n# GOOGLE_API_KEY = os.environ.get(\"GOOGLE_API_KEY\")\n# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_ID\")\n# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get(\"GOOGLE_OAUTH2_CLIENT_SECRET\")\n# GOOGLE_AUTH_REDIRECT_URI = \"http://localhost:8000/google-auth/\"\n\"\"\"LOG\"\"\"\n# LOGGING = {\n#     'version': 1,\n#     'disable_existing_loggers': False,\n#     'handlers': {",
         "detail": "api.api.settings",
         "documentation": {}
     },
@@ -865,75 +811,39 @@
         "documentation": {}
     },
     {
-        "label": "cardapio",
+        "label": "cred",
         "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "cardapio = Cardapio(id_cardapio=\"1card1\", nome=\"Cardápio do Restaurante\", descricao=\"Nosso cardápio variado.\")\n# Adicionar alguns itens ao cardápio\nitem1 = {\n    \"id\": \"item1\",\n    \"nome\": \"Hambúrguer\",\n    \"descricao\": \"Delicioso hambúrguer caseiro\",\n    \"ingredientes\": [\"Pão\", \"Carne\", \"Queijo\", \"Alface\", \"Tomate\"],\n}\nitem2 = {\n    \"id\": \"item2\",",
-        "detail": "api.mainApi.tests.popul",
+        "importPath": "api.firebase.firebase_init",
+        "description": "api.firebase.firebase_init",
+        "peekOfCode": "cred = Certificate(credentials)\ndefault_app = firebase_admin.initialize_app(cred, {\n\t'databaseURL':credentials['databaseURL']\n\t})",
+        "detail": "api.firebase.firebase_init",
         "documentation": {}
     },
     {
-        "label": "item1",
+        "label": "default_app",
         "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "item1 = {\n    \"id\": \"item1\",\n    \"nome\": \"Hambúrguer\",\n    \"descricao\": \"Delicioso hambúrguer caseiro\",\n    \"ingredientes\": [\"Pão\", \"Carne\", \"Queijo\", \"Alface\", \"Tomate\"],\n}\nitem2 = {\n    \"id\": \"item2\",\n    \"nome\": \"Pizza\",\n    \"descricao\": \"Pizza de mussarela com tomate e manjericão\",",
-        "detail": "api.mainApi.tests.popul",
+        "importPath": "api.firebase.firebase_init",
+        "description": "api.firebase.firebase_init",
+        "peekOfCode": "default_app = firebase_admin.initialize_app(cred, {\n\t'databaseURL':credentials['databaseURL']\n\t})",
+        "detail": "api.firebase.firebase_init",
         "documentation": {}
     },
     {
-        "label": "item2",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "item2 = {\n    \"id\": \"item2\",\n    \"nome\": \"Pizza\",\n    \"descricao\": \"Pizza de mussarela com tomate e manjericão\",\n    \"ingredientes\": [\"Massa de pizza\", \"Molho de tomate\", \"Queijo mussarela\", \"Tomate\", \"Manjericão\"],\n}\ncardapio.add_item(item1)\ncardapio.add_item(item2)\n# Adicionar alguns combos ao cardápio\ncombo1 = {",
-        "detail": "api.mainApi.tests.popul",
+        "label": "ModelTestCase",
+        "kind": 6,
+        "importPath": "api.mainApi.tests.test_models",
+        "description": "api.mainApi.tests.test_models",
+        "peekOfCode": "class ModelTestCase(TestCase):\n    def setUp(self):\n        # Criando objetos para testes\n        self.categoria = Categoria.objects.create(nome='Comidas')\n        self.subcategoria = Subcategoria.objects.create(categoria=self.categoria, nome='Hamburgueres')\n        self.ingrediente = Ingrediente.objects.create(nome='Tomate', quantidade=10, valor_unitario=0.5, data_reposicao='2023-08-15', data_validade='2023-09-15')\n        self.item = ItemCardapio.objects.create(subcategoria=self.subcategoria, nome='X-Burger', descricao='Delicioso hamburguer', valor=10.99)\n        self.carrinho = Carrinho.objects.create(cliente_id='cliente1')\n        self.pedido = Pedido.objects.create(cliente=self.carrinho, status='esperando')\n        self.estoque = Estoque.objects.create(nome='Tomate', quantidade=20, valor_unitario=0.5, data_reposicao='2023-08-01', data_validade='2023-09-01')",
+        "detail": "api.mainApi.tests.test_models",
         "documentation": {}
     },
     {
-        "label": "combo1",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "combo1 = {\n    \"id\": \"combo1\",\n    \"nome\": \"Combo Hambúrguer\",\n    \"descricao\": \"Hambúrguer + Batata frita + Refrigerante\",\n    \"itens\": [\n        {\n            \"item_id\": \"item1\",\n            \"quantidade\": 1,\n        },\n        {",
-        "detail": "api.mainApi.tests.popul",
-        "documentation": {}
-    },
-    {
-        "label": "item3",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "item3 = {\n    \"id\": \"item3\",\n    \"nome\": \"Salada Caesar\",\n    \"descricao\": \"Salada com alface, frango grelhado, croutons e molho caesar\",\n    \"ingredientes\": [\"Alface\", \"Frango grelhado\", \"Croutons\", \"Molho Caesar\"],\n}\nitem4 = {\n    \"id\": \"item4\",\n    \"nome\": \"Sushi\",\n    \"descricao\": \"Sushi de salmão com arroz e nori\",",
-        "detail": "api.mainApi.tests.popul",
-        "documentation": {}
-    },
-    {
-        "label": "item4",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "item4 = {\n    \"id\": \"item4\",\n    \"nome\": \"Sushi\",\n    \"descricao\": \"Sushi de salmão com arroz e nori\",\n    \"ingredientes\": [\"Salmão\", \"Arroz\", \"Nori\"],\n}\ncardapio.add_item(item3)\ncardapio.add_item(item4)\n# Adicionar mais combos ao cardápio\ncombo2 = {",
-        "detail": "api.mainApi.tests.popul",
-        "documentation": {}
-    },
-    {
-        "label": "combo2",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "combo2 = {\n    \"id\": \"combo2\",\n    \"nome\": \"Combo Pizza\",\n    \"descricao\": \"Pizza + Refrigerante\",\n    \"itens\": [\n        {\n            \"item_id\": \"item2\",\n            \"quantidade\": 1,\n        },\n        {",
-        "detail": "api.mainApi.tests.popul",
-        "documentation": {}
-    },
-    {
-        "label": "combo3",
-        "kind": 5,
-        "importPath": "api.mainApi.tests.popul",
-        "description": "api.mainApi.tests.popul",
-        "peekOfCode": "combo3 = {\n    \"id\": \"combo3\",\n    \"nome\": \"Combo Sushi\",\n    \"descricao\": \"Sushi + Chá verde\",\n    \"itens\": [\n        {\n            \"item_id\": \"item4\",\n            \"quantidade\": 2,\n        },\n        {",
-        "detail": "api.mainApi.tests.popul",
+        "label": "PedidoModelTestCase",
+        "kind": 6,
+        "importPath": "api.mainApi.tests.test_models",
+        "description": "api.mainApi.tests.test_models",
+        "peekOfCode": "class PedidoModelTestCase(TestCase):\n    def setUp(self):\n        # Criando um carrinho e um pedido para testes\n        self.carrinho = Carrinho.objects.create(cliente='cliente1')\n        self.pedido = Pedido.objects.create(carrinho=self.carrinho, status='esperando')\n    def test_alteracao_estado_pedido(self):\n        self.assertEqual(self.pedido.status, 'esperando')\n        # Alterando o estado do pedido\n        novo_estado = 'preparando'\n        self.pedido.alterar_estado(novo_estado)",
+        "detail": "api.mainApi.tests.test_models",
         "documentation": {}
     },
     {
@@ -964,29 +874,20 @@
         "documentation": {}
     },
     {
-        "label": "TipoUsuario",
+        "label": "GerenciadorUsuario",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário\nclass Usuario(models.Model):\n    nome = models.CharField(max_length=100)",
+        "peekOfCode": "class GerenciadorUsuario(BaseUserManager):\n    def criar_usuario(self, username, email, password=None, **extra_fields):\n        if not email:\n            raise ValueError(_('O campo de email deve ser preenchido'))\n        email = self.normalize_email(email)\n        user = self.model(username=username, email=email, **extra_fields)\n        user.set_password(password)\n        user.save(using=self._db)\n        return user\n    def criar_superusuario(self, username, email, password=None, **extra_fields):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Usuario",
+        "label": "UsuarioCustomizado",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Usuario(models.Model):\n    nome = models.CharField(max_length=100)\n    email = models.EmailField(unique=True)\n    telefone = models.CharField(max_length=20)\n    tipo = models.CharField(max_length=15, choices=[(tipo.name, tipo.value) for tipo in TipoUsuario])\n    uid = models.CharField(max_length=100, blank=True)\n    salt = models.CharField(max_length=100, blank=True)\n    hashed_password = models.CharField(max_length=100, blank=True)\n    class Meta:\n        verbose_name = 'Usuário'",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "EstadoPedido",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class EstadoPedido(Enum):\n    ESPERANDO = 'esperando'\n    PREPARANDO = 'preparando'\n    PRONTO = 'pronto'\n# class Tipos(Enum):\n#     INGREDIENTES=\"ingredientes\"\n#     BEBIDAS=\"bebidas\"\n#     LIMPEZA=\"limpeza\"\n#     EMBALAGENS=\"embalagens\"\n#     UTENSILHOS=\"utensilhos\"",
+        "peekOfCode": "class UsuarioCustomizado(AbstractUser, PermissionsMixin):\n    CLIENTE = 'cliente'\n    COZINHA = 'cozinha'\n    GERENTE = 'gerente'\n    ADM = 'adm'\n    TIPO_USUARIO_CHOICES = [\n        (CLIENTE, 'Cliente'),\n        (COZINHA, 'Cozinha'),\n        (GERENTE, 'Gerente'),\n        (ADM, 'Administrador'),",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -995,43 +896,43 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Categoria(Enum):\n    COMIDAS = 'comidas'\n    APERITIVOS = 'aperitivos'\n    SOBREMESAS = 'sobremesas'\n    BEBIDAS = 'bebidas'\n# Classe de Item\nclass Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None,descricao=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade",
+        "peekOfCode": "class Categoria(models.Model):\n    nome = models.CharField(max_length=50)\n    def __str__(self):\n        return self.nome\nclass Subcategoria(models.Model):\n    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)\n    nome = models.CharField(max_length=50)\n    def __str__(self):\n        return self.nome\nclass ItemCardapio(models.Model):",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Item",
+        "label": "Subcategoria",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Item:\n    def __init__(self, nome, quantidade, valor_unitario, tipo, categoria=None, valor_venda=None, ingredientes=None,descricao=None, img=None):\n        self.nome = nome\n        self.quantidade = quantidade\n        self.valor_unitario = valor_unitario\n        self.tipo = tipo\n        self.categoria = categoria\n        self.valor_venda = valor_venda\n        self.ingredientes = ingredientes\n        self.descricao = descricao",
+        "peekOfCode": "class Subcategoria(models.Model):\n    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)\n    nome = models.CharField(max_length=50)\n    def __str__(self):\n        return self.nome\nclass ItemCardapio(models.Model):\n    img = models.ImageField(upload_to='cardapio/')\n    nome = models.CharField(max_length=100)\n    descricao = models.TextField()\n    valor = models.DecimalField(max_digits=10, decimal_places=2)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Combo",
+        "label": "ItemCardapio",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Combo(Item):\n    def __init__(self, nome, valor_unitario, itens_combo,imagem=None):\n        super().__init__(nome, 1, valor_unitario, \"combo\", [])\n        self.itens_combo = itens_combo\n        self.imagem = imagem\n    def to_dict(self):\n        item_dict = super().to_dict()\n        item_dict[\"itens_combo\"] = self.itens_combo\n        return item_dict\n    def add_to_db(self):",
+        "peekOfCode": "class ItemCardapio(models.Model):\n    img = models.ImageField(upload_to='cardapio/')\n    nome = models.CharField(max_length=100)\n    descricao = models.TextField()\n    valor = models.DecimalField(max_digits=10, decimal_places=2)\n    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)\n    subcategoria = models.ForeignKey(Subcategoria, on_delete=models.CASCADE)\n    ingredientes = models.ManyToManyField('Ingrediente', through='ItemIngredientes')\n    itens_relacionados = models.ManyToManyField('self', blank=True)\n    combos_relacionados = models.ManyToManyField('self', blank=True)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Cardapio",
+        "label": "Ingrediente",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Cardapio:\n    def __init__(self):\n        self.db = firestore.client()\n        self.collection = self.db.collection('cardapio')\n        self.itens = []\n        self.combos = []\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = self.pesquisar_item(item.nome)\n        if estoque_item:",
+        "peekOfCode": "class Ingrediente(models.Model):\n    nome = models.CharField(max_length=100)\n    quantidade = models.DecimalField(max_digits=10, decimal_places=2)\n    data_reposicao = models.DateField()\n    data_validade = models.DateField()\n    valor_reposicao = models.DecimalField(max_digits=10, decimal_places=2)\n    def __str__(self):\n        return self.nome\nclass ItemIngredientes(models.Model):\n    item = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "ItemPedido",
+        "label": "ItemIngredientes",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class ItemPedido:\n    def __init__(self, item: Item, quantidade: int, especificacoes: str = None): # type: ignore\n        self.item = item\n        self.quantidade = quantidade\n        self.especificacoes = especificacoes\n    def calcular_valor_total(self):\n        return self.item.valor_unitario * self.quantidade\n    def to_dict(self):\n        return {\n            'item': self.item.to_dict(),",
+        "peekOfCode": "class ItemIngredientes(models.Model):\n    item = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)\n    ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)\n    quantidade = models.DecimalField(max_digits=10, decimal_places=2)\nclass Pedido(models.Model):\n    CHOICES_STATUS = [\n        ('esperando', 'Esperando'),\n        ('preparando', 'Preparando'),\n        ('finalizado', 'Finalizado'),\n    ]",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -1040,34 +941,25 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Pedido:\n    def __init__(self, id_pedido, status, itens_pedido, valor_total):\n        self.id_pedido = id_pedido\n        self.status = status\n        self.itens_pedido = itens_pedido\n        self.valor_total = valor_total\n        self.data = datetime.now() # type: ignore\n    def to_dict(self):\n        return {\n            \"id_pedido\": self.id_pedido,",
+        "peekOfCode": "class Pedido(models.Model):\n    CHOICES_STATUS = [\n        ('esperando', 'Esperando'),\n        ('preparando', 'Preparando'),\n        ('finalizado', 'Finalizado'),\n    ]\n    cliente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_cliente')\n    cozinha = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_cozinha', null=True, blank=True)\n    gerente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_gerente', null=True, blank=True)\n    status = models.CharField(max_length=20, choices=CHOICES_STATUS)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Estoque",
+        "label": "ItemPedido",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Estoque:\n    def __init__(self):\n        self.db = firestore.client()\n        self.collection = self.db.collection('estoque')\n    def adicionar_item(self, item):\n        # Verifica se o item já existe no estoque\n        estoque_item = self.pesquisar_item(item.nome)\n        print(estoque_item)\n        if estoque_item:\n            print(\"item existente\")",
+        "peekOfCode": "class ItemPedido(models.Model):\n    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)\n    item = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)\n    quantidade = models.PositiveIntegerField()\nclass TransacaoFinanceira(models.Model):\n    CHOICES_TIPO_TRANSACAO = [\n        ('entrada', 'Entrada'),\n        ('saida', 'Saída'),\n    ]\n    data_despesa = models.DateField()",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "FilaDePedidos",
+        "label": "TransacaoFinanceira",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class FilaDePedidos:\n    def __init__(self):\n        self.fila = []\n    def adicionar_pedido(self, pedido):\n        self.fila.append(pedido)\n        print(f\"Pedido adicionado à fila: {pedido}\")\n    def remover_pedido(self, pedido_id):\n        pedido_removido = None\n        for i, pedido in enumerate(self.fila):\n            if pedido.id_pedido == pedido_id:",
-        "detail": "api.mainApi.models",
-        "documentation": {}
-    },
-    {
-        "label": "ItemCarrinho",
-        "kind": 6,
-        "importPath": "api.mainApi.models",
-        "description": "api.mainApi.models",
-        "peekOfCode": "class ItemCarrinho:\n    def __init__(self, item, quantidade):\n        self.item = item\n        self.quantidade = quantidade\n    @property\n    def nome(self):\n        return self.item.nome\n    @property\n    def valor_unitario(self):\n        return self.item.valor_unitario",
+        "peekOfCode": "class TransacaoFinanceira(models.Model):\n    CHOICES_TIPO_TRANSACAO = [\n        ('entrada', 'Entrada'),\n        ('saida', 'Saída'),\n    ]\n    data_despesa = models.DateField()\n    valor = models.DecimalField(max_digits=10, decimal_places=2)\n    descricao = models.TextField()\n    tipo = models.CharField(max_length=10, choices=CHOICES_TIPO_TRANSACAO)\n    item_cardapio = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -1076,43 +968,43 @@
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Carrinho:\n    def __init__(self, cliente_id):\n        self.cliente_id = cliente_id\n        self.valor_total = 0.0\n        self.itens = []\n    def adicionar_pedido(self, pedido):\n        for item_pedido in pedido.itens:\n            item_carrinho = self.get_item_carrinho(item_pedido.nome)\n            if item_carrinho:\n                item_carrinho.quantidade += item_pedido.quantidade",
+        "peekOfCode": "class Carrinho(models.Model):\n    cliente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE)\n    valor_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)\nclass ItemCarrinho(models.Model):\n    carrinho = models.ForeignKey(Carrinho, on_delete=models.CASCADE)\n    item = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)\n    quantidade = models.PositiveIntegerField()\nclass Estoque(models.Model):\n    item = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)\n    quantidade = models.DecimalField(max_digits=10, decimal_places=2)",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "HistoricoPedido",
+        "label": "ItemCarrinho",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class HistoricoPedido:\n    def __init__(self, id: str, data_registro: str, valor_dia: float, valor_semana: float, valor_mes: float):\n        self.id = id\n        self.data_registro = data_registro\n        self.valor_dia = valor_dia\n        self.valor_semana = valor_semana\n        self.valor_mes = valor_mes\nclass Despesa:\n    def __init__(self, id: str, data_despesa: str, valor: float, descricao: str):\n        self.id = id",
+        "peekOfCode": "class ItemCarrinho(models.Model):\n    carrinho = models.ForeignKey(Carrinho, on_delete=models.CASCADE)\n    item = models.ForeignKey(ItemCardapio, on_delete=models.CASCADE)\n    quantidade = models.PositiveIntegerField()\nclass Estoque(models.Model):\n    item = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)\n    quantidade = models.DecimalField(max_digits=10, decimal_places=2)\n    valor_unitario = models.DecimalField(max_digits=10, decimal_places=2)\n    data_reposicao = models.DateField()\n    data_validade = models.DateField()",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "Despesa",
+        "label": "Estoque",
         "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "class Despesa:\n    def __init__(self, id: str, data_despesa: str, valor: float, descricao: str):\n        self.id = id\n        self.data_despesa = data_despesa\n        self.valor = valor\n        self.descricao = descricao",
+        "peekOfCode": "class Estoque(models.Model):\n    item = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)\n    quantidade = models.DecimalField(max_digits=10, decimal_places=2)\n    valor_unitario = models.DecimalField(max_digits=10, decimal_places=2)\n    data_reposicao = models.DateField()\n    data_validade = models.DateField()\n    def __str__(self):\n        return f\"{self.item} - Quantidade: {self.quantidade}\"\n    def restock(self, quantidade):\n        self.quantidade += quantidade",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "cred",
-        "kind": 5,
+        "label": "Permissao",
+        "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "cred = Certificate(credentials)\nfirebase_admin.initialize_app(cred)\n# criação do objeto Firestore\ndb = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'",
+        "peekOfCode": "class Permissao(models.Model):\n    nome = models.CharField(max_length=100)\n    def __str__(self):\n        return self.nome\nclass PerfilUsuario(models.Model):\n    user = models.OneToOneField(UsuarioCustomizado, on_delete=models.CASCADE)\n    permissoes = models.ManyToManyField(Permissao)\n    def __str__(self):\n        return self.user.username",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
     {
-        "label": "db",
-        "kind": 5,
+        "label": "PerfilUsuario",
+        "kind": 6,
         "importPath": "api.mainApi.models",
         "description": "api.mainApi.models",
-        "peekOfCode": "db = firestore.client()\n# tipos de users\nclass TipoUsuario(Enum):\n    ADM = 'adm'\n    GER = 'gerente'\n    FUN = 'funcionario'\n    CLI = 'cliente'\n    def to_firestore_value(self):\n        return self.value\n# modelo de usuário",
+        "peekOfCode": "class PerfilUsuario(models.Model):\n    user = models.OneToOneField(UsuarioCustomizado, on_delete=models.CASCADE)\n    permissoes = models.ManyToManyField(Permissao)\n    def __str__(self):\n        return self.user.username",
         "detail": "api.mainApi.models",
         "documentation": {}
     },
@@ -1130,7 +1022,7 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('pedidos/', views.pedidos, name='pedidos'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('financeiro/', views.finaceiro, name='financeiro'),\n    path('', views.login, name='login'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),",
+        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('pedidos/', views.pedidos, name='pedidos'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('', views.login, name='login'),\n    path('finalizar_pagamento/', views.finalizar_pagamento, name='finalizar_pagamento'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),",
         "detail": "api.mainApi.urls",
         "documentation": {}
     },
@@ -1139,7 +1031,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cardapio(request):\n    # Instanciar a classe Cardapio\n    cardapio = Cardapio()\n    if request.method == 'POST':\n        # Verificar se a ação é adicionar, editar ou excluir\n        if 'adicionar' in request.POST:\n            # Obter os dados do item a ser adicionado\n            nome = request.POST.get('nome')\n            quantidade = int(request.POST.get('quantidade_item') or 0)\n            valor_unitario = float(request.POST.get('quantidade_item') or 0)",
+        "peekOfCode": "def cardapio(request):\n    cardapio = Cardapio()\n    if request.method == 'POST':\n        action = request.POST.get('action')\n        if action == 'adicionar':\n            nome = request.POST.get('nome')\n            quantidade = int(request.POST.get('quantidade_item') or 0)\n            valor_unitario = float(request.POST.get('valor_item') or 0)\n            categoria = request.POST.get('categoria')\n            subcategoria = request.POST.get('subcategoria')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1148,25 +1040,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def estoque(request):\n    estoque = Estoque()\n    if request.method == 'POST':\n        if 'adicionar' in request.POST:\n            nome = request.POST.get('nome_item')\n            quantidade = int(request.POST.get('quantidade_item'))\n            valor_unitario = float(request.POST.get('valor_item'))\n            tipo = request.POST.get('tipo_item')\n            ingredientes = request.POST.get('ingredientes_item')\n            imagem = request.POST.get('imagem_item')",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "pedidos",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def pedidos(request):\n    return render(request, \"pedidos.html\")\n# @login_required\ndef finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") ",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "finaceiro",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def finaceiro(request):\n    return render(request, \"relFinaceiro.html\")\n# @login_required\ndef carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") \n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()",
+        "peekOfCode": "def estoque(request):\n    estoque = Estoque()\n    if request.method == 'POST':\n        action = request.POST.get('action')\n        if action == 'restoque':\n            nome = request.POST.get('nome_item')\n            quantidade = int(request.POST.get('quantidade_item'))\n            valor_unitario = float(request.POST.get('valor_item'))\n            tipo = request.POST.get('tipo_item')\n            ingredientes = request.POST.get('ingredientes_item')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1175,7 +1049,34 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def carrinho(request):\n    return render(request, \"carrinho.html\") \ndef logout(request):\n    return render(request, \"accounts/logout.html\") \n@csrf_protect\ndef cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']",
+        "peekOfCode": "def carrinho(request):\n    if 'carrinho' not in request.session or not request.session['carrinho']['itens']:\n        messages.error(request, \"Seu carrinho está vazio.\")\n        return redirect('cardapio')\n    carrinho_session = request.session['carrinho']\n    itens_carrinho = carrinho_session['itens']\n    valor_total_carrinho = carrinho_session['valor_total']\n    if request.method == 'POST':\n        action = request.POST.get('action')\n        item_id = request.POST.get('item_id')",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "finalizar_pagamento",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def finalizar_pagamento(request):\n    if 'carrinho' not in request.session or not request.session['carrinho']['itens']:\n        messages.error(request, \"Não é possível finalizar o pagamento. Seu carrinho está vazio.\")\n        return redirect('carrinho')\n    carrinho_session = request.session['carrinho']\n    itens_carrinho = carrinho_session['itens']\n    valor_total_carrinho = carrinho_session['valor_total']\n    id_pedido = str(uuid.uuid4())\n    pedido = Pedido(id_pedido=id_pedido, status='em espera', itens_pedido=itens_carrinho, valor_total=valor_total_carrinho)\n    try:",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "todos_pedidos",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def todos_pedidos(request):\n    # Verifica se o usuário atual é um admin/gerente\n    if request.user.tipo_usuario == 'gerente' or request.user.tipo_usuario=='adm':\n        # Crie uma instância da classe Pedidos\n        pedidos = Pedidos()\n        # Adicione os pedidos existentes ao objeto Pedidos\n        existing_pedidos = pedidos.db.collection('pedidos').get()\n        for pedido in existing_pedidos:\n            pedido_data = pedido.to_dict()\n            pedidos.adicionar_pedido(pedido_data)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "pedidos",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def pedidos(request):\n    # Substitua 'id_usuario' pelo método que você usa para obter o id do usuário logado\n    id_usuario = request.session.get('id_usuario')\n    # Crie uma instância da classe Pedidos\n    pedidos = Pedidos()\n    # Adicione os pedidos existentes ao objeto Pedidos\n    existing_pedidos = pedidos.db.collection('pedidos').where('id_usuario', '==', id_usuario).get()\n    for pedido in existing_pedidos:\n        pedido_data = pedido.to_dict()\n        pedidos.adicionar_pedido(pedido_data)",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1193,7 +1094,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI\n        password = request.POST['password']\n        password1 = request.POST['password1']\n        # Verifica se as senhas são iguais",
+        "peekOfCode": "def cadastrar_usuario_cli(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.CLI\n        password = request.POST['password']\n        password1 = request.POST['password1']\n        if password != password1:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1202,7 +1103,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def cadastrar_usuario_func(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.FUN\n        password = request.POST['password']\n        password1 = request.POST['password1']\n        # Verifica se as senhas são iguais",
+        "peekOfCode": "def cadastrar_usuario_func(request):\n    form = CadastroClienteForm()\n    if request.method == 'POST':\n        nome = request.POST['nome']\n        email = request.POST['email']\n        telefone = request.POST['telefone']\n        tipo = TipoUsuario.FUN\n        password = request.POST['password']\n        password1 = request.POST['password1']\n        if password != password1:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1211,7 +1112,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def login(request):\n    form = LoginForm()\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        password = request.POST.get('password')\n        api_key = os.environ.get('GOOGLE_API_KEY')# Coloque aqui sua chave de API do Firebase\n        # Criação do payload do body do request\n        payload = {\n            'email': email,\n            'password': password,",
+        "peekOfCode": "def login(request):\n    form = LoginForm()\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        password = request.POST.get('password')\n        api_key = os.environ.get('GOOGLE_API_KEY')\n        payload = {\n            'email': email,\n            'password': password,\n            'returnSecureToken': True",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1220,7 +1121,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def reset(request):\n    form = LoginForm()\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        try:\n            auth.generate_password_reset_link(email)\n            print('Link de redefinição de senha enviado com sucesso')\n            messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')\n            return redirect('login')\n        except auth.InvalidArgumentError: # type: ignore",
+        "peekOfCode": "def reset(request):\n    form = LoginForm()\n    if request.method == 'POST':\n        email = request.POST.get('email')\n        try:\n            auth.generate_password_reset_link(email) # type: ignore\n            messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')\n            return redirect('login')\n        except auth.InvalidArgumentError: # type: ignore\n            messages.error(request, 'E-mail inválido.')",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1229,7 +1130,7 @@
         "kind": 2,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def login_google(request):\n    if request.method == 'POST':\n        # Recupera o ID do token enviado pelo cliente\n        id_token = request.POST.get('idtoken')\n        try:\n            # Verifica se o token é válido\n            google_request = Request()\n            credentials, _ = google.auth.default(scopes=['openid', 'email', 'profile'])\n            id_info = id_token.verify_oauth2_token(id_token, google_request, credentials.client_id) # type: ignore\n            uid = id_info['sub']",
+        "peekOfCode": "def login_google(request):\n    if request.method == 'POST':\n        id_token = request.POST.get('idtoken')\n        try:\n            google_request = Request()\n            credentials, _ = google.auth.default(scopes=['openid', 'email', 'profile'])\n            id_info = id_token.verify_oauth2_token(id_token, google_request, credentials.client_id)\n            uid = id_info['sub']\n            usuario = Usuario.buscar(uid)\n            if usuario is None:",
         "detail": "api.mainApi.views",
         "documentation": {}
     },
@@ -1240,24 +1141,6 @@
         "description": "api.manage",
         "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'api.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
         "detail": "api.manage",
-        "documentation": {}
-    },
-    {
-        "label": "cred",
-        "kind": 5,
-        "importPath": "firebase.firebase_init",
-        "description": "firebase.firebase_init",
-        "peekOfCode": "cred = Certificate(credentials)\ndefault_app = firebase_admin.initialize_app(cred, {\n\t'databaseURL':credentials['databaseURL']\n\t})",
-        "detail": "firebase.firebase_init",
-        "documentation": {}
-    },
-    {
-        "label": "default_app",
-        "kind": 5,
-        "importPath": "firebase.firebase_init",
-        "description": "firebase.firebase_init",
-        "peekOfCode": "default_app = firebase_admin.initialize_app(cred, {\n\t'databaseURL':credentials['databaseURL']\n\t})",
-        "detail": "firebase.firebase_init",
         "documentation": {}
     }
 ]

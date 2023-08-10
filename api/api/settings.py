@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import sys
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +25,8 @@ sys.path.append(os.path.join(BASE_DIR, "firebase"))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = 'django-insecure-7@e4oknj-n#a-lwtk)&t^4$njv7g0k#$=l%p@81e3j6o@l0u_h'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -194,10 +195,10 @@ FIREBASE_AUTH_PROVIDER_X509_CERT_URL = os.environ.get(
     "FIREBASE_AUTH_PROVIDER_X509_CERT_URL"
 )
 FIREBASE_CLIENT_X509_CERT_URL = os.environ.get("FIREBASE_CLIENT_X509_CERT_URL")
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-GOOGLE_OAUTH2_CLIENT_ID = os.environ.get("GOOGLE_OAUTH2_CLIENT_ID")
-GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH2_CLIENT_SECRET")
-GOOGLE_AUTH_REDIRECT_URI = "http://localhost:8000/google-auth/"
+# GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+# GOOGLE_OAUTH2_CLIENT_ID = os.environ.get("GOOGLE_OAUTH2_CLIENT_ID")
+# GOOGLE_OAUTH2_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH2_CLIENT_SECRET")
+# GOOGLE_AUTH_REDIRECT_URI = "http://localhost:8000/google-auth/"
 
 
 """LOG"""
