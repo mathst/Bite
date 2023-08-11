@@ -74,6 +74,15 @@ class ItemCardapio(models.Model):
     def __str__(self):
         return self.nome
 
+class Combo(models.Model):
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    itens = models.ManyToManyField('ItemCardapio')
+
+    def __str__(self):
+        return self.nome
+
 class Ingrediente(models.Model):
     nome = models.CharField(max_length=100)
     quantidade = models.DecimalField(max_digits=10, decimal_places=2)
@@ -97,8 +106,8 @@ class Pedido(models.Model):
     ]
 
     cliente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_cliente')
-    cozinha = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_cozinha', null=True, blank=True)
-    gerente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_gerente', null=True, blank=True)
+    # cozinha = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_cozinha', null=True, blank=True)
+    # gerente = models.ForeignKey(UsuarioCustomizado, on_delete=models.CASCADE, related_name='pedidos_gerente', null=True, blank=True)
     status = models.CharField(max_length=20, choices=CHOICES_STATUS)
     itens = models.ManyToManyField(ItemCardapio, through='ItemPedido')
 

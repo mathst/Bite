@@ -7,8 +7,13 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from requests import Request
 import requests
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
+# from .forms import LoginForm, SignupForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Carrinho, Combo, Estoque, Item, ItemCardapio, Pedidos, TransacaoFinanceira, Usuario, TipoUsuario, Cardapio
+from .models import Carrinho, Categoria, Estoque, Pedidos, TransacaoFinanceira, Usuario, TipoUsuario, Cardapio
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
@@ -68,7 +73,7 @@ def cardapio(request):
 
         elif action == 'excluir':
             nome_item = request.POST.get('nome')
-            cardapio.remover_item(uid,categoria, subcategoria, nome_item)
+            cardapio.remover_item(uid,Categoria, subcategoria, nome_item)
             messages.success(request, 'Item excluído com sucesso!')
 
         elif action == 'adicionar_combo':
@@ -253,149 +258,58 @@ def pedidos(request):
     return render(request, 'pedidos.html')
 
 
-def logout(request):
-    return render(request, "accounts/logout.html") 
-
-@csrf_protect
-def cadastrar_usuario_cli(request):
-    form = CadastroClienteForm()
-    if request.method == 'POST':
-        nome = request.POST['nome']
-        email = request.POST['email']
-        telefone = request.POST['telefone']
-        tipo = TipoUsuario.CLI
-        password = request.POST['password']
-        password1 = request.POST['password1']
-
-        if password != password1:
-            messages.error(request, 'As senhas não são iguais')
-            return redirect('cadastrar_usuario_cli')
-
-        try:
-            usuario = Usuario(nome=nome, email=email, telefone=telefone, tipo=tipo)
-            usuario_uid = usuario.criar_usuario(password)
-            usuario.uid = usuario_uid
-            messages.success(request, 'Usuário cadastrado com sucesso')
-            return redirect('login')
-        except Exception as e:
-            messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
-            return redirect('cadastrar_usuario_cli')
-    else:
-        return render(request, 'accounts/cadastrar_usuario.html', {'form': form})
-
-@csrf_protect
-def cadastrar_usuario_func(request):
-    form = CadastroClienteForm()
-    if request.method == 'POST':
-        nome = request.POST['nome']
-        email = request.POST['email']
-        telefone = request.POST['telefone']
-        tipo = TipoUsuario.FUN
-        password = request.POST['password']
-        password1 = request.POST['password1']
-
-        if password != password1:
-            messages.error(request, 'As senhas não são iguais')
-            return redirect('login')
-
-        try:
-            usuario = Usuario(nome=nome, email=email, telefone=telefone, tipo=tipo)
-            usuario_uid = usuario.criar_usuario(password)
-            usuario.uid = usuario_uid
-            usuario.salvar()
-            messages.success(request, 'Usuário cadastrado com sucesso')
-            return redirect('listar_usuarios')
-        except Exception as e:
-            messages.error(request, f'Ocorreu um erro ao cadastrar o usuário: {e}')
-            return redirect('cadastro_funcionario')
-    else:
-        return render(request, 'accounts/cadastro_funcionario.html', {'form': form})
-
 def login(request):
-    form = LoginForm()
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        api_key = os.environ.get('GOOGLE_API_KEY')
-
-        payload = {
-            'email': email,
-            'password': password,
-            'returnSecureToken': True
-        }
-
-        response = requests.post(f'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={api_key}', json=payload)
-        if response.ok:
-            uid = response.json()['localId']
-            refresh_token = response.json()['refreshToken']
-
-            try:
-                usuario = Usuario.buscar(uid)
-                tipo_user = usuario['tipo']
-                request.session['tipo_user'] = tipo_user
-            except ValueError as e:
-                messages.error(request, f'Erro ao fazer login{e}')
-                return redirect('login')
-
-            if tipo_user == 'cliente':
-                return redirect('cardapio')
-            elif tipo_user == 'funcionario':
-                return render(request, 'pedidos.html')
-            elif tipo_user == 'gerente':
-                return render(request, 'cardapio.html')
-            elif tipo_user == 'adm':
-                return render(request, 'pedidos.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Login realizado com sucesso.')
+                return redirect('dashboard')  # Redirecione para a página após o login
             else:
-                messages.error(request, 'Tipo de conta inválido')
-                return redirect('login')
-        else:
-            messages.error(request, 'Usuário ou senha inválidos.')
-            return redirect('login')
-
+                messages.error(request, 'E-mail ou senha inválidos.')
+    else:
+        form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})
 
-def reset(request):
-    form = LoginForm()
+def signup(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        try:
-            auth.generate_password_reset_link(email) # type: ignore
-            messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')
-            return redirect('login')
-        except auth.InvalidArgumentError: # type: ignore
-            messages.error(request, 'E-mail inválido.')
-        except auth.UserNotFoundError: # type: ignore
-            messages.error(request, 'Usuário não encontrado.')
-        except auth.EmailAlreadyExistsError:
-            messages.error(request, 'E-mail já cadastrado.')
-        except Exception as e:
-            messages.error(request, 'Ocorreu um erro ao enviar o link de redefinição de senha.')
-            print(f'Ocorreu um erro ao enviar o link de redefinição de senha: {e}')
+        
+        if form.is_valid():
+            # Verifique as senhas
+            password = form.cleaned_data['password']
+            password1 = form.cleaned_data['password1']
+            if password != password1:
+                messages.error(request, 'As senhas não são iguais.')
+                return redirect('signup')
 
-    return render(request, 'accounts/reset.html', {'form': form})
+            # Crie um usuário
+            # Certifique-se de que você está tratando a criação de diferentes tipos de usuário (cliente, funcionário, adm) adequadamente aqui
+            # Exemplo:
+            # user = Usuario(nome=form.cleaned_data['nome'], email=form.cleaned_data['email'], telefone=form.cleaned_data['telefone'], tipo=TipoUsuario.CLI)
+            # user.set_password(password)
+            # user.save()
 
-def login_google(request):
-    if request.method == 'POST':
-        id_token = request.POST.get('idtoken')
-
-        try:
-            google_request = Request()
-            credentials, _ = google.auth.default(scopes=['openid', 'email', 'profile'])
-            id_info = id_token.verify_oauth2_token(id_token, google_request, credentials.client_id)
-            uid = id_info['sub']
-
-            usuario = Usuario.buscar(uid)
-            if usuario is None:
-                messages.error(request, 'Usuário não encontrado')
-                return redirect('login')
-
-            if usuario['tipo'] == 'cliente':
-                return redirect('caradapio')
-            else:
-                messages.error(request, 'Tipo de usuário inválido')
-                return redirect('login')
-        except ValueError as e:
-            messages.error(request, 'Erro ao fazer login com o Google')
+            messages.success(request, 'Usuário cadastrado com sucesso.')
             return redirect('login')
     else:
-        return render(request, 'login.html')
+        form = SignupForm()
+    return render(request, 'accounts/signup.html', {'form': form})
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            # Envie um e-mail de redefinição de senha (Django default)
+            form = DjangoPasswordResetForm({'email': email})
+            if form.is_valid():
+                form.save(request=request)
+                messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')
+                return redirect('login')
+    else:
+        form = PasswordResetForm()
+    return render(request, 'accounts/password_reset.html', {'form': form})
