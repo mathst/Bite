@@ -246,14 +246,6 @@
         "documentation": {}
     },
     {
-        "label": "messages",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -342,6 +334,22 @@
         "documentation": {}
     },
     {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "urlsafe_b64encode",
+        "importPath": "base64",
+        "description": "base64",
+        "isExtraImport": true,
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
         "label": "defaultdict",
         "importPath": "collections",
         "description": "collections",
@@ -416,6 +424,14 @@
         "documentation": {}
     },
     {
+        "label": "default_token_generator",
+        "importPath": "django.contrib.auth.tokens",
+        "description": "django.contrib.auth.tokens",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.tokens",
+        "documentation": {}
+    },
+    {
         "label": "PasswordResetForm",
         "importPath": "django.contrib.auth.forms",
         "description": "django.contrib.auth.forms",
@@ -469,6 +485,38 @@
         "description": "django.views.decorators.csrf",
         "isExtraImport": true,
         "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "urlsafe_base64_encode",
+        "importPath": "django.utils.http",
+        "description": "django.utils.http",
+        "isExtraImport": true,
+        "detail": "django.utils.http",
+        "documentation": {}
+    },
+    {
+        "label": "urlsafe_base64_decode",
+        "importPath": "django.utils.http",
+        "description": "django.utils.http",
+        "isExtraImport": true,
+        "detail": "django.utils.http",
+        "documentation": {}
+    },
+    {
+        "label": "force_bytes",
+        "importPath": "django.utils.encoding",
+        "description": "django.utils.encoding",
+        "isExtraImport": true,
+        "detail": "django.utils.encoding",
+        "documentation": {}
+    },
+    {
+        "label": "force_text",
+        "importPath": "django.utils.encoding",
+        "description": "django.utils.encoding",
+        "isExtraImport": true,
+        "detail": "django.utils.encoding",
         "documentation": {}
     },
     {
@@ -1070,8 +1118,53 @@
         "kind": 5,
         "importPath": "api.mainApi.urls",
         "description": "api.mainApi.urls",
-        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('pedidos/', views.pedidos, name='pedidos'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('', views.login, name='login'),\n    path('finalizar_pagamento/', views.finalizar_pagamento, name='finalizar_pagamento'),\n    path('cadastro/', views.cadastrar_usuario_cli, name='cadastrar_usuario_cli'),\n    path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),",
+        "peekOfCode": "urlpatterns = [\n    path('cardapio/', views.cardapio, name='cardapio'),\n    path('carrinho/', views.carrinho, name='carrinho'),\n    path('pedidos/', views.pedidos, name='pedidos'),\n    path('estoque/', views.estoque, name='estoque'),\n    path('', views.login_view, name='login'),\n    path('finalizar_pagamento/', views.finalizar_pagamento, name='finalizar_pagamento'),\n    path('cadastro/', views.signup_view, name='signup'),\n    # path('login_google/', views.login_google, name='login_google'),\n    path('auth/', include('social_django.urls', namespace='social')),",
         "detail": "api.mainApi.urls",
+        "documentation": {}
+    },
+    {
+        "label": "login_view",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def login_view(request):\n    if request.method == 'POST':\n        form = LoginForm(request.POST)\n        if form.is_valid():\n            email = form.cleaned_data['email']\n            password = form.cleaned_data['password']\n            user = authenticate(request, email=email, password=password)\n            if user is not None:\n                login(request, user)\n                messages.success(request, 'Login realizado com sucesso.')",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "signup_view",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def signup_view(request):\n    if request.method == 'POST':\n        form = CadastroClienteForm(request.POST)\n        if form.is_valid():\n            email = form.cleaned_data['email']\n            password = form.cleaned_data['password']\n            tipo_usuario = form.cleaned_data['tipo_usuario']\n            # Crie um usuário com o tipo de usuário especificado\n            user = CustomUser(email=email, tipo_usuario=tipo_usuario)\n            user.set_password(password)",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "client_reset_password_request_view",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def client_reset_password_request_view(request):\n    if request.method == 'POST':\n        form = PasswordResetForm(request.POST)\n        if form.is_valid():\n            email = form.cleaned_data['email']\n            user = User.objects.filter(email=email).first()\n            if user:\n                token = default_token_generator.make_token(user)\n                uid = urlsafe_b64encode(force_bytes(user.pk))\n                reset_link = f\"http://yourdomain.com/reset-password/{uid}/{token}/\"",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "client_reset_password_view",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def client_reset_password_view(request, uidb64, token):\n    try:\n        uid = force_text(urlsafe_base64_decode(uidb64))\n        user = User.objects.get(pk=uid)\n    except (TypeError, ValueError, OverflowError, User.DoesNotExist):\n        user = None\n    if user and default_token_generator.check_token(user, token):\n        if request.method == 'POST':\n            form = SetPasswordForm(user, request.POST)\n            if form.is_valid():",
+        "detail": "api.mainApi.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout_view",
+        "kind": 2,
+        "importPath": "api.mainApi.views",
+        "description": "api.mainApi.views",
+        "peekOfCode": "def logout_view(request):\n    logout(request)\n    return redirect('login')\n# def password_reset(request):\n#     if request.method == 'POST':\n#         form = PasswordResetForm(request.POST)\n#         if form.is_valid():\n#             email = form.cleaned_data['email']\n#             # Envie um e-mail de redefinição de senha (Django default)\n#             form = DjangoPasswordResetForm({'email': email})",
+        "detail": "api.mainApi.views",
         "documentation": {}
     },
     {
@@ -1129,29 +1222,11 @@
         "documentation": {}
     },
     {
-        "label": "login",
-        "kind": 2,
+        "label": "User",
+        "kind": 5,
         "importPath": "api.mainApi.views",
         "description": "api.mainApi.views",
-        "peekOfCode": "def login(request):\n    if request.method == 'POST':\n        form = LoginForm(request.POST)\n        if form.is_valid():\n            email = form.cleaned_data['email']\n            password = form.cleaned_data['password']\n            user = authenticate(request, email=email, password=password)\n            if user is not None:\n                login(request, user)\n                messages.success(request, 'Login realizado com sucesso.')",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "signup",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def signup(request):\n    if request.method == 'POST':\n        if form.is_valid():\n            # Verifique as senhas\n            password = form.cleaned_data['password']\n            password1 = form.cleaned_data['password1']\n            if password != password1:\n                messages.error(request, 'As senhas não são iguais.')\n                return redirect('signup')\n            # Crie um usuário",
-        "detail": "api.mainApi.views",
-        "documentation": {}
-    },
-    {
-        "label": "password_reset",
-        "kind": 2,
-        "importPath": "api.mainApi.views",
-        "description": "api.mainApi.views",
-        "peekOfCode": "def password_reset(request):\n    if request.method == 'POST':\n        form = PasswordResetForm(request.POST)\n        if form.is_valid():\n            email = form.cleaned_data['email']\n            # Envie um e-mail de redefinição de senha (Django default)\n            form = DjangoPasswordResetForm({'email': email})\n            if form.is_valid():\n                form.save(request=request)\n                messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')",
+        "peekOfCode": "User = get_user_model()\n# @login_required\n# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.CLIENTE)\n# def cliente_view(request):\n#     # Sua lógica para visualização do cliente\n# @login_required\n# @user_passes_test(lambda user: user.tipo_usuario == CustomUser.COZINHA or user.tipo_usuario == CustomUser.ADM)\n# def cozinha_view(request):\n#     # Sua lógica para visualização da cozinha\n# @login_required",
         "detail": "api.mainApi.views",
         "documentation": {}
     },

@@ -41,11 +41,16 @@ class UsuarioCustomizado(AbstractUser, PermissionsMixin):
         choices=TIPO_USUARIO_CHOICES,
         default=CLIENTE,
     )
+    
+    nome = models.CharField(max_length=255)
+    telefone = models.CharField(max_length=20)
 
     objects = GerenciadorUsuario()
 
     def __str__(self):
-        return self.username
+        return self.email
+    
+# ---------------------------------------------------------    
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=50)

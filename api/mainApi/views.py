@@ -1,24 +1,29 @@
+from base64 import urlsafe_b64encode
 from collections import defaultdict
 import json
 import os
 import uuid
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
-from django.contrib import messages
+# from django.contrib import messages
 from requests import Request
 import requests
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
-# from .forms import LoginForm, SignupForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Carrinho, Categoria, Estoque, Pedidos, TransacaoFinanceira, Usuario, TipoUsuario, Cardapio
+from .models import Carrinho, Categoria, Estoque, ItemCardapio, Pedido, TransacaoFinanceira, UsuarioCustomizado,GerenciadorUsuario
 from .forms import LoginForm, CadastroClienteForm
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 # @login_required
 # @user_passes_test(lambda user: user.tipo_usuario == CustomUser.CLIENTE)
@@ -40,6 +45,103 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 # def administrador_view(request):
 #     # Sua lógica para visualização do administrador
     
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Login realizado com sucesso.')
+                # Redirecione para a página após o login
+                return redirect('dashboard')
+            else:
+                messages.error(request, 'E-mail ou senha inválidos.')
+    else:
+        form = LoginForm()
+    return render(request, 'accounts/login.html', {'form': form})
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = CadastroClienteForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            tipo_usuario = form.cleaned_data['tipo_usuario']
+            
+            # Crie um usuário com o tipo de usuário especificado
+            user = CustomUser(email=email, tipo_usuario=tipo_usuario)
+            user.set_password(password)
+            user.save()
+
+            messages.success(request, 'Usuário cadastrado com sucesso.')
+            return redirect('login')
+    else:
+        form = SignupForm()
+    return render(request, 'accounts/signup.html', {'form': form})
+
+def client_reset_password_request_view(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            user = User.objects.filter(email=email).first()
+            if user:
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_b64encode(force_bytes(user.pk))
+                reset_link = f"http://yourdomain.com/reset-password/{uid}/{token}/"
+                # Enviar o link de redefinição de senha para o cliente por email ou SMS
+                # Pode usar bibliotecas como SendGrid ou Twilio para envio de emails ou SMS
+                
+                messages.success(request, 'Um link de redefinição de senha foi enviado para o seu email ou número de telefone.')
+            else:
+                messages.error(request, 'Não foi possível encontrar um usuário com esse email.')
+    else:
+        form = PasswordResetForm()
+    return render(request, 'accounts/client_reset_password_request.html', {'form': form})
+
+def client_reset_password_view(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user and default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = SetPasswordForm(user, request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Senha alterada com sucesso.')
+                return redirect('login')
+        else:
+            form = SetPasswordForm(user)
+        return render(request, 'accounts/client_reset_password.html', {'form': form})
+    else:
+        messages.error(request, 'O link de redefinição de senha é inválido ou expirou.')
+        return redirect('login')
+    
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+# def password_reset(request):
+#     if request.method == 'POST':
+#         form = PasswordResetForm(request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             # Envie um e-mail de redefinição de senha (Django default)
+#             form = DjangoPasswordResetForm({'email': email})
+#             if form.is_valid():
+#                 form.save(request=request)
+#                 messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')
+#                 return redirect('login')
+#     else:
+#         form = PasswordResetForm()
+#     return render(request, 'accounts/password_reset.html', {'form': form})
+
 
 @cache_page(60 * 15)  # Cache de 15 minutos
 def cardapio(request):
@@ -256,60 +358,3 @@ def pedidos(request):
     pedidos.ver_fila()
 
     return render(request, 'pedidos.html')
-
-
-def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Login realizado com sucesso.')
-                return redirect('dashboard')  # Redirecione para a página após o login
-            else:
-                messages.error(request, 'E-mail ou senha inválidos.')
-    else:
-        form = LoginForm()
-    return render(request, 'accounts/login.html', {'form': form})
-
-def signup(request):
-    if request.method == 'POST':
-        
-        if form.is_valid():
-            # Verifique as senhas
-            password = form.cleaned_data['password']
-            password1 = form.cleaned_data['password1']
-            if password != password1:
-                messages.error(request, 'As senhas não são iguais.')
-                return redirect('signup')
-
-            # Crie um usuário
-            # Certifique-se de que você está tratando a criação de diferentes tipos de usuário (cliente, funcionário, adm) adequadamente aqui
-            # Exemplo:
-            # user = Usuario(nome=form.cleaned_data['nome'], email=form.cleaned_data['email'], telefone=form.cleaned_data['telefone'], tipo=TipoUsuario.CLI)
-            # user.set_password(password)
-            # user.save()
-
-            messages.success(request, 'Usuário cadastrado com sucesso.')
-            return redirect('login')
-    else:
-        form = SignupForm()
-    return render(request, 'accounts/signup.html', {'form': form})
-
-def password_reset(request):
-    if request.method == 'POST':
-        form = PasswordResetForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            # Envie um e-mail de redefinição de senha (Django default)
-            form = DjangoPasswordResetForm({'email': email})
-            if form.is_valid():
-                form.save(request=request)
-                messages.success(request, 'Um link de redefinição de senha foi enviado para o seu e-mail.')
-                return redirect('login')
-    else:
-        form = PasswordResetForm()
-    return render(request, 'accounts/password_reset.html', {'form': form})
